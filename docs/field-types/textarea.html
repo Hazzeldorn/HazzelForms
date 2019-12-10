@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>HazzelForms – Textarea</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/prism.css" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107837260-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-107837260-2');
+		</script>
+
+	</head>
+	<body class="is-preload">
+
+  <!-- Wrapper -->
+  <div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+      <div class="inner">
+
+        <!-- Header -->
+        <header id="header">
+          <strong>HazzelForms API</strong>
+        </header>
+
+        <!-- Content -->
+        <section>
+          <header class="main">
+            <h1>Textarea</h1>
+          </header>
+
+          <h2>Add Field</h2>
+
+<pre><code class="language-php">// Textarea example
+$form->addField('Message', 'textarea', ['rows' => 5]);
+</code></pre>
+
+					<h3>Attributes</h3>
+          <p>You can customize the field with one of these optional parameters:</p>
+					<div class="table-wrapper">
+						<table class="params alt">
+							<thead>
+								<tr>
+									<th>Parameter</th>
+									<th>Type</th>
+									<th>Default</th>
+									<th>Info</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>required</td>
+									<td>boolean</td>
+									<td>true</td>
+									<td>Validation will return false when the field is left empty</td>
+								</tr>
+								<tr>
+                  <td>classlist</td>
+                  <td>string</td>
+                  <td><code>has-error</code> will be added to classes if validation returns false.<br>
+                      <code>is-valid</code> will be added if the validation was successful.
+                  </td>
+                  <td>Add classes to input field and its field wrap e.g. column-with classes of a grid system.</td>
+                </tr>
+								<tr>
+									<td>cols</td>
+									<td>string</td>
+									<td></td>
+									<td>Number of colums (better style your area with css)</td>
+								</tr>
+								<tr>
+									<td>rows</td>
+									<td>int</td>
+									<td></td>
+									<td>Number of rows (better style your area with css)</td>
+								</tr>
+								<tr>
+									<td>maxlength</td>
+									<td>int</td>
+									<td></td>
+									<td>Maximum number of input characters</td>
+								</tr>
+								<tr>
+									<td>label</td>
+									<td>int</td>
+									<td></td>
+									<td>Label for input field</td>
+								</tr>
+								<tr>
+									<td>placeholder</td>
+									<td>string</td>
+									<td></td>
+									<td>Input field placeholder</td>
+								</tr>
+                <tr>
+									<td>regex</td>
+									<td>String</td>
+									<td></td>
+									<td>Validation will match input against this regular expression</td>
+								</tr>
+								<tr>
+									<td>readonly</td>
+									<td>string</td>
+									<td>false</td>
+									<td>Read-Only field if it only is available under specific circumstances.</td>
+								</tr>
+								<tr>
+									<td>autofocus</td>
+									<td>string</td>
+									<td>false</td>
+									<td>Set cursor autofocus to this field. Only use for a single field per form.</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+			<div class="inner">
+
+        <!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li><a href="https://hazzeldorn.github.io/HazzelForms/">Home</a></li>
+						<li><a href="https://hazzeldorn.github.io/HazzelForms/quickstart.html">Quickstart</a></li>
+						<li>
+							<span class="opener active">Field types</span>
+							<ul>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/text.html">Text / E-Mail / URL / Phone / PW</a></li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/number.html">Number / Range / Date / Time</a></li>
+								<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/field-types/textarea.html">Textarea</a></li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/selection.html">Radio button / Checkbox / Dropdown</a></li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/files.html">Files</a></li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/hidden.html">Hidden fields</a></li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/captcha.html">Captcha</a></li>
+							</ul>
+						</li>
+						<li><a href="https://hazzeldorn.github.io/HazzelForms/validation.html">Validation</a></li>
+						<li>
+							<span class="opener">Data Processing</span>
+							<ul>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/send-mail.html">Send Email</a></li>
+
+<li><a href="https://hazzeldorn.github.io/HazzelForms/manual-data-processing.html">Get PHP Array</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+
+        <section>
+          <header class="major">
+            <h2>About</h2>
+          </header>
+          <p>HazzelForms is made for PHP developers. Not suitable for template kiddies.</p>
+          <ul class="contact">
+            <li class="icon brands fa-github"><a href="https://github.com/Hazzeldorn">hazzeldorn</a></li>
+          </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+          <p class="copyright">&copy; 2019 HazzelForms by <a href="https://github.com/Hazzeldorn" target="_blank" rel="noopener">hazzeldorn</a><br>
+          Thanks to <a href="https://html5up.net/" target="_blank" rel="noopener">html5up</a> for the api doc template.</p>
+        </footer>
+
+      </div>
+    </div>
+
+  </div><!-- #wrapper -->
+
+  <!-- Scripts -->
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/browser.min.js"></script>
+  <script src="../assets/js/breakpoints.min.js"></script>
+  <script src="../assets/js/util.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/prism.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>HazzelForms – Get PHP Array</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/prism.css" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107837260-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-107837260-2');
+		</script>
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+						<!-- Header -->
+							<header id="header">
+								<strong>HazzelForms API</strong>
+							</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Get array with field values</h1>
+									</header>
+
+
+									<p>You can use the function <code>$form->getFieldValues()</code> to get an array with all the field values.
+									Field names are set as array index whereas the field value is set as the corresponding content.</p>
+<pre><code class="language-php">// make sure to validate first :)
+if($form->validate()){
+
+  	$data = $form->getFieldValues();
+
+		// easly access single fields
+		$customer_email = $data['customer_email'];
+
+		// ...or loop through the whole array
+		foreach($data as $field => $value){
+			echo "The field: $field contains: $value ";
+		}
+
+}
+</code></pre>
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+				<div id="sidebar">
+					<div class="inner">
+
+						<!-- Menu -->
+						<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/">Home</a></li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/quickstart.html">Quickstart</a></li>
+								<li>
+									<span class="opener">Field types</span>
+									<ul>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/text.html">Text / E-Mail / URL / Phone / PW</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/number.html">Number / Range / Date / Time</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/textarea.html">Textarea</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/selection.html">Radio button / Checkbox / Dropdown</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/files.html">Files</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/hidden.html">Hidden fields</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/captcha.html">Captcha</a></li>
+									</ul>
+								</li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/validation.html">Validation</a></li>
+								<li>
+									<span class="opener active">Data Processing</span>
+									<ul>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/send-mail.html">Send Email</a></li>
+										
+										<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/manual-data-processing.html">Get PHP Array</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+
+						<section>
+							<header class="major">
+								<h2>About</h2>
+							</header>
+							<p>HazzelForms is made for PHP developers. Not suitable for template kiddies.</p>
+							<ul class="contact">
+								<li class="icon brands fa-github"><a href="https://github.com/Hazzeldorn">hazzeldorn</a></li>
+							</ul>
+						</section>
+
+						<!-- Footer -->
+						<footer id="footer">
+							<p class="copyright">&copy; 2019 HazzelForms by <a href="https://github.com/Hazzeldorn" target="_blank" rel="noopener">hazzeldorn</a><br>
+							Thanks to <a href="https://html5up.net/" target="_blank" rel="noopener">html5up</a> for the api doc template.</p>
+						</footer>
+
+					</div>
+				</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/prism.js"></script>
+
+	</body>
+</html>

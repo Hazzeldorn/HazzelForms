@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>HazzelForms – Captcha</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/prism.css" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107837260-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-107837260-2');
+		</script>
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+						<!-- Header -->
+							<header id="header">
+								<strong>HazzelForms API</strong>
+							</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Captchas</h1>
+									</header>
+
+									<h2>Google ReCaptcha V2 (Checkbox)</h2>
+
+									<p>
+										Use <code>recaptcha-v2</code> as field type and add the site key
+										and the secret key provided by Google.
+										That's it :)
+									<br>
+										No worries about validation – HazzelForms and Google will do this for you.
+									</p>
+<pre><code class="language-php">// Add captcha field to the form object
+$form->addField('my-captcha',  'recaptcha-v2', ['sitekey'   => 'YOUR_PUBLIC_KEY',
+	                                           		'secretkey' => 'YOUR_SECRET_KEY']);
+</code></pre>
+<p>The captcha field can be added to the DOM like all the other fields by using the field name. Or use <code>$form->renderAll()</code> instead to
+to let HazzelForms do the work.</p>
+<br>
+
+								<h2>Google ReCaptcha V3</h2>
+
+								<p>
+									You can include the score based ReCaptcha V3 exactly the same way as V2.
+									Just use <code>recaptcha-v3</code> instead of <code>recaptcha-v2</code> as field type.
+								</p>
+
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+				<div id="sidebar">
+					<div class="inner">
+
+						<!-- Menu -->
+						<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/">Home</a></li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/quickstart.html">Quickstart</a></li>
+								<li>
+									<span class="opener active">Field types</span>
+									<ul>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/text.html">Text / E-Mail / URL / Phone / PW</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/number.html">Number / Range / Date / Time</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/textarea.html">Textarea</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/selection.html">Radio button / Checkbox / Dropdown</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/files.html">Files</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/hidden.html">Hidden fields</a></li>
+										<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/field-types/captcha.html">Captcha</a></li>
+									</ul>
+								</li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/validation.html">Validation</a></li>
+								<li>
+									<span class="opener">Data Processing</span>
+									<ul>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/send-mail.html">Send Email</a></li>
+										
+<li><a href="https://hazzeldorn.github.io/HazzelForms/manual-data-processing.html">Get PHP Array</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+
+						<section>
+							<header class="major">
+								<h2>About</h2>
+							</header>
+							<p>HazzelForms is made for PHP developers. Not suitable for template kiddies.</p>
+							<ul class="contact">
+								<li class="icon brands fa-github"><a href="https://github.com/Hazzeldorn">hazzeldorn</a></li>
+							</ul>
+						</section>
+
+						<!-- Footer -->
+						<footer id="footer">
+							<p class="copyright">&copy; 2019 HazzelForms by <a href="https://github.com/Hazzeldorn" target="_blank" rel="noopener">hazzeldorn</a><br>
+							Thanks to <a href="https://html5up.net/" target="_blank" rel="noopener">html5up</a> for the api doc template.</p>
+						</footer>
+
+					</div>
+				</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+			<script src="../assets/js/prism.js"></script>
+
+	</body>
+</html>

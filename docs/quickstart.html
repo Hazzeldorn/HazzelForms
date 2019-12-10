@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>HazzelForms – Quickstart</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/prism.css" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107837260-2"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-107837260-2');
+		</script>
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+						<!-- Header -->
+							<header id="header">
+								<strong>HazzelForms API</strong>
+							</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Quickstart</h1>
+									</header>
+
+									<h2>Requirements</h2>
+									<p>If your webserver supports PHP7, simply <a href="https://github.com/Hazzeldorn/HazzelForms/archive/master.zip">download</a> the HazzelForm folder,
+										 extract the zip file and include it anywhere in your web project.</p>
+
+									<h3>Minimalist configuration</h3>
+									<blockquote>
+										<b>Important:</b><br>
+										Make sure you place STEP 1-3 on top of you PHP script before headers or any html content is defined.
+									</blockquote>
+
+				<pre><code class="language-php">// STEP 1: tell your app the location of HazzelForms and initialize the framework
+require_once __DIR__ . '/HazzelForms/HazzelForm.php';
+$form = new HazzelForms\HazzelForm();
+
+// STEP 2: add a form field using the parameters 'title', 'type' and an optional parameter list
+$form->addField('E-Mail', 'email', ['label' => 'Sign up to our newsletter']);
+
+// STEP 3: send mail if everything is valid
+if($form->validate()){
+  $form->sendMail('marketing@example.com');
+}
+
+// STEP 4: output the complete form html to your website
+$form->renderAll();
+</code></pre>
+
+
+				<hr class="major" />
+
+				<h2>Initialize form with custom settings</h2>
+
+<pre><code class="language-php">// include HazzelForms
+require_once __DIR__ . '/HazzelForms/HazzelForm.php';
+
+// simple
+$form = new HazzelForms\HazzelForm();
+
+// example with parameters
+$form = new HazzelForms\HazzelForm(array(
+	'autocomplete' => 'false',
+	'action' => 'yourOwnDataProcessing.php'
+));
+</code></pre>
+
+									<h3>Attributes</h3>
+									<p>Add optional parameters to change default form settings:</p>
+									<div class="table-wrapper">
+										<table class="params alt">
+											<thead>
+												<tr>
+													<th>Parameter</th>
+													<th>Type</th>
+													<th>Default</th>
+													<th>Info</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>action</td>
+													<td>string</td>
+													<td><i>current URL</i></td>
+													<td>It is recommended to use default action for proper server-side validation.</td>
+												</tr>
+												<tr>
+													<td>method</td>
+													<td>string</td>
+													<td>post</td>
+													<td>Nobody does send a form via <code>get</code> method but it would be possible.</td>
+												</tr>
+												<tr>
+													<td>novalidate</td>
+													<td>boolean</td>
+													<td>false</td>
+													<td>Turn of validation functionality of browsers</td>
+												</tr>
+												<tr>
+													<td>autocomplete</td>
+													<td>boolean</td>
+													<td>true</td>
+													<td>Decide wether browsers should help the users filling out the form.</td>
+												</tr>
+												<tr>
+													<td>formname</td>
+													<td>String</td>
+													<td>hazzelform_<code>1</code</td>
+													<td>Internal form identifier. The <code>&lt;form&gt;</code> tag will get this ID too. For multiple forms on a page, the default number will be increased</td>
+												</tr>
+												<tr>
+													<td>stealthmode</td>
+													<td>boolean</td>
+													<td>false</td>
+													<td>If you switch on stealth mode, HazzelForms won't output the submit button. Furthermore it will ignore error messages and
+													the grid wrapper. You will need javascript to submit the form. This takes effect when <code>$form->renderAll();</code> is used to create DOM elements.</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<hr class="major" />
+
+									<h2>Add fields</h2>
+
+<pre><code class="language-php">/**
+ *   Add new fields using these parameters:
+ *   @param String  $fieldName
+ *   @param String  $type
+ *   @param Array   $attributes  (optional)
+ */
+
+$form->addField('Name', 'text', array('placeholder' => 'Please enter your name',
+															        'maxlength'   => 35
+                                    ));
+</code></pre>
+
+									<h3>Attributes</h3>
+									<p>Every field type has its own field specific parameters.<br>
+										Please see field types for more information.</p>
+
+									<h3>Set default value</h3>
+
+<pre><code class="language-php">// get field by name and set its value
+$form->getField('Name')->setValue('the value');
+</code></pre>
+
+									<hr class="major" />
+
+									<h2>Form rendering</h2>
+									<p>Use the following functions to create the html code for your fields, labels and error messages.</p>
+
+<pre><code class="language-php">// Let HazzelForms do the whole magic
+$form->renderAll();
+</code></pre>
+
+<pre><code class="language-php">// do things manually
+$form->openForm();								 	// open form tag *
+$form->openGrid();									// open grid system
+
+$form->openField('fieldName');			// wraps a grid-system box around the field
+$form->renderLabel('fieldName');		// show label if defined as field parameter
+$form->renderInput('fieldName');   	// create input field *
+$form->renderError('fieldName');   	// field specific error message
+$form->closeField('fieldName');   	// field wrapper closing tag
+
+$form->renderField('fieldName');   	// render the above 5 (wrapper, label, input tag and error all together)
+
+$form->renderSubmitErrors();				// show general errors
+$form->renderSubmit();  				 		// render submit button and hidden fields *
+
+$form->closeGrid();									// grid system closing tag
+$form->closeForm();   							// form closing tag *
+</code></pre>
+<p>* required </p>
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+				<div id="sidebar">
+					<div class="inner">
+
+		        <!-- Menu -->
+						<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/">Home</a></li>
+								<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/quickstart.html">Quickstart</a></li>
+								<li>
+									<span class="opener">Field types</span>
+									<ul>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/text.html">Text / E-Mail / URL / Phone / PW</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/number.html">Number / Range / Date / Time</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/textarea.html">Textarea</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/selection.html">Radio button / Checkbox / Dropdown</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/files.html">Files</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/hidden.html">Hidden fields</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/captcha.html">Captcha</a></li>
+									</ul>
+								</li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/validation.html">Validation</a></li>
+								<li>
+									<span class="opener">Data Processing</span>
+									<ul>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/send-mail.html">Send Email</a></li>
+
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/manual-data-processing.html">Get PHP Array</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+
+		        <section>
+		          <header class="major">
+		            <h2>About</h2>
+		          </header>
+		          <p>HazzelForms is made for PHP developers. Not suitable for template kiddies.</p>
+		          <ul class="contact">
+		            <li class="icon brands fa-github"><a href="https://github.com/Hazzeldorn">hazzeldorn</a></li>
+		          </ul>
+		        </section>
+
+		        <!-- Footer -->
+		        <footer id="footer">
+		          <p class="copyright">&copy; 2019 HazzelForms by <a href="https://github.com/Hazzeldorn" target="_blank" rel="noopener">hazzeldorn</a><br>
+		          Thanks to <a href="https://html5up.net/" target="_blank" rel="noopener">html5up</a> for the api doc template.</p>
+		        </footer>
+
+		      </div>
+				</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/prism.js"></script>
+
+	</body>
+</html>

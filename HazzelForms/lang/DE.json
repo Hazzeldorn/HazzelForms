@@ -1,0 +1,62 @@
+{
+  "text": {
+    "empty": "Bitte füllen Sie dieses Feld aus.",
+    "invalid": "Dieses Feld enthält nicht erlaubte Zeichen."
+  },
+  "email": {
+    "empty": "Bitte geben Sie Ihre E-Mail Adresse an.",
+    "invalid": "Diese E-Mail Adresse ist nicht korrekt."
+  },
+  "url": {
+    "empty": "Bitte geben Sie eine URL ein.",
+    "invalid": "Diese URL ist nicht korrekt."
+  },
+  "phone": {
+    "empty": "Bitte geben Sie eine Telefonnummer ein.",
+    "invalid": "Diese Telefonnummer ist nicht korrekt."
+  },
+  "password": {
+    "empty": "Bitte geben Sie ein Passwort ein.",
+    "invalid": "Dieses Passwort enthält Fehler."
+  },
+  "number": {
+    "empty": "Bitte füllen Sie dieses Feld aus.",
+    "invalid": "Dieses Feld muss eine Nummer sein.",
+    "too_small": "Diese Nummer ist zu klein.",
+    "too_big": "Diese Nummer ist zu gross."
+  },
+  "date": {
+    "empty": "Bitte geben Sie ein Datum an.",
+    "invalid": "Dieses Feld enthält Fehler.",
+    "too_small": "Dieses Datum muss neuer sein.",
+    "too_big": "Dieses Datum muss älter sein."
+  },
+  "time": {
+    "empty": "Bitte geben Sie eine Zeit an.",
+    "invalid": "Dieses Feld enthält Fehler.",
+    "too_small": "Die gewählte Uhrzeit ist zu früh.",
+    "too_big": "Die gewählte Uhrzeit ist zu spät."
+  },
+  "option_fields": {
+    "empty": "Bitte wählen Sie eine Option."
+  },
+  "file": {
+    "empty": "Bitte laden Sie eine Datei hoch.",
+    "invalid": "Dieses Dateiformat ist nicht erlaubt.",
+    "invalid_filename": "Eine oder mehrere Dateien enthalten im Namen nicht erlaubte Zeichen.",
+    "too_many": "Es wurden zu viele Dateien hochgeladen.",
+    "too_big": "Eine oder mehrere Dateien sind zu gross."
+  },
+  "submit": {
+    "invalid_fields": "Eines oder mehrere Felder sind fehlerhaft.",
+    "invalid_captcha": "Das Captcha wurde nicht korrekt gelöst.",
+    "upload_error": "Es gab einen Fehler beim Datei-Upload.",
+    "transmission_error": "Es konnten nicht alle Felder übermittelt werden. Bitte später erneut versuchen.",
+    "csrf_error": "CSRF-Token stimmt nicht überein.",
+    "session_error": "Etwas ist schief gelaufen, bitte erneut einloggen."
+  },
+  "defaults": {
+    "mailer_subject": "Neue Anfrage",
+    "mailer_error": "Das Formular konnte nicht gesendet werden. Bitte später erneut versuchen."
+  }
+}

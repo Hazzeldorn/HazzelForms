@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>HazzelForms – Validation</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/prism.css" />
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-107837260-2"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-107837260-2');
+		</script>
+
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+						<!-- Header -->
+							<header id="header">
+								<strong>HazzelForms API</strong>
+							</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Form Validation</h1>
+									</header>
+
+									<h2>Input fields</h2>
+									<p>HazzelForms automatically validates all the fields after the data is sent to the webserver.
+										If a field is blank or an entry is invalid, field-specific errors will be displayed.</p>
+										<p>Modern browsers validate certain content even before submitting the form. When initializing HazzelForms, this behavior can be disabled if desired:
+
+							<pre><code class="language-php">// Disable form validation by browsers
+$form = new HazzelForms\HazzelForm( ['novalidate' => true] );
+</code></pre>
+</p>
+
+									<h3>Regular Expressions</h3>
+									<p>If necessary, additional field-specific regular expression can be provided, with which the entries should be matched.
+<pre><code class="language-php">// Text field example with regular expression for european article number (EAN)
+$form->addField('EAN', 'text', ['regex' => '^(?<=\s)\d{13}(?=\s)$']);
+</code></pre>
+</p>
+									<h3>SQL Injection & XSS</h3>
+									<p>Make sure to correctly handle and encode form entries to prevent
+									<a href="https://www.owasp.org/index.php/SQL_Injection" rel="noopener" target="_blank">SQL injections</a> and <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" rel="noopener" target="_blank">XSS</a> attempts.<br>
+									HazzelForms does not sanitize the transmitted data.</p>
+									<br>
+
+
+									<h2 id="csrf-prevention">CSRF Prevention</h2>
+									<p>Whenever HazzelForms is used within a running PHP-Session (after <code>session_start()</code>), a <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)" rel="noopener" target="_blank"> Cross Site Request Forgery (CSRF) </a> Token
+										is automatically generated and added to the <code>$_SESSION</code> array.<br>
+										The CSRF token is integrated into the form as a hidden input field.
+									</p>
+									<br><br>
+
+								</section>
+
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+				<div id="sidebar">
+					<div class="inner">
+
+						<!-- Menu -->
+						<nav id="menu">
+							<header class="major">
+								<h2>Menu</h2>
+							</header>
+							<ul>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/">Home</a></li>
+								<li><a href="https://hazzeldorn.github.io/HazzelForms/quickstart.html">Quickstart</a></li>
+								<li>
+									<span class="opener">Field types</span>
+									<ul>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/text.html">Text / E-Mail / URL / Phone / PW</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/number.html">Number / Range / Date / Time</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/textarea.html">Textarea</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/selection.html">Radio button / Checkbox / Dropdown</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/files.html">Files</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/hidden.html">Hidden fields</a></li>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/captcha.html">Captcha</a></li>
+									</ul>
+								</li>
+								<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/validation.html">Validation</a></li>
+								<li>
+									<span class="opener">Data Processing</span>
+									<ul>
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/send-mail.html">Send Email</a></li>
+
+										<li><a href="https://hazzeldorn.github.io/HazzelForms/manual-data-processing.html">Get PHP Array</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+
+						<section>
+							<header class="major">
+								<h2>About</h2>
+							</header>
+							<p>HazzelForms is made for PHP developers. Not suitable for template kiddies.</p>
+							<ul class="contact">
+								<li class="icon brands fa-github"><a href="https://github.com/Hazzeldorn">hazzeldorn</a></li>
+							</ul>
+						</section>
+
+						<!-- Footer -->
+						<footer id="footer">
+							<p class="copyright">&copy; 2019 HazzelForms by <a href="https://github.com/Hazzeldorn" target="_blank" rel="noopener">hazzeldorn</a><br>
+							Thanks to <a href="https://html5up.net/" target="_blank" rel="noopener">html5up</a> for the api doc template.</p>
+						</footer>
+
+					</div>
+				</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/prism.js"></script>
+
+	</body>
+</html>
