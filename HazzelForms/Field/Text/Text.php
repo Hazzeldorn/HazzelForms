@@ -56,7 +56,7 @@ class Text extends Field {
 
     public function validate() {
         $value = Tools::stripper($this->fieldValue);
-
+        
         if (empty($value) && $this->required){
             $this->error = 'empty';
         }

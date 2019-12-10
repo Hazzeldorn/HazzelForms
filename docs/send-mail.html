@@ -57,13 +57,19 @@ $form->sendMail($to, $from, $replyTo, $senderName, $subject, $template);
 
 // examples
 if($form->validate()){
+
+		// minimal
   	$form->sendMail('admin@example.com');
-	  $form->sendMail('admin@example.com',
-										'website@example.com',
-										'noreply@example.com',
-										'Contact Form',
-										'New inquiry',
-										'yourTemplateName');
+
+		// maximal
+	  $form->sendMail(
+				'admin@example.com',
+				'website@example.com',
+				'noreply@example.com',
+				'Contact Form',
+				'New inquiry',
+				'yourTemplateName'
+		);
 }
 </code></pre>
 

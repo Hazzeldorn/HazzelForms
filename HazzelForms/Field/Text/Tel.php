@@ -2,12 +2,13 @@
 
 namespace HazzelForms;
 
-class Phone extends Text {
+class Tel extends Text {
 
   public function __construct($fieldName, $formName, $args = array())  {
       parent::__construct($fieldName, $formName, $args);
 
         $this->maxlength = (isset($args['maxlength']))   ? $args['maxlength']    : 20;
+        $this->fieldType = 'tel';
     }
 
     public function validate() {

@@ -56,9 +56,6 @@ $form->addField('Your E-Mail', 'email');
 
 // URL field example
 $form->addField('Your Website', 'url');
-
-// Passowrd field example
-$form->addField('Your Password', 'password');
 </code></pre>
 
 <h4>Phone</h4>
@@ -66,6 +63,26 @@ $form->addField('Your Password', 'password');
 $form->addField('Your Mobile', 'phone');
 </code></pre>
 <p>Phone fields only accept numeric characters as well as <code>+ - /</code> and spaces. Furthermore, <code>maxlength</code> is set to <code>20</code> by default. Please use regex to validate country specific phone number formats.</p>
+
+
+<h4>Password</h4>
+<pre><code class="language-php">// Passowrd field example
+$form->addField('Your Password', 'password', array(
+	'placeholder' => 'Plase define a Password',
+	'regex' => '/^(?=.*[A-Z])(?=.*[!@#$&#x26;*])(?=.*[0-9])(?=.*[a-z]).{8,16}$/'
+));
+
+/*
+ Passord complexity rules might be granted with regular expressions.
+
+ The example regex ensures:
+ - password contains at least 1 number
+ - password contains at least 1 uppercase letter
+ - password contains at least 1 lowercase letter
+ - password contains at least 1 non-alpha numeric number
+ - password is 8-16 characters long
+*/
+</code></pre>
 
 <br>
 

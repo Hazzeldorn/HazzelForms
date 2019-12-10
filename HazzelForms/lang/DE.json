@@ -3,6 +3,10 @@
     "empty": "Bitte füllen Sie dieses Feld aus.",
     "invalid": "Dieses Feld enthält nicht erlaubte Zeichen."
   },
+  "textarea": {
+    "empty": "Bitte füllen Sie dieses Feld aus.",
+    "invalid": "Dieses Feld enthält nicht erlaubte Zeichen."
+  },
   "email": {
     "empty": "Bitte geben Sie Ihre E-Mail Adresse an.",
     "invalid": "Diese E-Mail Adresse ist nicht korrekt."
@@ -11,16 +15,22 @@
     "empty": "Bitte geben Sie eine URL ein.",
     "invalid": "Diese URL ist nicht korrekt."
   },
-  "phone": {
+  "tel": {
     "empty": "Bitte geben Sie eine Telefonnummer ein.",
     "invalid": "Diese Telefonnummer ist nicht korrekt."
   },
   "password": {
     "empty": "Bitte geben Sie ein Passwort ein.",
-    "invalid": "Dieses Passwort enthält Fehler."
+    "invalid": "Dieses Passwort enthält Fehler oder erfüllt die Mindestanforderungen nicht."
   },
   "number": {
     "empty": "Bitte füllen Sie dieses Feld aus.",
+    "invalid": "Dieses Feld muss eine Nummer sein.",
+    "too_small": "Diese Nummer ist zu klein.",
+    "too_big": "Diese Nummer ist zu gross."
+  },
+  "range": {
+    "empty": "Bitte wählen Sie eine Zahl.",
     "invalid": "Dieses Feld muss eine Nummer sein.",
     "too_small": "Diese Nummer ist zu klein.",
     "too_big": "Diese Nummer ist zu gross."

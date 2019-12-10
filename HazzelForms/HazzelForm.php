@@ -70,7 +70,7 @@ class HazzelForm {
         require_once('Field/Text/Textarea.php');
         require_once('Field/Text/Email.php');
         require_once('Field/Text/Url.php');
-        require_once('Field/Text/Phone.php');
+        require_once('Field/Text/Tel.php');
         require_once('Field/Text/Password.php');
         require_once('Field/Text/Hidden.php');
         require_once('Field/Text/Number/Number.php');
@@ -102,7 +102,7 @@ class HazzelForm {
           case 'textarea':     $this->fields->$fieldName = new Textarea($fieldName, $this->formName, $args);    break;
           case 'email':        $this->fields->$fieldName = new Email($fieldName, $this->formName, $args);       break;
           case 'url':          $this->fields->$fieldName = new Url($fieldName, $this->formName, $args);         break;
-          case 'phone':        $this->fields->$fieldName = new Phone($fieldName, $this->formName, $args);       break;
+          case 'tel':          $this->fields->$fieldName = new Tel($fieldName, $this->formName, $args);         break;
           case 'password':     $this->fields->$fieldName = new Password($fieldName, $this->formName, $args);    break;
           case 'number':       $this->fields->$fieldName = new Number($fieldName, $this->formName, $args);      break;
           case 'range':        $this->fields->$fieldName = new Range($fieldName, $this->formName, $args);       break;
@@ -322,8 +322,8 @@ class HazzelForm {
             $this->isSubmitted = true;
 
             foreach ($this->fields as $field) {
-                if(isset($formData[$field->getName()])){
-                  $field->setValue($formData[$field->getName()]);
+                if(isset($formData[$field->getSlug()])){
+                  $field->setValue($formData[$field->getSlug()]);
                   if($field->validate() == false){
                     $this->error = 'invalid_fields';
                   }

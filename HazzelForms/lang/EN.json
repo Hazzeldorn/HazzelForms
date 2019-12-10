@@ -3,6 +3,10 @@
     "empty": "Please fill out this field.",
     "invalid": "This field contains forbidden characters."
   },
+  "textarea": {
+    "empty": "Please fill out this field.",
+    "invalid": "This field contains forbidden characters."
+  },
   "email": {
     "empty": "Please enter your e-mail address.",
     "invalid": "This e-mail address is not correct."
@@ -11,16 +15,22 @@
     "empty": "Please enter an URL.",
     "invalid": "This URL is not correct."
   },
-  "phone": {
+  "tel": {
     "empty": "Please enter a phone number.",
     "invalid": "This phone number is not correct."
   },
   "password": {
     "empty": "Please enter a password.",
-    "invalid": "This password contains errors."
+    "invalid": "This password contains errors or it does not meet the requirements."
   },
   "number": {
     "empty": "Please fill out this field.",
+    "invalid": "This field must be a number.",
+    "too_small": "This number is too small.",
+    "too_big": "This number is too big."
+  },
+  "range": {
+    "empty": "Please choose a number.",
     "invalid": "This field must be a number.",
     "too_small": "This number is too small.",
     "too_big": "This number is too big."

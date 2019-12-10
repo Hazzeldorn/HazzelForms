@@ -52,6 +52,10 @@ class Field {
          return $this->fieldName;
      }
 
+     public function getSlug() {
+         return $this->fieldSlug;
+     }
+
      public function getValue() {
          return $this->fieldValue;
      }
