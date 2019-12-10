@@ -40,7 +40,7 @@
         <!-- Content -->
         <section>
           <header class="main">
-            <h1>Text, Mail, URL, Phone, Password</h1>
+            <h1>Text, Mail, URL, Tel, Password</h1>
           </header>
 
           <h2>Add Field</h2>
@@ -58,9 +58,9 @@ $form->addField('Your E-Mail', 'email');
 $form->addField('Your Website', 'url');
 </code></pre>
 
-<h4>Phone</h4>
-<pre><code class="language-php">// Phone field example
-$form->addField('Your Mobile', 'phone');
+<h4>Tel (phone)</h4>
+<pre><code class="language-php">// Tel field example
+$form->addField('Your Mobile', 'tel');
 </code></pre>
 <p>Phone fields only accept numeric characters as well as <code>+ - /</code> and spaces. Furthermore, <code>maxlength</code> is set to <code>20</code> by default. Please use regex to validate country specific phone number formats.</p>
 
@@ -174,7 +174,7 @@ $form->addField('Your Password', 'password', array(
 						<li>
 							<span class="opener active">Field types</span>
 							<ul>
-								<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/field-types/text.html">Text / E-Mail / URL / Phone / PW</a></li>
+								<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/field-types/text.html">Text / E-Mail / URL / Tel / PW</a></li>
 								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/number.html">Number / Range / Date / Time</a></li>
 								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/textarea.html">Textarea</a></li>
 								<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/selection.html">Radio button / Checkbox / Dropdown</a></li>
