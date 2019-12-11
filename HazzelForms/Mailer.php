@@ -15,16 +15,18 @@ class Mailer {
               $message = '',
               $mimeBoundary,
               $returnPath,
-              $template;
+              $template,
+              $lang;
 
 
-    public function __construct($to, $from, $replyTo, $senderName, $subject, $template = 'basic') {
+    public function __construct($to, $from, $replyTo, $senderName, $subject, $template, $lang) {
       $this->to = $to;
       $this->from = $from;
       $this->replyTo = $replyTo;
       $this->senderName = $senderName;
       $this->subject = $subject;
       $this->template = $template;
+      $this->lang = $lang;
 
       // define multipart content boundary
       $semiRand = md5(time());
@@ -101,7 +103,7 @@ class Mailer {
         $this->message,
         implode(EOL, $this->headers),
         $this->returnPath
-      ) or die("Das Formular konnte nicht gesendet werden. Bitte Internetverbindung überprüfen und erneut versuchen.");
+      ) or die($this->lang->getMessage('defaults', 'mailer_error'));
     }
 
 

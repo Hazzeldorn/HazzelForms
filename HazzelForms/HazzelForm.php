@@ -212,7 +212,7 @@ class HazzelForm {
     public function renderSubmit($caption = "Senden") {
       echo '<div class="field-wrap submit-wrap">';
         $this->renderHidden();
-        echo sprintf('<input type="submit" value="%1$s">', $caption);
+        echo sprintf('<input type="submit" value="%1$s" name="%2$s[submit]">', $caption, $this->formName);
       echo '</div>';
     }
 
@@ -318,6 +318,7 @@ class HazzelForm {
         $request  = strtoupper($this->method) == 'POST' ? $_POST : $_GET;
 
         if (isset($request[$this->formName])) {
+
             $formData = $request[$this->formName];
             $this->isSubmitted = true;
 
@@ -399,7 +400,7 @@ class HazzelForm {
      * @param string $subject      optional mail subject (optional)
      * @param string $template     mail template (optional)
      */
-    public function sendMail($to, $from = '', $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template) {
+    public function sendMail($to, $from = '', $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'basic') {
       if(empty($from)){
         $from = 'noreply@'.$_SERVER['HTTP_HOST'];
       }
@@ -408,7 +409,7 @@ class HazzelForm {
       }
 
       // send mail
-      $mail = new Mailer($to, $from, $replyTo, $senderName, $subject, $template);
+      $mail = new Mailer($to, $from, $replyTo, $senderName, $subject, $template, $this->lang);
       $mail->prepareContent($this->getFields());
       $mail->send();
     }

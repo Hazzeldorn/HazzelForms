@@ -74,50 +74,57 @@ class FileUpload extends Field {
           $fileNames  = $_FILES[$this->formName]['name'][$this->fieldSlug];
           $fileTemp   = $_FILES[$this->formName]['tmp_name'][$this->fieldSlug];
           $fileErrors = $_FILES[$this->formName]['error'][$this->fieldSlug];
+          $fileSizes  = $_FILES[$this->formName]['size'][$this->fieldSlug];
 
-          if(count($fileNames) > $maxfiles){
+          if(count($fileNames) > $this->maxfiles){
             $this->error = 'too_many';
-          }
+          } else {
+            for($i = 0; $i < count($fileNames); $i++) {
 
-          for($i = 0; $i < count($fileNames); $i++) {
+              if(empty($fileErrors[$i]) && empty($this->error)){
+                // upload for this file was successfull
 
-            if(empty($fileErrors[$i]) && empty($this->error)){
-              // upload for this file was successfull
-
-              // check if filename contains forbidden characters
-              if(!preg_match('/[^\p{L}\s\d\-_~,;\[\]\(\)\']{1,200}\.[a-zA-Z0-9]{1,10}/', $fileNames[$i])){
-                $this->error = 'invalid_filename';
-                break;
-              }
-
-              // mime type validaton
-              $typeValid = false;
-              foreach($this->types as $type){
-                // for each type that is defined as accepted: check if file matches
-                if( in_array( mime_content_type($fileTemp[$i]), $this->mimeTypes[$type] ) ){
-                  $typeValid = true;
+                // check if filename contains forbidden characters
+                if(!preg_match('/^[\p{L}\s\d\-~_,;\[\]\(\)\']{1,200}\.[a-zA-Z0-9]{1,10}$/', $fileNames[$i])){
+                  $this->error = 'invalid_filename';
                   break;
                 }
-              } unset($type);
 
-                if(!$typeValid){
+                // check if filesize is ok
+                if($fileSizes[$i] > ($this->maxsize * 1000000)){
+                  $this->error = 'too_big';
+                  break;
+                }
+
+                // mime type validaton
+                $typeValid = false;
+                foreach($this->types as $type){
+                  // for each type that is defined as accepted: check if file matches
+                  if( in_array( mime_content_type($fileTemp[$i]), $this->mimeTypes[$type] ) ){
+                    $typeValid = true;
+                    break;
+                  }
+                } unset($type);
+
+                  if(!$typeValid){
+                    $this->error = 'invalid';
+                    break;
+                  } else {
+                    // file is ok -> assign field value
+                    array_push($this->fieldValue, array(
+                        'dir'  => $fileTemp[$i],
+                        'name' => $fileNames[$i]
+                      ));
+                  }
+
+                } else {
+                  // file broken during upload
                   $this->error = 'invalid';
                   break;
-                } else {
-                  // file is ok -> assign field value
-                  array_push($this->fieldValue, array(
-                      'dir'  => $fileTemp[$i],
-                      'name' => $fileNames[$i]
-                    ));
                 }
 
-              } else {
-                // file broken during upload
-                $this->error = 'invalid';
-                break;
-              }
-
-            } // endfor
+              } // endfor
+          } // end else
 
         } else {
           // no file was uploaded

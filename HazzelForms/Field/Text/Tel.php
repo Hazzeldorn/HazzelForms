@@ -8,17 +8,8 @@ class Tel extends Text {
       parent::__construct($fieldName, $formName, $args);
 
         $this->maxlength = (isset($args['maxlength']))   ? $args['maxlength']    : 20;
+        $this->regex     = (isset($args['maxlength']))   ? $args['maxlength']    : '/^[+]{0,1}[- \(\)\/0-9]*$/';
         $this->fieldType = 'tel';
-    }
-
-    public function validate() {
-        if (parent::validate()) {
-            if ( !empty($this->fieldValue) && !preg_match('/^[+]{0,1}[- \/0-9]*$/', $this->fieldValue)  ) {
-                $this->error = 'invalid';
-            }
-        }
-        $this->validated = true;
-        return $this->isValid();
     }
 
 }
