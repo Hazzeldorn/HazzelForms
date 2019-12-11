@@ -1,8 +1,10 @@
 <?php
 
 /**
- * This is HazzelForms by Hazzeldorn
- * The library is based on FlexBoxGrid and inspired by NibbleForms 2 from NibbleDevelopment
+ * This is HazzelForms by @hazzeldorn
+ * The library is inspired by NibbleForms from NibbleDevelopment
+ *
+ * Version: 1.1
 */
 
 namespace HazzelForms;
