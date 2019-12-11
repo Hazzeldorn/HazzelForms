@@ -58,16 +58,17 @@ class Options extends Field {
 
     // set choice
     public function setValue($value) {
-      if($value != filter_var($value, FILTER_SANITIZE_NUMBER_INT)) {
-        if($value < 0 || $value + 1 > count($this->optons)) {
+
+      // pre-validation
+      if(Tools::containsInt($value)) {
+        if($value < 0 || $value + 1 > count($this->options)) {
           // reset option because dom elements were changed by suspicious user
           $value = '';
+        } elseif($value == 0 || !empty($value)){
+            $this->fieldValue = (isset($this->options[$value])) ? $this->options[$value] : '';
         }
       }
-      if($value == 0 || !empty($value)){
-        // $this->fieldValue = $this->options[$value];
-        $this->fieldValue = (isset($this->options[$value])) ? $this->options[$value] : '';
-      }
+
     }
 
     public function validate() {

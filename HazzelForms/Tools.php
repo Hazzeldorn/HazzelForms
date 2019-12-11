@@ -29,4 +29,13 @@ class Tools {
         return strtolower(trim(preg_replace('/\s/', $replacement, $text), '_'));
     }
 
+    /**
+    * Helper function to check if a variable (numeric or string) actually holds a valid integer value
+    * @param string $var (mixed)
+    * @return boolean
+    */
+    public static function containsInt($var) {
+      return filter_var($var, FILTER_VALIDATE_INT) !== false;
+    }
+
 }

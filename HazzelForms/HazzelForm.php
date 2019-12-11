@@ -140,7 +140,7 @@ class HazzelForm {
         if(!$this->stealthmode){
           $this->renderSubmitErrors();
           $this->renderSubmit();
-          
+
           $this->closeGrid();
         }
 
@@ -316,7 +316,6 @@ class HazzelForm {
         $request  = strtoupper($this->method) == 'POST' ? $_POST : $_GET;
 
         if (isset($request[$this->formName])) {
-
             $formData = $request[$this->formName];
             $this->isSubmitted = true;
 

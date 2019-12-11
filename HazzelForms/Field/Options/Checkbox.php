@@ -24,18 +24,20 @@ class Checkbox extends Options {
     // set choice
     public function setValue($value) {
       foreach($value as $chosenOption){
-          if($chosenOption != filter_var($chosenOption, FILTER_SANITIZE_NUMBER_INT)) {
-            if($chosenOption < 0 || $chosenOption + 1 > count($this->optons)) {
+
+          // pre-validation
+          if(Tools::containsInt($chosenOption)){
+            if($chosenOption < 0 || $chosenOption + 1 > count($this->options)) {
               // reset option because it was changed by suspicious user
               $chosenOption = '';
+            } elseif($chosenOption == 0 || !empty($chosenOption)){
+              if(!empty($this->fieldValue)){
+                $this->fieldValue .= ', ';
+              }
+              $this->fieldValue .= $this->options[$chosenOption];
             }
           }
-          if($chosenOption == 0 || !empty($chosenOption)){
-            if(!empty($this->fieldValue)){
-              $this->fieldValue .= ', ';
-            }
-            $this->fieldValue .= $this->options[$chosenOption];
-          }
+
       } unset($chosenOption);
     }
 
