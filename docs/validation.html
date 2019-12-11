@@ -43,12 +43,37 @@
 										<h1>Form Validation</h1>
 									</header>
 
-									<h2>Input fields</h2>
-									<p>HazzelForms automatically validates all the fields after the data is sent to the webserver.
-										If a field is blank or an entry is invalid, field-specific errors will be displayed.</p>
-										<p>Modern browsers validate certain content even before submitting the form. When initializing HazzelForms, this behavior can be disabled if desired:
+									<h2>How to validate</h2>
+									<p>Strong server-side validation is one of the main reasons to use HazzelForms.
+									<code>$form->validate()</code> validates all the fields.
+									If a field is blank or an entry is invalid, field-specific errors will be displayed
+									and the form tag contains a class <code>has-error</code>.</p>
 
-							<pre><code class="language-php">// Disable form validation by browsers
+<pre><code class="language-php">if($form->validate()){
+	 // Save zone: This code is only executed when all your fields are valid.
+}
+</code></pre>
+
+<h3>Success message / redirect</h3>
+<p>Within the valid section you can transmitt the received data (please see "Data Processing") and do other stuff like this:</p>
+<pre><code class="language-php">if($form->validate()){
+	// redirect to success page
+	header('Location: https://www.example.com/');	exit;
+
+	// or show a success message (hide the form with CSS when it contains the class "submitted")
+
+	$form->showSuccess();
+}
+</code></pre>
+
+
+<br>
+
+	<h2>Validation techniques</h2>
+	<h3>Browser-Side validation</h3>
+	<p>Modern browsers validate certain content even before submitting the form. When initializing HazzelForms, this behavior can be disabled if desired:
+
+<pre><code class="language-php">// Disable form validation by browsers
 $form = new HazzelForms\HazzelForm( ['novalidate' => true] );
 </code></pre>
 </p>
@@ -59,18 +84,19 @@ $form = new HazzelForms\HazzelForm( ['novalidate' => true] );
 $form->addField('EAN', 'text', ['regex' => '^(?<=\s)\d{13}(?=\s)$']);
 </code></pre>
 </p>
-									<h3>SQL Injection & XSS</h3>
-									<p>Make sure to correctly handle and encode form entries to prevent
-									<a href="https://www.owasp.org/index.php/SQL_Injection" rel="noopener" target="_blank">SQL injections</a> and <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" rel="noopener" target="_blank">XSS</a> attempts.<br>
-									HazzelForms does not sanitize the transmitted data.</p>
-									<br>
 
-
-									<h2 id="csrf-prevention">CSRF Prevention</h2>
+									<h3 id="csrf-prevention">CSRF Prevention</h3>
 									<p>Whenever HazzelForms is used within a running PHP-Session (after <code>session_start()</code>), a <a href="https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)" rel="noopener" target="_blank"> Cross Site Request Forgery (CSRF) </a> Token
 										is automatically generated and added to the <code>$_SESSION</code> array.<br>
 										The CSRF token is integrated into the form as a hidden input field.
 									</p>
+
+									<h3>SQL Injection & Cross site scripting (XSS)</h3>
+									<p>Make sure to correctly handle and encode form entries to prevent
+									<a href="https://www.owasp.org/index.php/SQL_Injection" rel="noopener" target="_blank">SQL injections</a> and <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)" rel="noopener" target="_blank">XSS</a> attempts.<br>
+									HazzelForms does not sanitize the transmitted data!</p>
+									<br>
+
 									<br><br>
 
 								</section>

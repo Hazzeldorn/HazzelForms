@@ -120,6 +120,9 @@ class Mailer {
         implode(EOL, $this->headers),
         $this->returnPath
       ) or die($this->lang->getMessage('defaults', 'mailer_error'));
+
+      // reset headers for next steps
+      header_remove();
     }
 
 

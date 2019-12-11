@@ -268,10 +268,11 @@ class HazzelForm {
 
         // build classlist
         if($this->isSubmitted && $this->valid == false){
-          $classList .= ' has-errors';
-        }
-        elseif($this->isSubmitted == false){
+          $classList .= ' has-error';
+        } elseif($this->isSubmitted == false){
           $classList .= ' untouched';
+        } elseif($this->isSubmitted && $this->valid){
+          $classList .= ' is-valid submitted';
         }
 
         // build attribute string
