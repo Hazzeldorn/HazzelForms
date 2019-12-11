@@ -140,10 +140,8 @@ class HazzelForm {
         if(!$this->stealthmode){
           $this->renderSubmitErrors();
           $this->renderSubmit();
-
+          
           $this->closeGrid();
-        } else {
-          $this->renderHidden();
         }
 
         $this->closeForm();
@@ -211,7 +209,6 @@ class HazzelForm {
     */
     public function renderSubmit($caption = "Senden") {
       echo '<div class="field-wrap submit-wrap">';
-        $this->renderHidden();
         echo sprintf('<input type="submit" value="%1$s" name="%2$s[submit]">', $caption, $this->formName);
       echo '</div>';
     }
@@ -293,6 +290,7 @@ class HazzelForm {
      * Prints form closing tag
      */
     public function closeForm()  {
+        $this->renderHidden();
         echo "</form>";
     }
 

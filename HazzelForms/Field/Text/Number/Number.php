@@ -34,7 +34,7 @@ class Number extends Text {
     }
 
     public function returnField()   {
-        return sprintf('<input type="%1$s" name="%2$s[%3$s]" value="%4$s" class="%5$s" %6$s />', $this->fieldType, $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist, $this->buildAttributeString());
+        return sprintf('<input type="%1$s" id="%2$s-%3$s" name="%2$s[%3$s]" value="%4$s" class="%5$s" %6$s />', $this->fieldType, $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist, $this->buildAttributeString());
     }
 
     public function validate() {

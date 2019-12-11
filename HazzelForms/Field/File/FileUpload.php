@@ -62,7 +62,7 @@ class FileUpload extends Field {
     }
 
     public function returnField()   {
-        return sprintf('<input type="%1$s" name="%2$s[%3$s][]" class="%4$s" %5$s />', $this->fieldType, $this->formName, $this->fieldSlug, $this->classlist, $this->buildAttributeString());
+        return sprintf('<input type="%1$s" id="%2$s-%3$s" name="%2$s[%3$s][]" class="%4$s" %5$s />', $this->fieldType, $this->formName, $this->fieldSlug, $this->classlist, $this->buildAttributeString());
     }
 
     public function validate() {

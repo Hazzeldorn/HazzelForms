@@ -30,7 +30,7 @@ class Textarea extends Text {
   }
 
   public function returnField()   {
-      return sprintf('<textarea name="%1$s[%2$s]" class="%4$s" %5$s>%3$s</textarea>', $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist, $this->buildAttributeString());
+      return sprintf('<textarea id="%1$s-%2$s" name="%1$s[%2$s]" class="%4$s" %5$s>%3$s</textarea>', $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist, $this->buildAttributeString());
   }
 
 }

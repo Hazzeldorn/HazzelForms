@@ -54,7 +54,7 @@
 									</blockquote>
 
 				<pre><code class="language-php">// STEP 1: tell your app the location of HazzelForms and initialize the framework
-require_once __DIR__ . '/HazzelForms/HazzelForm.php';
+require_once(__DIR__ . '/HazzelForms/HazzelForm.php');
 $form = new HazzelForms\HazzelForm();
 
 // STEP 2: add a form field using the parameters 'title', 'type' and an optional parameter list
@@ -189,10 +189,10 @@ $form->closeField('fieldName');   	// field wrapper closing tag
 $form->renderField('fieldName');   	// render the above 5 (wrapper, label, input tag and error all together)
 
 $form->renderSubmitErrors();				// show general errors
-$form->renderSubmit();  				 		// render submit button and hidden fields *
+$form->renderSubmit();  				 		// render submit button (required when not submitting via javascript)
 
 $form->closeGrid();									// grid system closing tag
-$form->closeForm();   							// form closing tag *
+$form->closeForm();   							// form closing tag and hidden fields *
 </code></pre>
 <p>* required </p>
 
