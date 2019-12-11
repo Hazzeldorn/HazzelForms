@@ -9,6 +9,7 @@ class Field {
                 $fieldName,
                 $fieldSlug,
                 $fieldType,
+                $label,
                 $required,
                 $classList = '',
                 $error = '',
@@ -19,13 +20,16 @@ class Field {
           $this->formName   = $formName;
           $this->fieldName  = $fieldName;
           $this->fieldSlug  = Tools::slugify($fieldName);
+          $this->label      = (isset($args['label']))     ? $args['label']      : '';
           $this->required   = (isset($args['required']))  ? $args['required']   : true;
           $this->classlist  = (isset($args['classlist'])) ? $args['classlist']  : '';
       }
 
-      // Build Label
+      // build label
       public function returnLabel()   {
+        if($this->label != false){
           return sprintf('<span class="label">%1$s</span>', $this->label);
+        }
       }
 
        // Build error message

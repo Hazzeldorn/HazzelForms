@@ -22,14 +22,19 @@ class RecaptchaV2 extends Captcha {
 
     public function validate() {
         // get captcha response from google
-        $reCaptchaResponse = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$this->secretKey."&response=".$_POST['g-recaptcha-response']), true);
+        if(isset($_POST['g-recaptcha-response'])){
+          $reCaptchaResponse = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$this->secretKey."&response=".$_POST['g-recaptcha-response']), true);
 
-        if ($reCaptchaResponse['success'] != 1) {
-          // CAPTCHA INCORRECT
-          $this->error = 'invalid';
+          if ($reCaptchaResponse['success'] != 1) {
+            // CAPTCHA INCORRECT
+            $this->error = 'invalid';
+          } else {
+            // CAPTCHA CORRECT
+            $this->fieldValue = 'ok';
+          }
+
         } else {
-          // CAPTCHA CORRECT
-          $this->fieldValue = 'ok';
+          $this->error = 'invalid';
         }
 
         $this->validated = true;

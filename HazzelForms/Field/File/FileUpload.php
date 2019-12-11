@@ -7,7 +7,6 @@ class FileUpload extends Field {
     protected $maxsize,
               $maxfiles,
               $multiple,
-              $label,
               $types,
               $limitSearch,
               $fieldValue = array(); // override string initialization
@@ -38,7 +37,6 @@ class FileUpload extends Field {
         $this->types        = (isset($args['types']))        ? $args['types']        : array_keys($this->mimeTypes); // allow all defined mime types
         $this->limitSearch  = (isset($args['limit_search'])) ? $args['limit_search'] : true; // only show accepted files in file explorer
         $this->multiple     = (isset($args['multiple']))     ? $args['multiple']     : false;
-        $this->label        = (isset($args['label']))        ? $args['label']        : '';
     }
 
     protected function buildAttributeString() {

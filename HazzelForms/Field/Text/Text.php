@@ -7,7 +7,6 @@ class Text extends Field {
     protected $placeholder,
               $maxlength,
               $readonly,
-              $label,
               $regex,
               $autofocus,
               $fieldType = 'text';
@@ -18,7 +17,6 @@ class Text extends Field {
         $this->placeholder  = (isset($args['placeholder']))  ? $args['placeholder']  : '';
         $this->maxlength    = (isset($args['maxlength']))    ? $args['maxlength']    : '';
         $this->readonly     = (isset($args['readonly']))     ? $args['readonly']     : false;
-        $this->label        = (isset($args['label']))        ? $args['label']        : '';
         $this->regex        = (isset($args['regex']))        ? $args['regex']        : '';
         $this->autofocus    = (isset($args['autofocus']))    ? $args['autofocus']    : false;
     }

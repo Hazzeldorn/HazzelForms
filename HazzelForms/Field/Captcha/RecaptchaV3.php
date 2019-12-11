@@ -13,9 +13,7 @@ class RecaptchaV3 extends Captcha {
 
         $this->siteKey   = (isset($args['sitekey']))    ? $args['sitekey']    : '';
         $this->secretKey = (isset($args['secretkey']))  ? $args['secretkey']  : '';
-        $this->label        = false;
-        $this->autocomplete = false;
-        $this->placeholder  = false;
+        $this->label     = false;
     }
 
     public function returnField()   {
@@ -34,7 +32,7 @@ class RecaptchaV3 extends Captcha {
         // get captcha response from google
         $reCaptchaResponse = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$this->secretKey."&response=".$this->fieldValue), true);
 
-        if ($reCaptchaResponse['success'] != 1 || $reCaptchaResponse['score'] < 0.4) {
+        if (empty($reCaptchaResponse) || $reCaptchaResponse['success'] != 1 || $reCaptchaResponse['score'] < 0.4) {
           // CAPTCHA INCORRECT
           $this->error = 'invalid';
         } else {
