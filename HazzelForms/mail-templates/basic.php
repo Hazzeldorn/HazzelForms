@@ -3,45 +3,30 @@ namespace HazzelForms;
 
   /*
   *   This is a mail template for senidng hazzelform data to webmasters / responsible persons...
+  *   It is included within mailer class ($this = Mailer class)
   *
   *   Requires:
-  *   - a defined array $formFields which is the return value of the function getFields() called in HazzelForm Class
-  *   - this template must be included within mailer class ($this = Mailer class)
+  *   - a defined array $fields which contains all field objects
   *
   *   Returns:
   *   - HTML Email content
-  *   - $attachements array with filepaths to add as attachements
   */
-
-  // vars
-  $attachements = array();
 
 ?>
 <!doctype html>
 <html>
 <body>
-  <h3>Neue Anfrage:</h3>
+  <h3><?= $this->subject; ?></h3>
   <table rules="all" style="border-color: #aaa;" cellpadding="10">
 
-    <?php foreach ($formFields as $field):
-      if($field instanceof Captcha || $field->getName() == 'csrf_token'){
-        // do not send captcha response & csrf-token
-        continue;
-      } elseif($field instanceof FileUpload){
-        // add all files as attachements
-        foreach($field->getValue() as $fileData){
-          array_push($attachements, $fileData);
-        } unset($fileData);
-        continue;
-      }
-    ?>
-      <tr><td><strong><?php echo ucfirst($field->getName()); ?></strong></td><td><?php echo $field->getValue(); ?></td></tr>
+    <?php foreach ($fields as $field): ?>
+      <tr><td><strong><?php echo $field->getName(); ?></strong></td><td><?php echo $field->getValue(); ?></td></tr>
     <?php
     endforeach;
     unset($field);
     ?>
 
   </table>
-  <p><i>Dieses E-Mail wurde über ein Kontaktformular auf <u><?php echo $_SERVER['HTTP_HOST']; ?></u> versendet.</i></p>
+  <p><i>This E-Mail was sent via a contact form on <u><?php echo $_SERVER['HTTP_HOST']; ?></u>.</i></p>
 </body>
 </html>

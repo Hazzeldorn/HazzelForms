@@ -42,6 +42,22 @@ class Mailer {
 
 
     public function prepareContent($formFields) {
+
+      $attachements = $fields = array();
+
+      // loop through all fields and clean formFields array
+      foreach ($formFields as $field){
+        if($field instanceof FileUpload){
+          // add all files as attachements but remove from formFields
+          foreach($field->getValue() as $fileData){
+            array_push($attachements, $fileData);
+          } unset($fileData);
+        } elseif(! $field instanceof Captcha && $field->getName() != 'csrf_token'){
+          // build beautiful array for templates
+          array_push($fields, $field);
+        }
+      }
+
       // prepare mail content
       ob_start();
         require("mail-templates/{$this->template}.php");
@@ -56,7 +72,7 @@ class Mailer {
         . $htmlContent . EOL;
 
       // add attachements
-      if( isset($attachements) && !empty($attachements) ){
+      if( !empty($attachements) ){
         foreach ($attachements as $fileData){
           $this->addAttachement($fileData);
         } unset($fileData);
