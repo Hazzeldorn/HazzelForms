@@ -11,13 +11,14 @@ class Checkbox extends Options {
     }
 
     public function returnField()   {
-        $fieldHtml  = '';
+        $fieldHtml  = '<div class="option-wrap">';
 
         foreach($this->options as $optionID => $option){
           $fieldHtml .= sprintf('<input type="%1$s" name="%2$s[%3$s][]" id="%2$s-%3$s-%4$s" value="%4$s" class="%5$s" %6$s />', $this->fieldType, $this->formName, $this->fieldSlug, $optionID, $this->classlist, $this->buildOptionAttributeString($option));
           $fieldHtml .= sprintf('<label for="%1$s-%2$s-%3$s"><span class="option-caption">%4$s</span></label>', $this->formName, $this->fieldSlug, $optionID, $option);
         } unset($optionID, $option);
 
+        $fieldHtml .= '</div>';
         return $fieldHtml;
     }
 
