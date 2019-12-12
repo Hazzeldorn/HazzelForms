@@ -6,6 +6,9 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 ### Changelog
+===== V1.1.2 |  2019-12-12 ===== <br/>
+Minor improvements regarding HTML structure of option fields.
+
 ===== V1.1 |  2019-12-11 ===== <br/>
 First stable + tested release containing major improvements.
 
