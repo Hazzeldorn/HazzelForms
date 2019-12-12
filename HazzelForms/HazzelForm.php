@@ -456,6 +456,10 @@ class HazzelForm {
       return $this->fields->$fieldName;
     }
 
+    public function isValid(){
+      return $this->valid;
+    }
+
     public function setLanguage($lang){
       $this->lang = new Language($lang);
     }

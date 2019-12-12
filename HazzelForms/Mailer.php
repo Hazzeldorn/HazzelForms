@@ -121,8 +121,6 @@ class Mailer {
         $this->returnPath
       ) or die($this->lang->getMessage('defaults', 'mailer_error'));
 
-      // reset headers for next steps
-      header_remove();
     }
 
 
