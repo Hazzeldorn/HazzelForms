@@ -9,7 +9,7 @@ class Field {
                 $fieldName,
                 $fieldSlug,
                 $fieldType,
-                $label,
+                $label = '',
                 $required,
                 $classList = '',
                 $error = '',
