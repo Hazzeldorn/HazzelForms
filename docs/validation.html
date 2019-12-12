@@ -59,8 +59,12 @@
 <pre><code class="language-php">if($form->validate()){
 	// redirect to success page
 	header('Location: https://www.example.com/');	exit;
-
-	// or show a success message (hide the form with CSS when it contains the class "submitted")
+}
+</code></pre>
+<p>You can also place this snipped anywhere on your page to show a success message</p>
+<pre><code class="language-php">if($form->isValid()){
+	// show a success message (hide the form with CSS when it contains the class "submitted")
+	echo "Form sent, thank you!";
 }
 </code></pre>
 
