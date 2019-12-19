@@ -52,7 +52,7 @@ class Mailer {
           foreach($field->getValue() as $fileData){
             array_push($attachements, $fileData);
           } unset($fileData);
-        } elseif(! $field instanceof Captcha && $field->getName() != 'csrf_token'){
+        } elseif(! $field instanceof Captcha && $field->getName() != 'csrf_token' && $field->getName() != 'form_name'){
           // build beautiful array for templates
           array_push($fields, $field);
         }
