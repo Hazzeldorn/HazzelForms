@@ -55,6 +55,9 @@ class HazzelForm {
 
         // create CSRF token
         $this->setToken();
+
+        // add hidden field for formName
+        $this->addField('form_name', 'hidden')->setValue($this->formName);
     }
 
 

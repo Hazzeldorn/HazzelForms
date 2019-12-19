@@ -6,6 +6,9 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 ### Changelog
+===== V1.1.3 |  2019-12-19 ===== <br/>
+Bugfix: File-Upload did not work when no other form fields existed.
+
 ===== V1.1.2 |  2019-12-12 ===== <br/>
 Minor improvements regarding HTML structure of option fields.
 
