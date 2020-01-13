@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>HazzelForms – Captcha</title>
+		<title>HazzelForms – Captcha & Honeypotptcha</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
@@ -40,7 +40,7 @@
 							<!-- Content -->
 								<section>
 									<header class="main">
-										<h1>Captchas</h1>
+										<h1>Captcha & Honeypot</h1>
 									</header>
 
 									<h2>Google ReCaptcha V2 (Checkbox)</h2>
@@ -66,6 +66,18 @@ to let HazzelForms do the work.</p>
 									You can include the score based ReCaptcha V3 exactly the same way as V2.
 									Just use <code>recaptcha-v3</code> instead of <code>recaptcha-v2</code> as field type.
 								</p>
+
+								<h2>Honeypot</h2>
+
+								<p>
+									Not a fan of Captchas?<br> Simply protect your form with a hidden trap.
+									However, keep in mind, that this method can not detect clever bots.
+								</p>
+
+<pre><code class="language-php">// Add honeypot
+$form->addField('my-trap',  'honeypot');
+</code></pre>
+								<br>
 
 
 								</section>
@@ -94,7 +106,7 @@ to let HazzelForms do the work.</p>
 										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/selection.html">Radio button / Checkbox / Dropdown</a></li>
 										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/files.html">Files</a></li>
 										<li><a href="https://hazzeldorn.github.io/HazzelForms/field-types/hidden.html">Hidden fields</a></li>
-										<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/field-types/captcha.html">Captcha</a></li>
+										<li><a class="actual-site" href="https://hazzeldorn.github.io/HazzelForms/field-types/captcha.html">Captcha / Honeypot</a></li>
 									</ul>
 								</li>
 								<li><a href="https://hazzeldorn.github.io/HazzelForms/validation.html">Validation</a></li>

@@ -70,6 +70,10 @@ class Field {
 
      public function getFieldWrapBefore() {
        $classes = $this->fieldType;
+       if($this->fieldType == 'honeypot'){
+         // incognito class for honeypot
+         $classes = '';
+       }
        if($this->validated && empty($this->error)){
          $classes .= ' is-valid';
        } elseif($this->validated && !empty($this->error)) {
