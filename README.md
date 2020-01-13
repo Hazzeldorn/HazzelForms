@@ -6,6 +6,9 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 ### Changelog
+===== V1.2.0 |  2020-01-13 ===== <br/>
+Honeypot feature added.
+
 ===== V1.1.3 |  2019-12-19 ===== <br/>
 Bugfix: File-Upload did not work when no other form fields existed.
 
