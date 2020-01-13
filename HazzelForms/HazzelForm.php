@@ -90,6 +90,7 @@ class HazzelForm {
         require_once('Field/Captcha/Captcha.php');
         require_once('Field/Captcha/RecaptchaV2.php');
         require_once('Field/Captcha/RecaptchaV3.php');
+        require_once('Field/Captcha/HoneyPot.php');
      }
 
 
@@ -120,6 +121,7 @@ class HazzelForm {
           case 'hidden':       $this->fields->$fieldName = new Hidden($fieldName, $this->formName, $args);      break;
           case 'recaptcha-v2': $this->fields->$fieldName = new RecaptchaV2($fieldName, $this->formName, $args); break;
           case 'recaptcha-v3': $this->fields->$fieldName = new RecaptchaV3($fieldName, $this->formName, $args); break;
+          case 'honeypot':     $this->fields->$fieldName = new HoneyPot($fieldName, $this->formName, $args);    break;
           default: return;
         }
 

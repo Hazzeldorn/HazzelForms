@@ -25,7 +25,7 @@ class RecaptchaV3 extends Captcha {
                       document.getElementById(\'%1$s-%2$s\').value = token;
                     });
                 });
-                </script>', $this->formName, $this->fieldName);
+                </script>', $this->formName, $this->fieldSlug);
       }
 
     public function validate() {
