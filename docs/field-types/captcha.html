@@ -70,13 +70,18 @@ to let HazzelForms do the work.</p>
 								<h2>Honeypot</h2>
 
 								<p>
-									Not a fan of Captchas?<br> Simply protect your form with a hidden trap.
-									However, keep in mind, that this method can not detect clever bots.
+									Not a fan of Captchas?<br> Simply protect your form with a hidden field. This will trap dumb bots because they try to fill out all existing form fields.<br>
+									However, keep in mind, that this method can not protect against clever bots.
 								</p>
 
 <pre><code class="language-php">// Add honeypot
-$form->addField('my-trap',  'honeypot');
+$form->addField('Pseudo-Captcha',  'honeypot');
 </code></pre>
+							<p>
+								The <code>honeypot</code> field type outputs a trap field as well as a css snippet to hide it from users (but not from bots).
+								HazzelForms ensures that the form can not be sent as long as this trap field contains a value.
+							</p>
+
 								<br>
 
 
