@@ -6,6 +6,9 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 ### Changelog
+===== V1.2.1 | 2020-01-29 =====
+Bugfix: Number fields did not throw an error message when not required
+
 ===== V1.2.0 |  2020-01-13 ===== <br/>
 Honeypot feature added.
 

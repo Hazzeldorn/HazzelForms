@@ -44,13 +44,13 @@ class Number extends Text {
             if (!empty($this->fieldValue) && !filter_var($this->fieldValue, FILTER_VALIDATE_FLOAT) && get_class($this) == 'HazzelForms\Number') {
                 $this->error = 'invalid';
             }
-            if (!empty($this->min)) {
+            if (!empty($this->min) && !empty($this->fieldValue)) {
                 // check min (never trust browsers...)
                 if ($value < $this->min) { // works for dates too when format is Y-m-d :)
                     $this->error = 'too_small';
                 }
             }
-            if (!empty($this->max)) {
+            if (!empty($this->max) && !empty($this->fieldValue)) {
                 // check max (never trust browsers...)
                 if ($value > $this->max) {
                     $this->error = 'too_big';
