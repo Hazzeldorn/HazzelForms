@@ -4,7 +4,6 @@
  * This is HazzelForms by @hazzeldorn
  * The library is inspired by NibbleForms from NibbleDevelopment
  *
- * Version: 1.1
 */
 
 namespace HazzelForms;
