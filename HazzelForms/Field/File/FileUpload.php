@@ -66,7 +66,8 @@ class FileUpload extends Field {
     public function validate() {
 
         if( isset($_FILES[$this->formName]['name'][$this->fieldSlug])
-            && !empty($_FILES[$this->formName]['name'][$this->fieldSlug]) ) {
+            && !empty($_FILES[$this->formName]['name'][$this->fieldSlug])
+            && !empty($_FILES[$this->formName]['name'][$this->fieldSlug][0]) ) {
 
           // resort the stupid structured $_FILES array
           $fileNames  = $_FILES[$this->formName]['name'][$this->fieldSlug];
