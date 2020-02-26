@@ -81,6 +81,9 @@ $form->addField('Pseudo-Captcha',  'honeypot');
 								The <code>honeypot</code> field type outputs a trap field as well as a css snippet to hide it from users (but not from bots).
 								HazzelForms ensures that the form can not be sent as long as this trap field contains a value.
 							</p>
+<pre><code class="language-php">// Render hidden honeypot
+$form->renderField('Pseudo-Captcha');
+</code></pre>
 
 								<br>
 
