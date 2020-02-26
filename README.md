@@ -6,6 +6,9 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 ### Changelog
+===== V1.2.2 | 2020-02-26 =====
+Bugfix: File upload did not accept 'required' => false
+
 ===== V1.2.1 | 2020-01-29 =====
 Bugfix: Number fields did not throw an error message when not required
 
