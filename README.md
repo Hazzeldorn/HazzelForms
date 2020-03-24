@@ -6,6 +6,9 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 ### Changelog
+===== V1.2.3 | 2020-03-24 ===== <br/>
+Added the nl2br() function to the mail template to preserve line breaks
+
 ===== V1.2.2 | 2020-02-26 ===== <br/>
 Bugfix: File upload did not accept 'required' => false
 
