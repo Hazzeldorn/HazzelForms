@@ -18,5 +18,5 @@ __MACOSX/
 __MACOSX/
 
 # WIP
-/legacy/
+/tests/legacy/
 __todo.txt
