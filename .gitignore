@@ -1,11 +1,24 @@
-*.log
+# IDE
+/vendor/
+.remote-sync.json
+
+
+# OS
 .DS_Store
 Thumbs.db
-.remote-sync.json
+__MACOSX/
+
+
+# MISC
+*.log
 /license.txt
 /readme.html
 /sitemap.xml
 /sitemap.xml.gz
 __MACOSX/
-test/
+
+# WIP
+/legacy/
 todo.txt
+
+
