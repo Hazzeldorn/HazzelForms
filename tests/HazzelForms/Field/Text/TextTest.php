@@ -74,7 +74,7 @@ final class TextTest extends TestCase {
       $field4->setValue('');
 
       // then
-      $this->assertFalse($field1->validate());  // todo replace with isValid()
+      $this->assertFalse($field1->validate());  // TODO replace function name with isValid()
       $this->assertFalse($field2->validate());
       $this->assertTrue($field3->validate());
       $this->assertTrue($field4->validate());
