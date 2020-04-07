@@ -14,11 +14,11 @@ class Text extends Field {
     public function __construct($fieldName, $formName, $args = array())  {
         parent::__construct($fieldName, $formName, $args);
 
-        $this->placeholder  = (isset($args['placeholder']))  ? $args['placeholder']  : '';
-        $this->maxlength    = (isset($args['maxlength']))    ? $args['maxlength']    : '';
-        $this->readonly     = (isset($args['readonly']))     ? $args['readonly']     : false;
-        $this->regex        = (isset($args['regex']))        ? $args['regex']        : '';
-        $this->autofocus    = (isset($args['autofocus']))    ? $args['autofocus']    : false;
+        $this->placeholder  = $args['placeholder'] ?? '';
+        $this->maxlength    = $args['maxlength'] ?? '';
+        $this->readonly     = $args['readonly'] ?? false;
+        $this->regex        = $args['regex'] ?? '';
+        $this->autofocus    = $args['autofocus'] ?? false;
     }
 
 

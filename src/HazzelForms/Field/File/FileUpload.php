@@ -32,11 +32,11 @@ class FileUpload extends Field {
         parent::__construct($fieldName, $formName, $args);
 
         $this->fieldType = 'file';
-        $this->maxsize      = (isset($args['maxsize']))      ? $args['maxsize']      : 16;
-        $this->maxfiles     = (isset($args['maxfiles']))     ? $args['maxfiles']     : 10;
-        $this->types        = (isset($args['types']))        ? $args['types']        : array_keys($this->mimeTypes); // allow all defined mime types
-        $this->limitSearch  = (isset($args['limit_search'])) ? $args['limit_search'] : true; // only show accepted files in file explorer
-        $this->multiple     = (isset($args['multiple']))     ? $args['multiple']     : false;
+        $this->maxsize = $args['maxsize'] ?? 16;
+        $this->maxfiles = $args['maxfiles'] ?? 10;
+        $this->types = $args['types'] ?? array_keys($this->mimeTypes); // allow all defined mime types
+        $this->limitSearch = $args['limit_search'] ?? true; // only show accepted files in file explorer
+        $this->multiple = $args['multiple'] ?? false;
     }
 
     protected function buildAttributeString() {

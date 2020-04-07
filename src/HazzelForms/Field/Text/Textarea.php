@@ -10,8 +10,8 @@ class Textarea extends Text {
   public function __construct($fieldName, $formName, $args = array())  {
       parent::__construct($fieldName, $formName, $args);
 
-      $this->cols   = (isset($args['cols']))  ? $args['cols']  : '';
-      $this->rows   = (isset($args['rows']))  ? $args['rows']  : '';
+      $this->cols   = $args['cols'] ?? '';
+      $this->rows   = $args['rows'] ?? '';
 
       $this->fieldType = 'textarea';
   }

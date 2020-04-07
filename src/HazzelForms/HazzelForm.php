@@ -30,12 +30,12 @@ class HazzelForm {
         $this->flexLoader();
 
         // assign variables
-        $this->action                   = (isset($args['action']))        ? $args['action']          : $_SERVER['REQUEST_URI'];
-        $this->method                   = (isset($args['method']))        ? $args['method']          : 'post';
-        $this->novalidate               = (isset($args['novalidate']))    ? $args['novalidate']      : false;
-        $this->autocomplete             = (isset($args['autocomplete']))  ? $args['autocomplete']    : true;
-        $this->stealthmode              = (isset($args['stealthmode']))   ? $args['stealthmode']     : false;
-        $this->fields                   = new \stdClass();
+        $this->action = $args['action'] ?? $_SERVER['REQUEST_URI'];
+        $this->method = $args['method'] ?? 'post';
+        $this->novalidate = $args['novalidate'] ?? false;
+        $this->autocomplete = $args['autocomplete'] ?? true;
+        $this->stealthmode = $args['stealthmode'] ?? false;
+        $this->fields = new \stdClass();
 
         // generate unique form name if not set via constructor
         self::$formNr++;

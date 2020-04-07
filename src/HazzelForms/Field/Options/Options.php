@@ -12,9 +12,9 @@ class Options extends Field {
     public function __construct($fieldName, $formName, $args = array())  {
         parent::__construct($fieldName, $formName, $args);
 
-        $this->options      = (isset($args['options']))      ? $args['options']      : array();
-        $this->default      = (isset($args['default']))      ? $args['default']      : '';
-        $this->disabled     = (isset($args['disabled']))     ? $args['disabled']     : false;
+        $this->options = $args['options'] ?? array();
+        $this->default = $args['default'] ?? '';
+        $this->disabled = $args['disabled'] ?? false;
     }
 
     protected function buildOptionAttributeString($option) {

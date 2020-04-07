@@ -20,9 +20,10 @@ class Field {
           $this->formName   = $formName;
           $this->fieldName  = $fieldName;
           $this->fieldSlug  = Tools::slugify($fieldName);
-          $this->label      = (isset($args['label']))     ? $args['label']      : '';
-          $this->required   = (isset($args['required']))  ? $args['required']   : true;
-          $this->classlist  = (isset($args['classlist'])) ? $args['classlist']  : '';
+
+          $this->label      = $args['label'] ?? '';
+          $this->required   = $args['required'] ?? true;
+          $this->classlist  = $args['classlist'] ?? '';
       }
 
       // build label

@@ -11,8 +11,8 @@ class RecaptchaV3 extends Captcha {
     public function __construct($formName, $fieldName, $args = array())  {
         parent::__construct($formName, $fieldName, $args);
 
-        $this->siteKey   = (isset($args['sitekey']))    ? $args['sitekey']    : '';
-        $this->secretKey = (isset($args['secretkey']))  ? $args['secretkey']  : '';
+        $this->siteKey   = $args['sitekey'] ?? '';
+        $this->secretKey = $args['secretkey'] ?? '';
         $this->label     = false;
     }
 

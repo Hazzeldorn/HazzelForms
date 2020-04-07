@@ -9,7 +9,7 @@ class Dropdown extends Options {
     public function __construct($fieldName, $formName, $args = array())  {
         parent::__construct($fieldName, $formName, $args);
 
-        $this->first = (isset($args['first']))  ? $args['first'] : '';
+        $this->first = $args['first'] ?? '';
 
         $this->fieldType = 'dropdown';
     }

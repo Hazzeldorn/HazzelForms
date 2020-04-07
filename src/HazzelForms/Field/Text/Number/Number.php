@@ -12,9 +12,9 @@ class Number extends Text {
       parent::__construct($fieldName, $formName, $args);
 
         $this->fieldType = 'number';
-        $this->min                     = (isset($args['min']))         ? $args['min']          : '';
-        $this->max                     = (isset($args['max']))         ? $args['max']          : '';
-        $this->step                    = (isset($args['step']))        ? $args['step']         : '';
+        $this->min = $args['min'] ?? '';
+        $this->max = $args['max'] ?? '';
+        $this->step = $args['step'] ?? '';
     }
 
     protected function buildAttributeString() {
