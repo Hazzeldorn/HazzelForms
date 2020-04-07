@@ -116,7 +116,7 @@ $form = new HazzelForms\HazzelForm(array(
 													<td>novalidate</td>
 													<td>boolean</td>
 													<td>false</td>
-													<td>Turn of validation functionality of browsers</td>
+													<td>Toggle client side validation functionality of browsers</td>
 												</tr>
 												<tr>
 													<td>autocomplete</td>
@@ -131,11 +131,12 @@ $form = new HazzelForms\HazzelForm(array(
 													<td>Internal form identifier. The <code>&lt;form&gt;</code> tag will get this ID too. For multiple forms on a page, the default number will be increased</td>
 												</tr>
 												<tr>
-													<td>stealthmode</td>
-													<td>boolean</td>
-													<td>false</td>
-													<td>If you switch on stealth mode, HazzelForms won't output the submit button. Furthermore it will ignore error messages and
-													the grid wrapper. You will need javascript to submit the form. This takes effect when <code>$form->renderAll();</code> is used to create DOM elements.</td>
+													<td>lang</td>
+													<td>string</td>
+													<td>EN</td>
+													<td>HazzelForms uses json formatted language files for the error messages. Check the folder <code>HazzelForms/lang/*</code> to  see if HazzelForms already supports your language.<br>
+														If not, you can easily duplicate and translate / adapt a language file.<br>
+														With the parameter <code>'lang' => 'yourlanguage'</code>, HazzelForms will look for a file named <code>yourlanguage.json</code> to get the error messages from.</td>
 												</tr>
 											</tbody>
 										</table>
