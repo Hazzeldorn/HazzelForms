@@ -4,37 +4,46 @@ namespace HazzelForms;
 
 class HoneyPot extends Captcha {
 
-  protected $fieldType = 'honeypot';
+   protected $inlineCSS;
+   protected $fieldType = 'honeypot';
 
-  public function __construct($formName, $fieldName, $args = array())  {
-    parent::__construct($formName, $fieldName, $args);
-    $this->fieldSlug = 'hf_hp';
-    $this->required  = false;
-    $this->label     = false;
-  }
+   public function __construct($formName, $fieldName, $args = array())  {
+      parent::__construct($formName, $fieldName, $args);
+      $this->inlineCSS = $args['inline-css'] ?? true;
 
-  public function returnField()   {
-    return sprintf(
-      '<input type="text" name="%1$s[%2$s]" id="%1$s-%2$s" value="" tabindex="-1" autocomplete="false" class="hf_hp" />
-      <style>
-      .hf_hp {
-        display: none !important;
+      $this->fieldSlug = 'hf_hp';
+      $this->required  = false;
+      $this->label     = false;
+   }
+
+   public function returnField() {
+      $fieldHtml = '';
+
+      if($this->inlineCSS){
+         $this->classlist .= ' '.$this->fieldSlug;
+         $fieldHtml .= "<style> .{$this->fieldSlug} { display: none !important; } </style>";
       }
-      </style>',
-      $this->formName, $this->fieldSlug);
-    }
 
-    public function validate() {
+      return $fieldHtml .= sprintf(
+         '<input type="text" name="%1$s[%2$s]" id="%1$s-%2$s" value="%3$s" tabindex="-1" autocomplete="false" class="%4$s" />',
+         $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist
+      );
+   }
+
+
+   public function setValue($value) {
+      $this->fieldValue = htmlspecialchars(trim($value));
+   }
+
+   public function validate() {
       if(!empty($this->fieldValue)) {
-        // honeypot field must be empty to be valid
-        $this->error = 'invalid';
+         // honeypot field must be empty to be valid
+         $this->error = 'invalid';
       }
 
       $this->validated = true;
       return $this->isValid();
-    }
+   }
 
-    public function setValue($value) {
-      $this->fieldValue = $value;
-    }
-  }
+
+}

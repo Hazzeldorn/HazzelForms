@@ -6,6 +6,7 @@
          colors="true">
 
     <php>
+      <!-- ENV VARS -->
 	  <server name="REQUEST_URI" value="/" />
 	</php>
 

@@ -78,11 +78,26 @@ to let HazzelForms do the work.</p>
 $form->addField('Pseudo-Captcha',  'honeypot');
 </code></pre>
 							<p>
-								The <code>honeypot</code> field type outputs a trap field as well as a css snippet to hide it from users (but not from bots).
+								The <code>honeypot</code> field type outputs a trap field as well as an inline css snippet to hide it from users (but not from bots).
 								HazzelForms ensures that the form can not be sent as long as this trap field contains a value.
 							</p>
 <pre><code class="language-php">// Render hidden honeypot
 $form->renderField('Pseudo-Captcha');
+</code></pre>
+							<h3>Content Security Policy (CSP) vs. Inline CSS</h3>
+							<p>
+							 	When using a strict CSP that diables inline css, you can simply disable the inline CSS and add your custom CSS class to hide the <code>honeypot</code> input field.
+							</p>
+<pre><code class="language-php">$form->addField('Pseudo-Captcha', 'honeypot', [
+	'classlist' => 'hide-me',
+	'inline-css' => false
+]);
+</code></pre>
+<pre><code class="language-css">
+/* add this to your CSS file */
+.hide-me {
+	display: none !important;
+}
 </code></pre>
 
 								<br>
