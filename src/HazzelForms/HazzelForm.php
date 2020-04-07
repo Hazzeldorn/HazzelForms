@@ -14,7 +14,6 @@ class HazzelForm {
               $method,
               $novalidate,
               $autocomplete,
-              $stealthmode,
               $formName,
               $lang,
               $fields,
