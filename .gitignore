@@ -1,5 +1,6 @@
 # IDE
 /vendor/
+composer.lock
 .remote-sync.json
 
 
@@ -17,6 +18,7 @@ __MACOSX/
 /sitemap.xml.gz
 __MACOSX/
 bfg.jar
+
 
 # WIP
 /tests/legacy/
