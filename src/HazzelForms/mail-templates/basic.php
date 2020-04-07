@@ -15,6 +15,10 @@ namespace HazzelForms;
 ?>
 <!doctype html>
 <html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+  <title><?= $this->subject; ?></title>
+</head>
 <body>
   <h3><?= $this->subject; ?></h3>
   <table rules="all" style="border-color: #aaa;" cellpadding="10">
