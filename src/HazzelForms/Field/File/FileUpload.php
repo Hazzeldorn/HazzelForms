@@ -84,7 +84,7 @@ class FileUpload extends Field {
                 // upload for this file was successfull
 
                 // check if filename contains forbidden characters ({äöüÄÖÜéèàëÉÈ} because \p{L} does not work)
-                if(!preg_match('/^[\p{L}{äöüÄÖÜéèàëÉÈ}\s\d\-~_,;\[\]\(\)\']{1,200}\.[a-zA-Z0-9]{1,10}$/', $fileNames[$i])){
+                if(!preg_match('/^[\p{L}{äöüÄÖÜéèàëÉÈ}\s\d\-~_.,;\[\]\(\)\']{1,200}\.[a-zA-Z0-9]{1,10}$/', $fileNames[$i])){
                   $this->error = 'invalid_filename';
                   break;
                 }
