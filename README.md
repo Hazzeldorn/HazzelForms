@@ -6,6 +6,9 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 ### Changelog
+===== V1.2.5 | 2020-04-13 ===== <br/>
+Minor bugfix: Readopted stealthmode
+
 ===== V1.2.4 | 2020-04-07 ===== <br/>
 * CSP compatibility added to HoneyPot fields
 * Some code refactoring
