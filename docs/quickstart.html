@@ -138,6 +138,13 @@ $form = new HazzelForms\HazzelForm(array(
 														If not, you can easily duplicate and translate / adapt a language file.<br>
 														With the parameter <code>'lang' => 'yourlanguage'</code>, HazzelForms will look for a file named <code>yourlanguage.json</code> to get the error messages from.</td>
 												</tr>
+												<tr>
+													<td>stealthmode</td>
+													<td>boolean</td>
+													<td>false</td>
+													<td>If you switch on stealth mode, HazzelForms won't output the submit button. Furthermore it will ignore error messages and
+														the grid wrapper. You will need javascript to submit the form. This takes effect when <code>$form->renderAll();</code> is used to create DOM elements.</td>
+													</tr>
 											</tbody>
 										</table>
 									</div>
