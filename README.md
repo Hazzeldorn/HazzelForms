@@ -6,6 +6,11 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 ### Changelog
+===== V1.2.6 | 2020-04-14 ===== <br/>
+* Added a new language string for single checkboxes (useful for terms and conditions)
+* Now allowing key / value pairs for option fields
+* Removed the function that deletes uploaded files while sending emails (sending an attachement to multiple recipents was impossible)
+
 ===== V1.2.5 | 2020-04-13 ===== <br/>
 Minor bugfix: Readopted stealthmode
 
