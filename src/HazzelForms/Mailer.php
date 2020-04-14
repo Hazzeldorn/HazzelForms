@@ -95,9 +95,8 @@ class Mailer {
           $fileHandler = fopen($file,"rb");
           $fileData    = fread($fileHandler, $filesize);
 
-          // close and delete file
+          // close file -> php will automatically delete it after execution
           fclose($fileHandler);
-          unlink($file);
 
           $this->message .= EOL // empty line in advance
           . "--{$this->mimeBoundary}" . EOL
