@@ -50,6 +50,9 @@
   "option_fields": {
     "empty": "Please choose an option."
   },
+  "option_fields_single": {
+    "empty": "Please tick this box."
+  },
   "file": {
     "empty": "Please upload a file.",
     "invalid": "This file format is not allowed.",

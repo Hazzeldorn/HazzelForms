@@ -48,7 +48,10 @@
     "too_big": "Die gewählte Uhrzeit ist zu spät."
   },
   "option_fields": {
-    "empty": "Bitte auswählen."
+    "empty": "Bitte wähle eine Option."
+  },
+  "option_fields_single": {
+    "empty": "Bitte akzeptieren."
   },
   "file": {
     "empty": "Bitte lade eine Datei hoch.",

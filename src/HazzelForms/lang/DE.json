@@ -50,6 +50,9 @@
   "option_fields": {
     "empty": "Bitte wählen Sie eine Option."
   },
+  "option_fields_single": {
+    "empty": "Bitte akzeptieren."
+  },
   "file": {
     "empty": "Bitte laden Sie eine Datei hoch.",
     "invalid": "Dieses Dateiformat ist nicht erlaubt.",
