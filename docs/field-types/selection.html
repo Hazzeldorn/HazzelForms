@@ -61,6 +61,18 @@ $form->addField('Language', 'dropdown', array('first' => 'Please select your lan
 																							));
 </code></pre>
 
+<p>You can use key / value pairs within the options too if you need a specific return value:</p>
+
+<pre><code class="language-php">// Option field with custom keys
+$form->addField('Color', 'radio', [
+	'options'  => [
+		  'ff0000' => 'Red',
+		  '00ff00' => 'Green',
+		  '0000ff' => 'Blue'
+	]
+]);
+</code></pre>
+
 					<h3>Attributes</h3>
           <p>You can customize the field with one of these optional parameters:</p>
 					<div class="table-wrapper">

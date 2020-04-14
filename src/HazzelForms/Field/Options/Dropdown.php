@@ -45,9 +45,9 @@ class Dropdown extends Options {
         if(!empty($this->first)){
           $fieldHtml .= '<option value="">'.$this->first.'</option>';
         }
-        foreach($this->options as $optionID => $option){
-          $fieldHtml .= sprintf('<option value="%1$s" %3$s>%2$s</option>', $optionID, $option, $this->buildOptionAttributeString($option));
-        } unset($optionID, $option);
+        foreach($this->options as $optionKey => $option){
+          $fieldHtml .= sprintf('<option value="%1$s" %3$s>%2$s</option>', $optionKey, $option, $this->buildOptionAttributeString($option));
+        } unset($optionKey, $option);
 
         $fieldHtml .= '</select>';
 
