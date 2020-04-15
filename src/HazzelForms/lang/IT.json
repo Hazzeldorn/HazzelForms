@@ -1,0 +1,75 @@
+{
+  "text": {
+    "empty": "Si prega di compilare questo campo.",
+    "invalid": "Questo campo contiene caratteri illegali."
+  },
+  "textarea": {
+    "empty": "Si prega di compilare questo campo.",
+    "invalid": "Questo campo contiene caratteri illegali."
+  },
+  "email": {
+    "empty": "Inserire il proprio indirizzo e-mail.",
+    "invalid": "Questo indirizzo e-mail non è corretto."
+  },
+  "url": {
+    "empty": "Inserire un URL.",
+    "invalid": "Questo URL non è corretto."
+  },
+  "tel": {
+    "empty": "Inserire un numero di telefono.",
+    "invalid": "Questo numero di telefono non è corretto."
+  },
+  "password": {
+    "empty": "inserire una password.",
+    "invalid": "Questa password contiene errori o non soddisfa i requisiti minimi."
+  },
+  "number": {
+    "empty": "Si prega di compilare questo campo.",
+    "invalid": "Questo campo deve essere un numero.",
+    "too_small": "Questo numero è troppo piccolo.",
+    "too_big": "Questo numero è troppo grande."
+  },
+  "range": {
+    "empty": "Indicare una data.",
+    "invalid": "Questo campo deve essere un numero.",
+    "too_small": "Questo numero è troppo piccolo.",
+    "too_big": "Questo numero è troppo grande."
+  },
+  "date": {
+    "empty": "Indicare una data.",
+    "invalid": "Questo campo contiene errori.",
+    "too_small": "Questa data deve essere più recente.",
+    "too_big": "Questa data deve essere più vecchia."
+  },
+  "time": {
+    "empty": "Questo campo contiene errori.",
+    "invalid": "Questo campo contiene errori.",
+    "too_small": "Il tempo selezionato è troppo presto.",
+    "too_big": "L'ora scelta è troppo tardi."
+  },
+  "option_fields": {
+    "empty": "Scegliere un'opzione."
+  },
+  "option_fields_single": {
+    "empty": "Si prega di accettare."
+  },
+  "file": {
+    "empty": "Si prega di caricare un file.",
+    "invalid": "Questo formato di file non è consentito.",
+    "invalid_filename": "Uno o più file contengono caratteri illegali nel loro nome.",
+    "too_many": "Sono stati caricati troppi file.",
+    "too_big": "Uno o più file sono troppo grandi."
+  },
+  "submit": {
+    "invalid_fields": "Uno o più campi non sono corretti.",
+    "invalid_captcha": "Il captcha non è stato risolto correttamente.",
+    "upload_error": "Si è verificato un errore durante il caricamento dei file.",
+    "transmission_error": "Non tutti i campi possono essere trasmessi. Si prega di riprovare più tardi.",
+    "csrf_error": "Il gettone CSRF non corrisponde.",
+    "session_error": "Qualcosa è andato storto, per favore riprova."
+  },
+  "defaults": {
+    "mailer_subject": "Nuova richiesta",
+    "mailer_error": "Non è stato possibile inviare il modulo. Si prega di riprovare più tardi."
+  }
+}

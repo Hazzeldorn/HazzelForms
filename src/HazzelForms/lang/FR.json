@@ -1,0 +1,75 @@
+{
+  "text": {
+    "empty": "Veuillez remplir ce champ.",
+    "invalid": "Ce champ contient des caractères illégaux."
+  },
+  "textarea": {
+    "empty": "Veuillez remplir ce champ.",
+    "invalid": "Ce champ contient des caractères illégaux."
+  },
+  "email": {
+    "empty": "Veuillez saisir votre adresse électronique.",
+    "invalid": "Cette adresse électronique n'est pas correcte."
+  },
+  "url": {
+    "empty": "Veuillez entrer une URL.",
+    "invalid": "Cette URL n'est pas correcte."
+  },
+  "tel": {
+    "empty": "Veuillez entrer un numéro de téléphone.",
+    "invalid": "Ce numéro de téléphone n'est pas correct."
+  },
+  "password": {
+    "empty": "Ceuillez entrer un mot de passe.",
+    "invalid": "Ce mot de passe contient des erreurs ou ne répond pas aux exigences minimales."
+  },
+  "number": {
+    "empty": "Veuillez remplir ce champ.",
+    "invalid": "Ce champ doit être un numéro.",
+    "too_small": "Ce nombre est trop petit.",
+    "too_big": "Ce chiffre est trop grand."
+  },
+  "range": {
+    "empty": "Veuillez sélectionner un numéro.",
+    "invalid": "Ce champ doit être un numéro.",
+    "too_small": "Ce nombre est trop petit.",
+    "too_big": "Ce chiffre est trop grand."
+  },
+  "date": {
+    "empty": "Veuillez indiquer une date.",
+    "invalid": "Ce champ contient des erreurs.",
+    "too_small": "Cette date doit être plus récente.",
+    "too_big": "Cette date doit être plus ancienne."
+  },
+  "time": {
+    "empty": "Veuillez indiquer une heure.",
+    "invalid": "Ce champ contient des erreurs.",
+    "too_small": "L'heure choisie est trop tôt.",
+    "too_big": "Le moment choisi est trop tard."
+  },
+  "option_fields": {
+    "empty": "Veuillez choisir une option."
+  },
+  "option_fields_single": {
+    "empty": "Veuillez accepter."
+  },
+  "file": {
+    "empty": "veuillez télécharger un fichier.",
+    "invalid": "Ce format de fichier n'est pas autorisé.",
+    "invalid_filename": "Un ou plusieurs fichiers contiennent des caractères illégaux dans leur nom.",
+    "too_many": "Trop de fichiers ont été téléchargés.",
+    "too_big": "Un ou plusieurs fichiers sont trop gros."
+  },
+  "submit": {
+    "invalid_fields": "Un ou plusieurs champs sont incorrects.",
+    "invalid_captcha": "Le captcha n'a pas été résolu correctement.",
+    "upload_error": "Il y a eu une erreur lors du téléchargement du fichier.",
+    "transmission_error": "Tous les champs n'ont pas pu être transmis. Veuillez réessayer plus tard.",
+    "csrf_error": "Le jeton CSRF ne correspond pas.",
+    "session_error": "Quelque chose s'est mal passé, veuillez réessayer."
+  },
+  "defaults": {
+    "mailer_subject": "Nouvelle demande",
+    "mailer_error": "Le formulaire n'a pas pu être envoyé. Veuillez réessayer plus tard."
+  }
+}
