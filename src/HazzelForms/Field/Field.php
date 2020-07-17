@@ -40,6 +40,11 @@ class Field {
            }
        }
 
+       // clear field value
+       public function clear() {
+          $this->fieldValue = '';
+       }
+
        protected function isValid() {
          if($this->validated && empty($this->error)){
            $this->classlist .= ' is-valid';

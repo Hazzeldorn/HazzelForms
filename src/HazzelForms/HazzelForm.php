@@ -418,6 +418,18 @@ class HazzelForm {
       $mail->send();
     }
 
+
+    /**
+    * Resets all field values
+    */
+    public function clear(){
+        foreach ($this->getFields() as $field) {
+            $field->clear();
+        } unset($field);
+    }
+
+
+
     /**
     * If form is valid, this returns an array with all the field names and its values
     */
