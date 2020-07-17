@@ -5,6 +5,14 @@ Please visit the documentation if you want to use HazzelForms:<br/>
 https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
+
+### Upcoming 
+
+- [ ] Clear all input fields after submit
+- [ ] File-Upload status callbacks
+- [ ] Add lazy validation to URLs (without http://)
+
+
 ### Changelog
 ===== V1.2.6 | 2020-04-14 ===== <br/>
 * Added a new language string for single checkboxes (useful for terms and conditions)
