@@ -476,6 +476,10 @@ class HazzelForm {
       return $this->valid;
     }
 
+    public function hasError(){
+      return !empty($this->error);
+    }
+
     public function setLanguage($lang){
       $this->lang = new Language($lang);
     }
