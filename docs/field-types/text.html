@@ -53,10 +53,15 @@ $form->addField('Your Name', 'text', array('placeholder' => 'Please enter your n
 
 // E-Mail field example
 $form->addField('Your E-Mail', 'email');
-
-// URL field example
-$form->addField('Your Website', 'url');
 </code></pre>
+
+<h4>URL</h4>
+<pre><code class="language-php">// URL field examples
+$form->addField('Your Website', 'url');
+$form->addField('Your Website', 'url', ['strict' => false]);
+</code></pre>
+<p>URL fields support an additional parameter <code>strict</code> which is true by default. Strict validation only allows URL's with a hyper text protocol prefix such as <code>http://</code></p>
+
 
 <h4>Tel (phone)</h4>
 <pre><code class="language-php">// Tel field example
@@ -148,6 +153,12 @@ $form->addField('Your Password', 'password', array(
 									<td>string</td>
 									<td>false</td>
 									<td>Set cursor autofocus to this field. Only use for a single field per form.</td>
+								</tr>
+								<tr>
+									<td>strict</td>
+									<td>boolean</td>
+									<td>true</td>
+									<td>URL fields only! Strict validation only allows URL's with a hyper text protocol prefix such as <code>http://</code></td>
 								</tr>
 							</tbody>
 						</table>

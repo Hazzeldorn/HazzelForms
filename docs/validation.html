@@ -57,14 +57,26 @@
 <h3>Success message / redirect</h3>
 <p>Within the valid section you can transmitt the received data (please see "Data Processing") and do other stuff like this:</p>
 <pre><code class="language-php">if($form->validate()){
-	// redirect to success page
-	header('Location: https://www.example.com/');	exit;
+	// redirect to success page. make sure to run this before you output any html
+	header('Location: https://www.example.com/');
+	exit;
 }
 </code></pre>
-<p>You can also place this snipped anywhere on your page to show a success message</p>
+
+<p>
+	You can also place this snipped anywhere on your page after <code>$form->validate()</code> is executed
+</p>
 <pre><code class="language-php">if($form->isValid()){
 	// show a success message (hide the form with CSS when it contains the class "submitted")
 	echo "Form sent, thank you!";
+}
+</code></pre>
+<blockquote>
+	Do not use the negation <code>!$form->isValid()</code> as it will return true even if the form has not yet been sent.<br>
+	If you want to check only for errors, use the contrary function below:
+</blockquote>
+<pre><code class="language-php">if($form->hasError()){
+	// do something in case the form is not valid
 }
 </code></pre>
 
