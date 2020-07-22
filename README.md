@@ -6,14 +6,19 @@ https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
 
-### Upcoming 
+### Upcoming
 
-- [ ] Clear all input fields after submit
+- [ ] Prevent multiple submissions
 - [ ] File-Upload status callbacks
-- [ ] Add lazy validation to URLs (without http://)
+- [x] Add lazy validation to URLs (without http://)
 
 
 ### Changelog
+===== V1.2.7 | 2020-07-22 ===== <br/>
+* Function added to check for errors
+* Function added to clear fields
+* Lazy validation added to URL fields
+
 ===== V1.2.6 | 2020-04-14 ===== <br/>
 * Added a new language string for single checkboxes (useful for terms and conditions)
 * Now allowing key / value pairs for option fields
