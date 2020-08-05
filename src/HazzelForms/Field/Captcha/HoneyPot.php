@@ -25,7 +25,7 @@ class HoneyPot extends Captcha {
       }
 
       return $fieldHtml .= sprintf(
-         '<input type="text" name="%1$s[%2$s]" id="%1$s-%2$s" value="%3$s" tabindex="-1" autocomplete="false" class="%4$s" />',
+         '<input type="text" name="%1$s[%2$s]" id="%1$s-%2$s" value="%3$s" tabindex="-1" autocomplete="off" class="%4$s" />',
          $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist
       );
    }
