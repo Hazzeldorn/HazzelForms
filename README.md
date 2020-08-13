@@ -14,6 +14,10 @@ https://hazzeldorn.github.io/HazzelForms/
 
 
 ### Changelog
+===== V1.2.8 | 2020-08-13 ===== <br/>
+* CSV added to accepted mime types
+* Minor bugfix regarding autocomplete attribute
+
 ===== V1.2.7 | 2020-07-22 ===== <br/>
 * Function added to check for errors
 * Function added to clear fields
