@@ -19,6 +19,7 @@ class FileUpload extends Field {
 
         // documents
         'txt' => array('application/plain', 'text/plain'),
+        'csv' => array('application/csv', 'text/x-csv', 'text/csv'),
         'pdf' => array('application/pdf', 'application/x-pdf', 'application/acrobat', 'text/pdf', 'text/x-pdf'),
 
         // archives
