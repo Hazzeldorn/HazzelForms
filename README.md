@@ -10,8 +10,6 @@ https://hazzeldorn.github.io/HazzelForms/
 
 - [ ] Prevent multiple submissions
 - [ ] File-Upload status callbacks
-- [x] Add lazy validation to URLs (without http://)
-
 
 ### Changelog
 ===== V1.2.8 | 2020-08-13 ===== <br/>
