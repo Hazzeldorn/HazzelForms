@@ -12,6 +12,10 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
+===== V1.2.8 | 2020-12-27 ===== <br/>
+* Refactoring to adhere to PSR-12
+* Github action workflow file added
+
 ===== V1.2.7 | 2020-07-22 ===== <br/>
 * Function added to check for errors
 * Function added to clear fields
