@@ -1,49 +1,57 @@
 <?php
 
-namespace HazzelForms;
+namespace HazzelForms\Field\Captcha;
 
-class HoneyPot extends Captcha {
+use HazzelForms\Field\Field as Field;
 
-   protected $inlineCSS;
-   protected $fieldType = 'honeypot';
+class HoneyPot extends Captcha
+{
 
-   public function __construct($formName, $fieldName, $args = array())  {
-      parent::__construct($formName, $fieldName, $args);
-      $this->inlineCSS = $args['inline-css'] ?? true;
+    protected $inlineCSS;
+    protected $fieldType = 'honeypot';
 
-      $this->fieldSlug = 'hf_hp';
-      $this->required  = false;
-      $this->label     = false;
-   }
+    public function __construct($formName, $fieldName, $args = [])
+    {
+        parent::__construct($formName, $fieldName, $args);
+        $this->inlineCSS = $args['inline-css'] ?? true;
 
-   public function returnField() {
-      $fieldHtml = '';
+        $this->fieldSlug = 'hf_hp';
+        $this->required  = false;
+        $this->label     = false;
+    }
 
-      if($this->inlineCSS){
-         $this->classlist .= ' '.$this->fieldSlug;
-         $fieldHtml .= "<style> .{$this->fieldSlug} { display: none !important; } </style>";
-      }
+    public function returnField()
+    {
+        $fieldHtml = '';
 
-      return $fieldHtml .= sprintf(
-         '<input type="text" name="%1$s[%2$s]" id="%1$s-%2$s" value="%3$s" tabindex="-1" autocomplete="off" class="%4$s" />',
-         $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist
-      );
-   }
+        if ($this->inlineCSS) {
+            $this->classlist .= ' ' . $this->fieldSlug;
+            $fieldHtml .= "<style> .{$this->fieldSlug} { display: none !important; } </style>";
+        }
 
-
-   public function setValue($value) {
-      $this->fieldValue = htmlspecialchars(trim($value));
-   }
-
-   public function validate() {
-      if(!empty($this->fieldValue)) {
-         // honeypot field must be empty to be valid
-         $this->error = 'invalid';
-      }
-
-      $this->validated = true;
-      return $this->isValid();
-   }
+        return $fieldHtml .= sprintf(
+            '<input type="text" name="%1$s[%2$s]" id="%1$s-%2$s" value="%3$s" tabindex="-1" autocomplete="false" class="%4$s" />',
+            $this->formName,
+            $this->fieldSlug,
+            $this->fieldValue,
+            $this->classlist
+        );
+    }
 
 
+    public function setValue($value)
+    {
+        $this->fieldValue = htmlspecialchars(trim($value));
+    }
+
+    public function validate()
+    {
+        if (!empty($this->fieldValue)) {
+            // honeypot field must be empty to be valid
+            $this->error = 'invalid';
+        }
+
+        $this->validated = true;
+        return $this->isValid();
+    }
 }

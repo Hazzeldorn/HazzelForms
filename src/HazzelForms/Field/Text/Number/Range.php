@@ -1,13 +1,14 @@
 <?php
 
-namespace HazzelForms;
+namespace HazzelForms\Field\Text\Number;
 
-class Range extends Number {
+class Range extends Number
+{
 
-  public function __construct($fieldName, $formName, $args = array())  {
-      parent::__construct($fieldName, $formName, $args);
+    public function __construct($fieldName, $formName, $args = [])
+    {
+        parent::__construct($fieldName, $formName, $args);
 
         $this->fieldType = 'range';
     }
-
 }

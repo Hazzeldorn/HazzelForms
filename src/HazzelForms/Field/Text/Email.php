@@ -1,16 +1,19 @@
 <?php
 
-namespace HazzelForms;
+namespace HazzelForms\Field\Text;
 
-class Email extends Text {
+class Email extends Text
+{
 
-  public function __construct($fieldName, $formName, $args = array())  {
-      parent::__construct($fieldName, $formName, $args);
+    public function __construct($fieldName, $formName, $args = [])
+    {
+        parent::__construct($fieldName, $formName, $args);
 
         $this->fieldType = 'email';
     }
 
-    public function validate() {
+    public function validate()
+    {
         if (parent::validate()) {
             if (!empty($this->fieldValue) && !filter_var($this->fieldValue, FILTER_VALIDATE_EMAIL)) {
                 $this->error = 'invalid';
@@ -19,5 +22,4 @@ class Email extends Text {
         $this->validated = true;
         return $this->isValid();
     }
-
 }

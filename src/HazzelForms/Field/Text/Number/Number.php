@@ -1,15 +1,19 @@
 <?php
 
-namespace HazzelForms;
+namespace HazzelForms\Field\Text\Number;
 
-class Number extends Text {
+use HazzelForms\Field\Text\Text as Text;
 
-  protected $min,
-            $max,
-            $step;
+class Number extends Text
+{
 
-    public function __construct($fieldName, $formName, $args = array())  {
-      parent::__construct($fieldName, $formName, $args);
+    protected $min;
+    protected $max;
+    protected $step;
+
+    public function __construct($fieldName, $formName, $args = [])
+    {
+        parent::__construct($fieldName, $formName, $args);
 
         $this->fieldType = 'number';
         $this->min = $args['min'] ?? '';
@@ -17,27 +21,30 @@ class Number extends Text {
         $this->step = $args['step'] ?? '';
     }
 
-    protected function buildAttributeString() {
-      $attributes = parent::buildAttributeString();
+    protected function buildAttributeString()
+    {
+        $attributes = parent::buildAttributeString();
 
-      if(!empty($this->step)){
-        $attributes .= ' step="'.$this->step.'"';
-      }
-      if(!empty($this->min) || $this->min === 0){
-        $attributes .= ' min="'.$this->min.'"';
-      }
-      if(!empty($this->max || $this->max === 0)) {
-        $attributes .= ' max="'.$this->max.'"';
-      }
+        if (!empty($this->step)) {
+            $attributes .= ' step="' . $this->step . '"';
+        }
+        if (!empty($this->min) || $this->min === 0) {
+            $attributes .= ' min="' . $this->min . '"';
+        }
+        if (!empty($this->max || $this->max === 0)) {
+            $attributes .= ' max="' . $this->max . '"';
+        }
 
-      return $attributes;
+        return $attributes;
     }
 
-    public function returnField()   {
+    public function returnField()
+    {
         return sprintf('<input type="%1$s" id="%2$s-%3$s" name="%2$s[%3$s]" value="%4$s" class="%5$s" %6$s />', $this->fieldType, $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist, $this->buildAttributeString());
     }
 
-    public function validate() {
+    public function validate()
+    {
         $value = $this->fieldValue;
 
         if (parent::validate()) {
@@ -60,5 +67,4 @@ class Number extends Text {
         $this->validated = true;
         return $this->isValid();
     }
-
 }

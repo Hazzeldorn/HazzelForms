@@ -1,94 +1,107 @@
 <?php
-namespace HazzelForms;
 
-use HazzelForms\Tools;
+namespace HazzelForms\Field;
 
-class Field {
+use HazzelForms\Tools as Tools;
 
-      protected $formName,
-                $fieldName,
-                $fieldSlug,
-                $fieldType,
-                $label = '',
-                $required,
-                $classList = '',
-                $error = '',
-                $fieldValue = '',
-                $validated = false;
+class Field
+{
 
-      public function __construct($fieldName, $formName, $args = array())  {
-          $this->formName   = $formName;
-          $this->fieldName  = $fieldName;
-          $this->fieldSlug  = Tools::slugify($fieldName);
+    protected $formName;
+    protected $fieldName;
+    protected $fieldSlug;
+    protected $fieldType;
+    protected $label = '';
+    protected $required;
+    protected $classList = '';
+    protected $error = '';
+    protected $fieldValue = '';
+    protected $validated = false;
 
-          $this->label      = $args['label'] ?? '';
-          $this->required   = $args['required'] ?? true;
-          $this->classlist  = $args['classlist'] ?? '';
-      }
+    public function __construct($fieldName, $formName, $args = [])
+    {
+        $this->formName   = $formName;
+        $this->fieldName  = $fieldName;
+        $this->fieldSlug  = Tools::slugify($fieldName);
 
-      // build label
-      public function returnLabel()   {
-        if($this->label != false){
-          return sprintf('<span class="label">%1$s</span>', $this->label);
+        $this->label      = $args['label'] ?? '';
+        $this->required   = $args['required'] ?? true;
+        $this->classlist  = $args['classlist'] ?? '';
+    }
+
+    // build label
+    public function returnLabel()
+    {
+        if ($this->label != false) {
+            return sprintf('<span class="label">%1$s</span>', $this->label);
         }
-      }
+    }
 
-       // Build error message
-       public function returnError($lang)   {
-           if(!empty($this->error)){
-             return sprintf('<span class="error-msg">%1$s</span>', $lang->getMessage($this->fieldType, $this->error));
-           }
-       }
+    // Build error message
+    public function returnError($lang)
+    {
+        if (!empty($this->error)) {
+            return sprintf('<span class="error-msg">%1$s</span>', $lang->getMessage($this->fieldType, $this->error));
+        }
+    }
 
-       // clear field value
-       public function clear() {
-          $this->fieldValue = '';
-       }
+    // clear field value
+    public function clear()
+    {
+        $this->fieldValue = '';
+    }
 
-       protected function isValid() {
-         if($this->validated && empty($this->error)){
-           $this->classlist .= ' is-valid';
-           return true;
-         } else {
-           $this->classlist .= ' has-error';
-           return false;
-         }
-       }
+    protected function isValid()
+    {
+        if ($this->validated && empty($this->error)) {
+            $this->classlist .= ' is-valid';
+            return true;
+        } else {
+            $this->classlist .= ' has-error';
+            return false;
+        }
+    }
 
-     /**
-     * Getters and Setters
-     */
-     public function getName() {
-         return $this->fieldName;
-     }
+    /**
+    * Getters and Setters
+    */
+    public function getName()
+    {
+        return $this->fieldName;
+    }
 
-     public function getSlug() {
-         return $this->fieldSlug;
-     }
+    public function getSlug()
+    {
+        return $this->fieldSlug;
+    }
 
-     public function getValue() {
-         return $this->fieldValue;
-     }
+    public function getValue()
+    {
+        return $this->fieldValue;
+    }
 
-     public function getRequired() {
-         return $this->required;
-     }
+    public function getRequired()
+    {
+        return $this->required;
+    }
 
-     public function getFieldWrapBefore() {
-       $classes = $this->fieldType;
-       if($this->fieldType == 'honeypot'){
-         // incognito class for honeypot
-         $classes = '';
-       }
-       if($this->validated && empty($this->error)){
-         $classes .= ' is-valid';
-       } elseif($this->validated && !empty($this->error)) {
-         $classes .= ' has-error';
-       }
-       return sprintf('<div class="field-wrap %1$s">', $classes);
-     }
+    public function getFieldWrapBefore()
+    {
+        $classes = $this->fieldType;
+        if ($this->fieldType == 'honeypot') {
+            // incognito class for honeypot
+            $classes = '';
+        }
+        if ($this->validated && empty($this->error)) {
+            $classes .= ' is-valid';
+        } elseif ($this->validated && !empty($this->error)) {
+            $classes .= ' has-error';
+        }
+        return sprintf('<div class="field-wrap %1$s">', $classes);
+    }
 
-     public function getFieldWrapAfter() {
-       return "</div>";
-     }
+    public function getFieldWrapAfter()
+    {
+        return "</div>";
+    }
 }

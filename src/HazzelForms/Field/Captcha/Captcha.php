@@ -1,18 +1,20 @@
 <?php
 
-namespace HazzelForms;
+namespace HazzelForms\Field\Captcha;
 
-class Captcha extends Field {
+use HazzelForms\Field\Field as Field;
 
-  public function __construct($formName, $fieldName, $args = array())  {
-      parent::__construct($formName, $fieldName, $args);
-  }
+class Captcha extends Field
+{
 
-  // no error on field
-  public function returnError($lang)   {
-      return;
-  }
+    public function __construct($formName, $fieldName, $args = [])
+    {
+        parent::__construct($formName, $fieldName, $args);
+    }
 
+    // no error on field
+    public function returnError($lang)
+    {
+        return;
+    }
 }
-
-?>

@@ -3,7 +3,6 @@
 /.gitattributes     export-ignore
 /.github            export-ignore
 /.gitignore         export-ignore
-/README.md          export-ignore
 /composer.json      export-ignore
 /phpunit.xml        export-ignore
 /docs               export-ignore

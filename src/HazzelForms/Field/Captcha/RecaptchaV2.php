@@ -1,40 +1,45 @@
 <?php
 
-namespace HazzelForms;
+namespace HazzelForms\Field\Captcha;
 
-class RecaptchaV2 extends Captcha {
+use HazzelForms\Field\Field as Field;
 
-    protected $siteKey = '',
-              $secretKey = '',
-              $fieldType = 'recaptcha-v2';
+class RecaptchaV2 extends Captcha
+{
 
-    public function __construct($formName, $fieldName, $args = array())  {
+    protected $siteKey = '';
+    protected $secretKey = '';
+    protected $fieldType = 'recaptcha-v2';
+
+    public function __construct($formName, $fieldName, $args = [])
+    {
         parent::__construct($formName, $fieldName, $args);
 
         $this->siteKey   = $args['sitekey'] ?? '';
         $this->secretKey = $args['secretkey'] ?? '';
     }
 
-    public function returnField()   {
+    public function returnField()
+    {
         return '<script src="https://www.google.com/recaptcha/api.js" async defer></script>'
-               .sprintf('<div class="g-recaptcha" data-sitekey="%1$s"></div>', $this->siteKey);
+               . sprintf('<div class="g-recaptcha" data-sitekey="%1$s"></div>', $this->siteKey);
     }
 
-    public function validate() {
+    public function validate()
+    {
         // get captcha response from google
-        if(isset($_POST['g-recaptcha-response'])){
-          $reCaptchaResponse = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$this->secretKey."&response=".$_POST['g-recaptcha-response']), true);
+        if (isset($_POST['g-recaptcha-response'])) {
+            $reCaptchaResponse = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $this->secretKey . "&response=" . $_POST['g-recaptcha-response']), true);
 
-          if ($reCaptchaResponse['success'] != 1) {
-            // CAPTCHA INCORRECT
-            $this->error = 'invalid';
-          } else {
-            // CAPTCHA CORRECT
-            $this->fieldValue = 'ok';
-          }
-
+            if ($reCaptchaResponse['success'] != 1) {
+                // CAPTCHA INCORRECT
+                $this->error = 'invalid';
+            } else {
+                // CAPTCHA CORRECT
+                $this->fieldValue = 'ok';
+            }
         } else {
-          $this->error = 'invalid';
+            $this->error = 'invalid';
         }
 
         $this->validated = true;

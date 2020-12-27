@@ -2,16 +2,18 @@
 
 namespace HazzelForms;
 
-class Tools {
+class Tools
+{
 
     /**
      * Strip out all empty characters from a string
      *
-     * @param string $val
+     * @param  string $val
      * @return string
      */
-    public static function stripper($val) {
-        foreach (array(' ', '&nbsp;', '\n', '\t', '\r') as $strip) {
+    public static function stripper($val)
+    {
+        foreach ([' ', '&nbsp;', '\n', '\t', '\r'] as $strip) {
             $val = str_replace($strip, '', (string) $val);
         }
         return $val === '' ? false : $val;
@@ -25,17 +27,19 @@ class Tools {
      *
      * @return string
      */
-    public static function slugify($text, $replacement = '_') {
+    public static function slugify($text, $replacement = '_')
+    {
         return strtolower(trim(preg_replace('/\s/', $replacement, $text), '_'));
     }
 
     /**
-    * Helper function to check if a variable (numeric or string) actually holds a valid integer value
-    * @param string $var (mixed)
-    * @return boolean
-    */
-    public static function containsInt($var) {
-      return filter_var($var, FILTER_VALIDATE_INT) !== false;
+     * Helper function to check if a variable (numeric or string) actually holds a valid integer value
+     *
+     * @param  string $var (mixed)
+     * @return boolean
+     */
+    public static function containsInt($var)
+    {
+        return filter_var($var, FILTER_VALIDATE_INT) !== false;
     }
-
 }
