@@ -1,7 +1,9 @@
 # IDE
+.idea/*
 /vendor/
 composer.lock
 .remote-sync.json
+.phpunit.result.cache
 
 
 # OS
@@ -17,9 +19,8 @@ __MACOSX/
 /sitemap.xml
 /sitemap.xml.gz
 __MACOSX/
-bfg.jar
 
 
 # WIP
-/tests/legacy/
-__todo.txt
+/tests/Legacy/
+/docs-v2/

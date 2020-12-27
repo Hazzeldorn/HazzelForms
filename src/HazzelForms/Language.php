@@ -2,22 +2,24 @@
 
 namespace HazzelForms;
 
-class Language {
+class Language
+{
 
-    protected $language,
-              $strings,
-              $dir = __DIR__.'/lang'; // directory to language files
+    protected $language;
+    protected $strings;
+    protected $dir = __DIR__ . '/translation'; // directory to language files
 
-    public function __construct($language = 'EN'){
-      $this->language = $language;
+    public function __construct($language = 'EN')
+    {
+        $this->language = $language;
 
-      // load language file
-      $this->strings = json_decode(file_get_contents($this->dir . "/" . strtoupper($this->language) . ".json"), true);
+        // load language file
+        $this->strings = json_decode(file_get_contents($this->dir . "/" . strtoupper($this->language) . ".json"), true);
     }
 
     // GETTERS & SETTERS
-    public function getMessage($fieldType, $noticeType) {
-      return $this->strings[$fieldType][$noticeType];
+    public function getMessage($fieldType, $noticeType)
+    {
+        return $this->strings[$fieldType][$noticeType];
     }
-
 }

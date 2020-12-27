@@ -1,7 +1,8 @@
 <?php
+
 namespace HazzelForms;
 
-  /*
+/*
   *   This is a mail template for senidng hazzelform data to webmasters / responsible persons...
   *   It is included within mailer class ($this = Mailer class)
   *
@@ -17,15 +18,16 @@ namespace HazzelForms;
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
-  <title><?= $this->subject; ?></title>
+  <title><?php echo $this->subject; ?></title>
 </head>
 <body>
-  <h3><?= $this->subject; ?></h3>
+  <h3><?php echo $this->subject; ?></h3>
   <table rules="all" style="border-color: #aaa;" cellpadding="10">
 
-    <?php foreach ($fields as $field): ?>
+    <?php foreach ($fields as $field) :
+        ?>
       <tr><td><strong><?php echo $field->getName(); ?></strong></td><td><?php echo nl2br($field->getValue()); ?></td></tr>
-    <?php
+        <?php
     endforeach;
     unset($field);
     ?>
