@@ -1,6 +1,6 @@
 <?php
 
-namespace HazzelForms\Field\FileUpload;
+namespace HazzelForms\Field\File;
 
 use HazzelForms\Field\Field as Field;
 

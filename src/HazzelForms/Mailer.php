@@ -2,7 +2,8 @@
 
 namespace HazzelForms;
 
-const EOL = "\r\n";   // end of line
+use HazzelForms\Field\File\File as File;
+use HazzelForms\Field\Captcha\Captcha as Captcha;
 
 class Mailer
 {
@@ -18,7 +19,7 @@ class Mailer
     protected $returnPath;
     protected $template;
     protected $lang;
-
+    protected const EOL = "\r\n";   // end of line
 
     public function __construct($to, $from, $replyTo, $senderName, $subject, $template, $lang)
     {
@@ -50,7 +51,7 @@ class Mailer
 
         // loop through all fields and clean formFields array
         foreach ($formFields as $field) {
-            if ($field instanceof FileUpload) {
+            if ($field instanceof File) {
                 // add all files as attachements but remove from formFields
                 foreach ($field->getValue() as $fileData) {
                     array_push($attachements, $fileData);
@@ -68,11 +69,11 @@ class Mailer
         ob_end_clean();
 
         // content
-        $this->message .= "--{$this->mimeBoundary}" . EOL
-        . 'Content-Type: text/html; charset="UTF-8";' . EOL
-        . 'Content-Transfer-Encoding: 8bit;' . EOL
-        . EOL // empty line needed !
-        . $htmlContent . EOL;
+        $this->message .= "--{$this->mimeBoundary}" . self::EOL
+        . 'Content-Type: text/html; charset="UTF-8";' . self::EOL
+        . 'Content-Transfer-Encoding: 8bit;' . self::EOL
+        . self::EOL // empty line needed !
+        . $htmlContent . self::EOL;
 
         // add attachements
         if (!empty($attachements)) {
@@ -102,14 +103,14 @@ class Mailer
             // close file -> php will automatically delete it after execution
             fclose($fileHandler);
 
-            $this->message .= EOL // empty line in advance
-            . "--{$this->mimeBoundary}" . EOL
-            . "Content-Type: application/octet-stream; name=\"{$basename}\";" . EOL
-            . "Content-Description: {$basename};" . EOL
-            . "Content-Disposition: attachment; filename=\"{$basename}\"; size=\"{$filesize}\";" . EOL
-            . "Content-Transfer-Encoding: base64" . EOL
-            . EOL // empty line needed !
-            . chunk_split(base64_encode($fileData)) . EOL;
+            $this->message .= self::EOL // empty line in advance
+            . "--{$this->mimeBoundary}" . self::EOL
+            . "Content-Type: application/octet-stream; name=\"{$basename}\";" . self::EOL
+            . "Content-Description: {$basename};" . self::EOL
+            . "Content-Disposition: attachment; filename=\"{$basename}\"; size=\"{$filesize}\";" . self::EOL
+            . "Content-Transfer-Encoding: base64" . self::EOL
+            . self::EOL // empty line needed !
+            . chunk_split(base64_encode($fileData)) . self::EOL;
         }
     }
 
@@ -121,7 +122,7 @@ class Mailer
             $this->to,
             $this->subject,
             $this->message,
-            implode(EOL, $this->headers),
+            implode(self::EOL, $this->headers),
             $this->returnPath
         ) or die($this->lang->getMessage('defaults', 'mailer_error'));
     }
