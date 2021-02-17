@@ -20,6 +20,8 @@ class HazzelForm
     protected $autocomplete;
     protected $formName;
     protected $stealthmode;
+    protected $gridClass;
+    protected $submitCaption;
     protected $lang;
     protected $fields;
     protected $error;
@@ -36,6 +38,8 @@ class HazzelForm
         $this->novalidate = $args['novalidate'] ?? false;
         $this->autocomplete = $args['autocomplete'] ?? true;
         $this->stealthmode = $args['stealthmode'] ?? false;
+        $this->gridClass = $args['gridclass'] ?? 'grid-wrap';
+        $this->submitCaption = $args['submitcaption'] ?? 'SEND';
         $this->fields = new \stdClass();
 
         // generate unique form name if not set via constructor
@@ -152,8 +156,7 @@ class HazzelForm
 
         if (!$this->stealthmode) {
             $this->renderSubmitErrors();
-            $this->renderSubmit();
-
+            $this->renderSubmit($this->submitCaption);
             $this->closeGrid();
         }
 
@@ -229,7 +232,7 @@ class HazzelForm
      *
      * @param $caption
      */
-    public function renderSubmit($caption = "Senden")
+    public function renderSubmit($caption = "SEND")
     {
         echo '<div class="field-wrap submit-wrap">';
         echo sprintf('<input type="submit" value="%1$s" name="%2$s[submit]">', $caption, $this->formName);
@@ -332,7 +335,7 @@ class HazzelForm
      */
     public function openGrid()
     {
-        echo '<div class="grid-wrap">';
+        echo '<div class="' . $this->gridClass . '">';
     }
 
     /**
