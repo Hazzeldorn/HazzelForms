@@ -12,7 +12,11 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
-===== V1.2.9 | 2021-02-20 ===== <br/>
+===== V1.2.10 | 2021-02-17 ===== <br/>
+* New config <em>submitcaption</em> to set submit button caption when using the <code>renderAll()</code> function
+* New config <em>gridclass</em> to define the grid class when using the <code>renderAll()</code> function
+
+===== V1.2.9 | 2021-02-10 ===== <br/>
 * Namespace bugfix
 
 ===== V1.2.8 | 2020-12-27 ===== <br/>
