@@ -12,6 +12,9 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
+===== V1.2.11 | 2021-04-03 ===== <br/>
+* Character escaping improved (prevent multiple escapes)
+
 ===== V1.2.10 | 2021-02-17 ===== <br/>
 * New config <em>submitcaption</em> to set submit button caption when using the <code>renderAll()</code> function
 * New config <em>gridclass</em> to define the grid class when using the <code>renderAll()</code> function
