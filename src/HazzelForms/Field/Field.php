@@ -77,7 +77,7 @@ class Field
 
     public function getValue()
     {
-        return $this->fieldValue;
+        return html_entity_decode($this->fieldValue, ENT_COMPAT, 'UTF-8');
     }
 
     public function getRequired()
