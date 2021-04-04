@@ -12,6 +12,9 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
+===== V1.2.12 | 2021-04-04 ===== <br/>
+* Field value encoding improved (html entity decoding added)
+
 ===== V1.2.11 | 2021-04-03 ===== <br/>
 * Character escaping improved (prevent multiple escapes)
 
