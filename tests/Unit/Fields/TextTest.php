@@ -55,9 +55,9 @@ final class TextTest extends TestCase
 
         // then
         $this->assertEquals('Example input', $field1->getValue());
-        $this->assertTrue( strpos($field2->returnField(), "&lt;script&gt;alert('test');&lt;/script&gt;") !== false );
+        $this->assertTrue(strpos($field2->returnField(), "&lt;script&gt;alert('test');&lt;/script&gt;") !== false);
         $this->assertEquals("<script>alert('test');</script>", $field2->getValue());
-        $this->assertTrue( strpos($field3->returnField(), '&quot;Johnson &amp; Johnson&quot;') !== false );
+        $this->assertTrue(strpos($field3->returnField(), '&quot;Johnson &amp; Johnson&quot;') !== false);
         $this->assertEquals('"Johnson & Johnson"', $field3->getValue());
     }
 
