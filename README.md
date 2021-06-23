@@ -12,6 +12,9 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
+===== V1.2.13 | 2021-06-23 ===== <br/>
+* Bugfix: <code>$form->getFieldValues</code> function was broken for uploaded files
+
 ===== V1.2.12 | 2021-04-04 ===== <br/>
 * Field value encoding improved (html entity decoding added)
 
