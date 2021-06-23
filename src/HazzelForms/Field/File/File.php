@@ -69,6 +69,12 @@ class File extends Field
         return sprintf('<input type="%1$s" id="%2$s-%3$s" name="%2$s[%3$s][]" class="%4$s" %5$s />', $this->fieldType, $this->formName, $this->fieldSlug, $this->classlist, $this->buildAttributeString());
     }
 
+    public function getValue()
+    {
+        /* override because html_entity_decode should not be run for files */
+        return $this->fieldValue;
+    }
+
     public function validate()
     {
 
