@@ -33,7 +33,7 @@ class Field
     public function returnLabel()
     {
         if ($this->label != false) {
-            return sprintf('<span class="label">%1$s</span>', $this->label);
+            return sprintf('<label for="%1$s-%2$s"><span class="label">%3$s</span></label>', $this->formName, $this->fieldSlug, $this->label);
         }
     }
 
