@@ -13,7 +13,7 @@ class Field
     protected $fieldType;
     protected $label = '';
     protected $required;
-    protected $classList = '';
+    protected $classlist = '';
     protected $error = '';
     protected $fieldValue = '';
     protected $validated = false;
@@ -97,7 +97,7 @@ class Field
         } elseif ($this->validated && !empty($this->error)) {
             $classes .= ' has-error';
         }
-        return sprintf('<div class="field-wrap %1$s">', $classes);
+        return sprintf('<div class="field-wrap %1$s %2$s">', $this->classlist, $classes);
     }
 
     public function getFieldWrapAfter()
