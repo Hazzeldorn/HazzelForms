@@ -6,7 +6,6 @@ use HazzelForms\Field\Field as Field;
 
 class File extends Field
 {
-
     protected $maxsize;
     protected $maxfiles;
     protected $multiple;

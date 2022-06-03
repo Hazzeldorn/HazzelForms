@@ -7,7 +7,6 @@ use HazzelForms\Field\Field as Field;
 
 class Checkbox extends Options
 {
-
     public function __construct($fieldName, $formName, $args = [])
     {
         parent::__construct($fieldName, $formName, $args);

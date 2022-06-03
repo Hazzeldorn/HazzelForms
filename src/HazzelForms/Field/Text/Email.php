@@ -4,7 +4,6 @@ namespace HazzelForms\Field\Text;
 
 class Email extends Text
 {
-
     public function __construct($fieldName, $formName, $args = [])
     {
         parent::__construct($fieldName, $formName, $args);

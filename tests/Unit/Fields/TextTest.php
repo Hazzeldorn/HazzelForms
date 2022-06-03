@@ -9,8 +9,6 @@ use HazzelForms\HazzelForm;
 
 final class TextTest extends TestCase
 {
-
-
     private $form;
     private $fieldType = 'text';
 

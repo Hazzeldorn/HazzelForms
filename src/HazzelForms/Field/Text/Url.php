@@ -4,7 +4,6 @@ namespace HazzelForms\Field\Text;
 
 class Url extends Text
 {
-
     private const URL_REGEX = "@(http://|https://)?[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,}(\/\S*)?@"; // lazy URL validation
 
 

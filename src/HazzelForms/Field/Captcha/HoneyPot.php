@@ -6,7 +6,6 @@ use HazzelForms\Field\Field as Field;
 
 class HoneyPot extends Captcha
 {
-
     protected $inlineCSS;
     protected $fieldType = 'honeypot';
 

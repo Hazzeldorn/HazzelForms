@@ -7,7 +7,6 @@ use HazzelForms\Field\Field as Field;
 
 class Text extends Field
 {
-
     protected $placeholder;
     protected $maxlength;
     protected $readonly;

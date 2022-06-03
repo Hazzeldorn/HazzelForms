@@ -6,7 +6,6 @@ use HazzelForms\Field\Text\Text as Text;
 
 class Number extends Text
 {
-
     protected $min;
     protected $max;
     protected $step;

@@ -6,7 +6,6 @@ use HazzelForms\Tools as Tools;
 
 class Field
 {
-
     protected $formName;
     protected $fieldName;
     protected $fieldSlug;

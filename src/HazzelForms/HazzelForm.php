@@ -13,7 +13,6 @@ use HazzelForms\Language as Language;
 
 class HazzelForm
 {
-
     protected $action;
     protected $method;
     protected $novalidate;

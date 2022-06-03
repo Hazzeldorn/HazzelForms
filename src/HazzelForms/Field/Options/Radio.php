@@ -6,7 +6,6 @@ use HazzelForms\Field\Field as Field;
 
 class Radio extends Options
 {
-
     public function __construct($fieldName, $formName, $args = [])
     {
         parent::__construct($fieldName, $formName, $args);
