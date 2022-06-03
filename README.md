@@ -12,6 +12,10 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
+===== V1.2.14 | 2022-06-03 ===== <br/>
+* Classlist added to field-wrap
+* Real label tag added around labels (instead of just using span elements)
+
 ===== V1.2.13 | 2021-06-23 ===== <br/>
 * Bugfix: <code>$form->getFieldValues</code> function was broken for uploaded files
 
