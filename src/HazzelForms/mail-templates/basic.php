@@ -1,27 +1,26 @@
 <?php
-
-namespace HazzelForms;
-
 /*
-  *   This is a mail template for senidng hazzelform data to webmasters / responsible persons...
-  *   It is included within mailer class ($this = Mailer class)
+  *   @var $subject
+  *   @var $fields
+  *
+  *   This is a mail template for sending HazzelForm data to webmasters / responsible persons...
   *
   *   Requires:
+  *   - a defined variable $subject which contains the subject of the mail
   *   - a defined array $fields which contains all field objects
   *
   *   Returns:
   *   - HTML Email content
   */
-
 ?>
 <!doctype html>
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
-  <title><?php echo $this->subject; ?></title>
+  <title><?php echo $subject; ?></title>
 </head>
 <body>
-  <h3><?php echo $this->subject; ?></h3>
+  <h3><?php echo $subject; ?></h3>
   <table rules="all" style="border-color: #aaa;" cellpadding="10">
 
     <?php foreach ($fields as $field) :

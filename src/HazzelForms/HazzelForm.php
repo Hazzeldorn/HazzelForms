@@ -7,9 +7,12 @@
 
 namespace HazzelForms;
 
+use Exception;
 use HazzelForms\Tools as Tools;
-use HazzelForms\Mailer as Mailer;
+use HazzelForms\LegacyMailer as LegacyMailer;
 use HazzelForms\Language as Language;
+use PHPMailer\PHPMailer\PHPMailer;
+use SebastianBergmann\Template\Template;
 
 class HazzelForm
 {
@@ -25,6 +28,7 @@ class HazzelForm
     protected $error;
     protected $isSubmitted = false;
     protected $valid = false;
+    protected $mailer = null;
 
     protected static $formNr = 0;
 
@@ -428,21 +432,66 @@ class HazzelForm
      * @param string $replyTo    reply to mail address (optional)
      * @param string $senderName name of sender (optional)
      * @param string $subject    optional mail subject (optional)
-     * @param string $template   mail template (optional)
+     * @param string|TemplateLoader $template   mail template (optional)
+     *
+     * @throws Exception
      */
-    public function sendMail($to, $from = '', $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'basic')
+    public function sendMail($to = '', $from = '', $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'mail-templates/basic.php')
     {
-        if (empty($from)) {
-            $from = 'noreply@' . $_SERVER['HTTP_HOST'];
-        }
-        if (empty($replyTo)) {
-            $replyTo = 'noreply@' . $_SERVER['HTTP_HOST'];
-        }
+        if ($this->mailer != null) {
+            // use PHPMailer instance and override default settings
+            $this->mailer->addAddress($to);
+            $this->mailer->setFrom($from, $senderName);
+            $this->mailer->addReplyTo($replyTo);
+            $this->mailer->Subject = $subject;
+            $this->mailer->AltBody = $subject;
 
-        // send mail
-        $mail = new Mailer($to, $from, $replyTo, $senderName, $subject, $template, $this->lang);
-        $mail->prepareContent($this->getFields());
-        $mail->send();
+            // prepare mail content
+            [$fields, $attachements] = LegacyMailer::filterFieldsAndAttachements($this->getFields());
+
+            if (is_string($template)) {
+                $templateLoader = new TemplateLoader($template);
+                $this->mailer->Body = $templateLoader->loadTemplate($subject, $fields);
+            } else {
+                $this->mailer->Body = $template->loadTemplate($subject, $fields);
+            }
+
+            // add attachements
+            if (!empty($attachements)) {
+                foreach ($attachements as $fileData) {
+                    $this->mailer->addAttachment($fileData['dir'], $fileData['name']);
+                };
+            }
+
+            // exit($this->mailer->Body);
+            $this->mailer->send();
+        } else {
+            // use legacy mail function
+            if (empty($to)) {
+                exit('No mail address specified');
+            }
+            if (empty($from)) {
+                $from = 'noreply@' . $_SERVER['HTTP_HOST'];
+            }
+            if (empty($replyTo)) {
+                $replyTo = 'noreply@' . $_SERVER['HTTP_HOST'];
+            }
+
+            // send mail
+            $mail = new LegacyMailer($to, $from, $replyTo, $senderName, $subject, $template, $this->lang);
+            $mail->prepareContent($this->getFields());
+            $mail->send();
+        }
+    }
+
+
+    /**
+     * Set Mailer instance
+     * @param PHPMailer $mailer  PHP mailer instance
+     */
+    public function setMailer($mailer)
+    {
+        $this->mailer = $mailer;
     }
 
 

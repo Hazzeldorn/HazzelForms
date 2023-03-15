@@ -5,7 +5,7 @@ namespace HazzelForms;
 use HazzelForms\Field\File\File as File;
 use HazzelForms\Field\Captcha\Captcha as Captcha;
 
-class Mailer
+class LegacyMailer
 {
 
     protected $to;
@@ -46,7 +46,29 @@ class Mailer
 
     public function prepareContent($formFields)
     {
+        [$fields, $attachements] = self::filterFieldsAndAttachements($formFields);
 
+        // prepare mail content
+        $templateLoader = new TemplateLoader($this->template);
+        $htmlContent = $templateLoader->loadTemplate($this->subject, $fields);
+
+        // content
+        $this->message .= "--{$this->mimeBoundary}" . self::EOL
+        . 'Content-Type: text/html; charset="UTF-8";' . self::EOL
+        . 'Content-Transfer-Encoding: 8bit;' . self::EOL
+        . self::EOL // empty line needed !
+        . $htmlContent . self::EOL;
+
+        // add attachements
+        if (!empty($attachements)) {
+            foreach ($attachements as $fileData) {
+                $this->addAttachement($fileData);
+            } unset($fileData);
+        }
+    }
+
+    public static function filterFieldsAndAttachements($formFields)
+    {
         $attachements = $fields = [];
 
         // loop through all fields and clean formFields array
@@ -62,25 +84,7 @@ class Mailer
             }
         }
 
-        // prepare mail content
-        ob_start();
-        include "mail-templates/{$this->template}.php";
-        $htmlContent = ob_get_contents();
-        ob_end_clean();
-
-        // content
-        $this->message .= "--{$this->mimeBoundary}" . self::EOL
-        . 'Content-Type: text/html; charset="UTF-8";' . self::EOL
-        . 'Content-Transfer-Encoding: 8bit;' . self::EOL
-        . self::EOL // empty line needed !
-        . $htmlContent . self::EOL;
-
-        // add attachements
-        if (!empty($attachements)) {
-            foreach ($attachements as $fileData) {
-                $this->addAttachement($fileData);
-            } unset($fileData);
-        }
+        return [$fields, $attachements];
     }
 
     /**
