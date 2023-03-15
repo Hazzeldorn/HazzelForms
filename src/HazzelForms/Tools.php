@@ -4,7 +4,6 @@ namespace HazzelForms;
 
 class Tools
 {
-
     /**
      * Strip out all empty characters from a string
      *

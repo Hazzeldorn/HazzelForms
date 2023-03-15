@@ -9,9 +9,6 @@ use HazzelForms\HazzelForm;
 
 final class TextTest extends TestCase
 {
-
-
-
     private $form;
     private $fieldType = 'text';
 
@@ -42,20 +39,24 @@ final class TextTest extends TestCase
     /**
     *  Test if spaces are trimmed and XSS is prevented
     */
-    public function testSetValue(): void
+    public function testSetGetValue(): void
     {
         // given
         $field1 = $this->form->addField('trimmer', $this->fieldType);
         $field2 = $this->form->addField('specialchars', $this->fieldType);
+        $field3 = $this->form->addField('specialchars_multi', $this->fieldType);
+
         // when
-        $field1->setValue(' Example input ');
-        // trimming
-        $field2->setValue("<script>alert('test');</script>");
-        // illegal chars
+        $field1->setValue(' Example input '); // trimming
+        $field2->setValue("<script>alert('test');</script>"); // illegal chars
+        $field3->setValue('"Johnson &amp; Johnson&quot;');
 
         // then
         $this->assertEquals('Example input', $field1->getValue());
-        $this->assertEquals("&lt;script&gt;alert('test');&lt;/script&gt;", $field2->getValue());
+        $this->assertTrue(strpos($field2->returnField(), "&lt;script&gt;alert('test');&lt;/script&gt;") !== false);
+        $this->assertEquals("<script>alert('test');</script>", $field2->getValue());
+        $this->assertTrue(strpos($field3->returnField(), '&quot;Johnson &amp; Johnson&quot;') !== false);
+        $this->assertEquals('"Johnson & Johnson"', $field3->getValue());
     }
 
 
@@ -70,15 +71,15 @@ final class TextTest extends TestCase
         $field2 = $this->form->addField('required space filled field', $this->fieldType);
         $field3 = $this->form->addField('required non empyt field', $this->fieldType);
         $field4 = $this->form->addField('non required empty field', $this->fieldType, ['required' => false]);
+
         // when
         $field1->setValue('');
         $field2->setValue(' ');
-        // will be trimmed
         $field3->setValue('content');
         $field4->setValue('');
+
         // then
         $this->assertFalse($field1->validate());
-        // TODO replace function name with isValid()
         $this->assertFalse($field2->validate());
         $this->assertTrue($field3->validate());
         $this->assertTrue($field4->validate());

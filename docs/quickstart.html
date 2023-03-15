@@ -126,7 +126,7 @@ $form = new HazzelForms\HazzelForm(array(
 												</tr>
 												<tr>
 													<td>formname</td>
-													<td>String</td>
+													<td>string</td>
 													<td>hazzelform_<code>1</code</td>
 													<td>Internal form identifier. The <code>&lt;form&gt;</code> tag will get this ID too. For multiple forms on a page, the default number will be increased</td>
 												</tr>
@@ -144,7 +144,19 @@ $form = new HazzelForms\HazzelForm(array(
 													<td>false</td>
 													<td>If you switch on stealth mode, HazzelForms won't output the submit button. Furthermore it will ignore error messages and
 														the grid wrapper. You will need javascript to submit the form. This takes effect when <code>$form->renderAll();</code> is used to create DOM elements.</td>
-													</tr>
+												</tr>
+												<tr>
+													<td>submitcaption</td>
+													<td>string</td>
+													<td>'grid-wrap'</td>
+													<td>This parameter allows you to customize the submit button caption when using <code>$form->renderAll();</code> to create the whole form.</td>
+												</tr>
+												<tr>
+													<td>gridclass</td>
+													<td>string</td>
+													<td>'grid-wrap'</td>
+													<td>This parameter allows you to customize the class of the <code>div</code> which HazzelForms wraps around the form.</td>
+												</tr>
 											</tbody>
 										</table>
 									</div>

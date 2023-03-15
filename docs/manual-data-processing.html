@@ -46,13 +46,18 @@
 
 									<p>You can use the function <code>$form->getFieldValues()</code> to get an array with all the field values.
 									Field names are set as array index whereas the field value is set as the corresponding content.</p>
+									
 <pre><code class="language-php">// make sure to validate first :)
 if($form->validate()){
 
+	// get array with all fields
   	$data = $form->getFieldValues();
 
 		// easly access single fields
 		$customer_email = $data['customer_email'];
+
+		// alternative
+		$customer_email = $form->getField('customer_email')->getValue();
 
 		// ...or loop through the whole array
 		foreach($data as $field => $value){

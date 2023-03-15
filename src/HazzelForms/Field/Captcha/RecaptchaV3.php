@@ -6,7 +6,6 @@ use HazzelForms\Field\Field as Field;
 
 class RecaptchaV3 extends Captcha
 {
-
     protected $siteKey = '';
     protected $secretKey = '';
     protected $fieldType = 'recaptcha-v3';

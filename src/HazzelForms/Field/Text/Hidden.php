@@ -4,7 +4,6 @@ namespace HazzelForms\Field\Text;
 
 class Hidden extends Text
 {
-
     public function __construct($fieldName, $formName, $args = [])
     {
         parent::__construct($fieldName, $formName, $args);

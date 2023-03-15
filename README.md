@@ -12,7 +12,24 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
-===== V1.2.9 | 2021-02-20 ===== <br/>
+===== V1.2.14 | 2022-06-03 ===== <br/>
+* Classlist added to field-wrap
+* Real label tag added around labels (instead of just using span elements)
+
+===== V1.2.13 | 2021-06-23 ===== <br/>
+* Bugfix: <code>$form->getFieldValues</code> function was broken for uploaded files
+
+===== V1.2.12 | 2021-04-04 ===== <br/>
+* Field value encoding improved (html entity decoding added)
+
+===== V1.2.11 | 2021-04-03 ===== <br/>
+* Character escaping improved (prevent multiple escapes)
+
+===== V1.2.10 | 2021-02-17 ===== <br/>
+* New config <em>submitcaption</em> to set submit button caption when using the <code>renderAll()</code> function
+* New config <em>gridclass</em> to define the grid class when using the <code>renderAll()</code> function
+
+===== V1.2.9 | 2021-02-10 ===== <br/>
 * Namespace bugfix
 
 ===== V1.2.8 | 2020-12-27 ===== <br/>

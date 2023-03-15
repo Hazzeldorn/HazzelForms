@@ -4,7 +4,6 @@ namespace HazzelForms\Field\Text;
 
 class Password extends Text
 {
-
     public function __construct($fieldName, $formName, $args = [])
     {
         parent::__construct($fieldName, $formName, $args);
@@ -21,6 +20,11 @@ class Password extends Text
 
     public function setValue($value)
     {
-        $this->fieldValue = $value;
+        $this->fieldValue = $value; // override  encoding
+    }
+
+    public function getValue()
+    {
+        return $this->fieldValue; // override  encoding
     }
 }

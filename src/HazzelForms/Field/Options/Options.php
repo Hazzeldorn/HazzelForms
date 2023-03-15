@@ -7,7 +7,6 @@ use HazzelForms\Field\Field as Field;
 
 class Options extends Field
 {
-
     protected $disabled;
     protected $options = [];
     protected $default;

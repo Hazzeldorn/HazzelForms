@@ -4,7 +4,6 @@ namespace HazzelForms;
 
 class Language
 {
-
     protected $language;
     protected $strings;
     protected $dir = __DIR__ . '/translation'; // directory to language files

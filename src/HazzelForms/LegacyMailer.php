@@ -7,7 +7,6 @@ use HazzelForms\Field\Captcha\Captcha as Captcha;
 
 class LegacyMailer
 {
-
     protected $to;
     protected $from;
     protected $replyTo;

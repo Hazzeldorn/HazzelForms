@@ -6,7 +6,6 @@ use HazzelForms\Field\Field as Field;
 
 class Dropdown extends Options
 {
-
     protected $first;
 
     public function __construct($fieldName, $formName, $args = [])

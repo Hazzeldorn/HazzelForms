@@ -7,7 +7,6 @@ use HazzelForms\Field\Field as Field;
 
 class Text extends Field
 {
-
     protected $placeholder;
     protected $maxlength;
     protected $readonly;
@@ -57,7 +56,7 @@ class Text extends Field
 
     public function setValue($value)
     {
-        $this->fieldValue = htmlspecialchars(trim($value));
+        $this->fieldValue = htmlspecialchars(trim($value), ENT_COMPAT, 'UTF-8', false);
     }
 
     public function validate()

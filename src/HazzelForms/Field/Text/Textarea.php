@@ -4,7 +4,6 @@ namespace HazzelForms\Field\Text;
 
 class Textarea extends Text
 {
-
     protected $cols;
     protected $rows;
 
