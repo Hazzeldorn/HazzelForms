@@ -44,44 +44,89 @@
 									</header>
 
 									<p>HazzelForms lets you send the form data to as many recipients as you wish. Keep in mind that validation is needed before!</p>
-<pre><code class="language-php">/**
- * Send mails using at least a recipent address:
- * @param string $to           mail address of receiver
- * @param string $from         mail address of sender (optional)
- * @param string $replyTo      reply to mail address  (optional)
- * @param string $senderName   name of sender 				(optional)
- * @param string $subject      optional mail subject  (optional)
- * @param string $template     optional mail template (optional)
- */
-$form->sendMail($to, $from, $replyTo, $senderName, $subject, $template);
 
-// examples
-if($form->validate()){
+									<h2>Send mails with PHPMailer (SMTP)</h2>
 
-		// minimal
-  	$form->sendMail('admin@example.com');
+									<p>You can pass HazzelForms a <a href="https://github.com/PHPMailer/PHPMailer" target="_blank" rel="noopener">PHPMailer</a> instance, which will then be used to send the emails via the SMTP server defined in PHP Mailer:</p>
 
-		// maximal
-	  $form->sendMail(
-				'admin@example.com',
-				'website@example.com',
-				'noreply@example.com',
-				'Contact Form',
-				'New inquiry',
-				'yourTemplateName'
-		);
+<pre><code class="language-php">if($form->validate()){
+
+	// set up PHPMailer
+	// HINT: for clean and reusable code you might want to use e a separate function e.g. "createMailer()" that creates the PHPMailer instance
+	$mailer = new PHPMailer(true);
+	$mailer->isSMTP();
+	$mailer->Host       = '';             // Set the SMTP server to send through
+	$mailer->Username   = '';    	        // SMTP username
+	$mailer->Password   = SMTP_PASSWORD;  // SMTP password (warning: should be stored in a secure place – not hard coded)
+	$mailer->Port       = 465;
+	$mailer->SMTPAuth   = true;
+	$mailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+
+	// pass PHPMailer to HazzelForms
+	$form->setMailer($mailer);
+
+	// send mail (advanced configuration)
+	$form->sendMail(
+		'john.doe@example.com',  // to
+		'noreply@example.com',   // from
+		'noreply@example.com',   // reply-to     (optional, defaults to from)
+		'Contact Form',          // sender name  (optional, defaults to "HazzelForms")
+		'New inquiry',           // subject      (optional, defaults to "New HazzelForms Message")
+		'basic'                  // template     (optional, defaults to "basic")
+	);
+
 }
 </code></pre>
 
-									<h2>Templates</h2>
-									<p>It is possible to add customized e-mail temlates to the <code>mail-templates</code> folder.</p>
+<h2>The straight forward way (PHP <code>mail()</code> function)</h2>
 
-								</section>
+<p>
+	If you are not ready to use PHPMailer but you still want to test your form, you can skip the <code>$form->setMailer($mailer);</code> part.
+	HazzelForms will then try to use the PHP <code>mail()</code> function to send the mail. Keep in mind that this is not recommended for production use.
+</p>
 
-						</div>
-					</div>
+<pre><code class="language-php">if($form->validate()){
 
-				<!-- Sidebar -->
+	  // it is as simple as that
+  	$form->sendMail(
+	    'john.doe@example.com'   // to
+	    'noreply@example.com'    // from
+	);
+
+}
+</code></pre>
+
+<h2>Templates</h2>
+<p>Normally HazzelForms takes the 'basic' email template from the mail-templates folder. You can duplicate this template if needed and customize it as you like. Which mail template HazzelForms should use is determined by the sixth parameter of the <code>form->sendMail()</code> function.</p>
+<p>If you have more sophisticated needs, you can also create a template yourself using HazzelForms' template loader. To do this, you need a PHP file that prepares the mail content as HTML. You can use variables in the template and fill them into the template using the inject function of the template loader.</p>
+
+<pre><code class="language-php">// load template file
+$template = new HazzelForms\TemplateLoader('path/to/your/template.php');
+
+// inject variables (you can access them in the template file using $vars['firstname'])
+// NOTE: the form fields from HazzelForms are automatically injected as $fields array
+$template->inject([
+	'firstname' => 'John'
+	'lastname'  => 'Doe',
+]);
+
+// send mail
+$form->sendMail(
+	'jane.doe@example.com',
+	'noreply@example.com',
+	'noreply@example.com',
+	'Contact Form',
+	'New inquiry',
+	$template,   // pass your template loader instance to HazzelForms (instead of the template name)
+);
+</code></pre>
+
+</section>
+
+</div>
+</div>
+
+<!-- Sidebar -->
 				<div id="sidebar">
 					<div class="inner">
 
