@@ -141,6 +141,5 @@ class LegacyMailer
         } else {
             $this->templateLoader = $template;
         }
-
     }
 }
