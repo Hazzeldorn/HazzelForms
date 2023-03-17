@@ -12,6 +12,11 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
+===== V1.3.0 | 2023-03-16 ===== <br/>
+* Feature added to send emails with SMTP using PHPMailer<br/>
+* Improved template loader for emails<br/>
+* Some code changes in existing mail function to ensure backwards compatibility.<br/>
+
 ===== V1.2.14 | 2022-06-03 ===== <br/>
 * Classlist added to field-wrap
 * Real label tag added around labels (instead of just using span elements)

@@ -65,15 +65,19 @@
 	// pass PHPMailer to HazzelForms
 	$form->setMailer($mailer);
 
-	// send mail (advanced configuration)
-	$form->sendMail(
+	// send mail
+	try {
+	  $form->sendMail(
 		'john.doe@example.com',  // to
 		'noreply@example.com',   // from
 		'noreply@example.com',   // reply-to     (optional, defaults to from)
 		'Contact Form',          // sender name  (optional, defaults to "HazzelForms")
 		'New inquiry',           // subject      (optional, defaults to "New HazzelForms Message")
 		'basic'                  // template     (optional, defaults to "basic")
-	);
+	  );
+	} catch (Exception $e) {
+      echo "Message could not be sent. Mailer Error: {$mailer->ErrorInfo}";
+	}
 
 }
 </code></pre>
@@ -106,7 +110,7 @@ $template = new HazzelForms\TemplateLoader('path/to/your/template.php');
 // inject variables (you can access them in the template file using $vars['firstname'])
 // NOTE: the form fields from HazzelForms are automatically injected as $fields array
 $template->inject([
-	'firstname' => 'John'
+	'firstname' => 'John',
 	'lastname'  => 'Doe',
 ]);
 
