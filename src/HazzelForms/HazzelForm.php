@@ -438,13 +438,19 @@ class HazzelForm
      *
      * @throws Exception
      */
-    public function sendMail($to = '', $from = '', $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'mail-templates/basic.php')
+    public function sendMail($to, $from, $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'basic')
     {
+        if (empty($replyTo)) {
+            $replyTo = $from;
+        }
+
         if ($this->mailer != null) {
             // use PHPMailer instance and override default settings
+            $this->mailer->isHTML(true);
             $this->mailer->addAddress($to);
             $this->mailer->setFrom($from, $senderName);
             $this->mailer->addReplyTo($replyTo);
+            $this->mailer->CharSet = 'UTF-8';
             $this->mailer->Subject = $subject;
             $this->mailer->AltBody = $subject;
 
@@ -452,7 +458,7 @@ class HazzelForm
             [$fields, $attachements] = LegacyMailer::filterFieldsAndAttachements($this->getFields());
 
             if (is_string($template)) {
-                $templateLoader = new TemplateLoader($template);
+                $templateLoader = new TemplateLoader(__DIR__ . '/mail-templates/' . $template . '.php');
                 $this->mailer->Body = $templateLoader->loadTemplate($subject, $fields);
             } else {
                 $this->mailer->Body = $template->loadTemplate($subject, $fields);
@@ -468,17 +474,6 @@ class HazzelForm
             // exit($this->mailer->Body);
             $this->mailer->send();
         } else {
-            // use legacy mail function
-            if (empty($to)) {
-                exit('No mail address specified');
-            }
-            if (empty($from)) {
-                $from = 'noreply@' . $_SERVER['HTTP_HOST'];
-            }
-            if (empty($replyTo)) {
-                $replyTo = 'noreply@' . $_SERVER['HTTP_HOST'];
-            }
-
             // send mail
             $mail = new LegacyMailer($to, $from, $replyTo, $senderName, $subject, $template, $this->lang);
             $mail->prepareContent($this->getFields());

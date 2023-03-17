@@ -20,7 +20,7 @@ class TemplateLoader
     public function loadTemplate($subject, $formFields = [])
     {
         // Create a lambda function to include the template file
-        $templateLoader = function ($templateFile, $subject, $formFields, $variables) {
+        $templateLoader = function ($templateFile, $subject, $fields, $vars) {
             // Start output buffering
             ob_start();
 

@@ -27,7 +27,7 @@
           <tr>
             <td class="wrapper">
               <table border="0" cellpadding="0" cellspacing="0">
-                  Hello <?= $variables['name'] ?? '' ?><br><br>
+                  Hello <?= $vars['firstname'] ?? '' ?><br><br>
 
                   You can insert your own variables in this template<br><br>
 

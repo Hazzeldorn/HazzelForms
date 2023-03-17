@@ -16,7 +16,7 @@ class LegacyMailer
     protected $message = '';
     protected $mimeBoundary;
     protected $returnPath;
-    protected $template;
+    protected $templateLoader;
     protected $lang;
     protected const EOL = "\r\n";   // end of line
 
@@ -27,8 +27,10 @@ class LegacyMailer
         $this->replyTo = $replyTo;
         $this->senderName = $senderName;
         $this->subject = $subject;
-        $this->template = $template;
         $this->lang = $lang;
+
+        // set template
+        $this->setTemplate($template);
 
         // define multipart content boundary
         $semiRand = md5(time());
@@ -48,8 +50,7 @@ class LegacyMailer
         [$fields, $attachements] = self::filterFieldsAndAttachements($formFields);
 
         // prepare mail content
-        $templateLoader = new TemplateLoader($this->template);
-        $htmlContent = $templateLoader->loadTemplate($this->subject, $fields);
+        $htmlContent = $this->templateLoader->loadTemplate($this->subject, $fields);
 
         // content
         $this->message .= "--{$this->mimeBoundary}" . self::EOL
@@ -134,6 +135,12 @@ class LegacyMailer
     // GETTERS AND SETTERS
     public function setTemplate($template)
     {
-        $this->template = $template;
+        // set template
+        if (is_string($template)) {
+            $this->templateLoader = new TemplateLoader(__DIR__ . '/mail-templates/' . $template . '.php');
+        } else {
+            $this->templateLoader = $template;
+        }
+
     }
 }
