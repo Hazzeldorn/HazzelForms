@@ -473,6 +473,11 @@ class HazzelForm
 
             // exit($this->mailer->Body);
             $this->mailer->send();
+
+            // reset mailer before next mail
+            $this->mailer->clearAllRecipients();
+            $this->mailer->clearReplyTos();
+            $this->mailer->clearAttachments();
         } else {
             // send mail
             $mail = new LegacyMailer($to, $from, $replyTo, $senderName, $subject, $template, $this->lang);

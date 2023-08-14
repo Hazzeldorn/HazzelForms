@@ -62,7 +62,7 @@
 	$mailer->SMTPAuth   = true;
 	$mailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
 
-	// pass PHPMailer to HazzelForms
+	// pass PHPMailer to HazzelForms. HazzelForms automatically resets the recipents and reply-to addresses after each mail.
 	$form->setMailer($mailer);
 
 	// send mail
