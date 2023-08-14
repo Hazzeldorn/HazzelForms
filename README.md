@@ -12,6 +12,9 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
+===== V1.3.1 | 2023-08-14 ===== <br/>
+* Bugfix: PHPMailer recipents and reply-to addresses are now reset after every mail sent.<br/>
+
 ===== V1.3.0 | 2023-03-16 ===== <br/>
 * Feature added to send emails with SMTP using PHPMailer<br/>
 * Improved template loader for emails<br/>
