@@ -10,7 +10,7 @@ class Hidden extends Text
 
         $this->fieldType    = 'hidden';
         $this->label        = false;
-        $this->autocomplete = false;
+        $this->autofocus    = false;
         $this->placeholder  = false;
     }
 
@@ -21,6 +21,11 @@ class Hidden extends Text
     public function getFieldWrapAfter()
     {
         return "";
+    }
+
+    protected function buildAttributeString()
+    {
+        return ' spellcheck="false"';
     }
 
     // no error for hidden fields

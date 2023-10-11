@@ -38,6 +38,14 @@ class Options extends Field
         return $attributes;
     }
 
+    // build label
+    public function returnLabel()
+    {
+        if ($this->label != false) {
+            return sprintf('<label><span class="label">%1$s</span></label>', $this->label);
+        }
+    }
+
     public function returnField()
     {
         $fieldHtml  = '';
