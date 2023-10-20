@@ -74,6 +74,11 @@ class Field
         return $this->fieldSlug;
     }
 
+    public function getType()
+    {
+        return $this->fieldType;
+    }
+
     public function getValue()
     {
         return html_entity_decode($this->fieldValue, ENT_COMPAT, 'UTF-8');
