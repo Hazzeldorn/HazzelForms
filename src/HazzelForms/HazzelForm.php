@@ -527,6 +527,24 @@ class HazzelForm
     }
 
     /**
+     * If form is valid, this returns an array with all the field names, its values and its types
+     */
+    public function getFieldValuesAndTypes() 
+    {
+        $fieldValues = [];
+        if ($this->valid != false) {
+            // if all fields are valid
+            foreach ($this->getFields() as $field) {
+                $fieldValues[$field->getName()] = [$field->getValue(), $field->getType()];
+            }
+            unset($field);
+            return $fieldValues;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Checks if a field exists
      */
     public function fieldExists($fieldName)
