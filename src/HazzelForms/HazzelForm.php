@@ -529,7 +529,7 @@ class HazzelForm
     /**
      * If form is valid, this returns an array with all the field names, its values and its types
      */
-    public function getFieldValuesAndTypes() 
+    public function getFieldValuesAndTypes()
     {
         $fieldValues = [];
         if ($this->valid != false) {
