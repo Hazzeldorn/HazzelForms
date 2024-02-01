@@ -13,7 +13,7 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
-===== V1.3.2 | 2024-02-01 ===== <br/>
+===== V1.3.4 | 2024-02-01 ===== <br/>
 
 - Bugfix: Selected options in option fields were not perserved correctly when form was not valid<br/>
 - Docs updated<br/>
