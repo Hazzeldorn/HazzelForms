@@ -5,8 +5,7 @@ namespace HazzelForms\Field\Text;
 use HazzelForms\Tools as Tools;
 use HazzelForms\Field\Field as Field;
 
-class Text extends Field
-{
+class Text extends Field {
     protected $placeholder;
     protected $maxlength;
     protected $readonly;
@@ -14,8 +13,7 @@ class Text extends Field
     protected $autofocus;
     protected $fieldType = 'text';
 
-    public function __construct($fieldName, $formName, $args = [])
-    {
+    public function __construct($fieldName, $formName, $args = []) {
         parent::__construct($fieldName, $formName, $args);
 
         $this->placeholder  = $args['placeholder'] ?? '';
@@ -26,8 +24,7 @@ class Text extends Field
     }
 
 
-    protected function buildAttributeString()
-    {
+    protected function buildAttributeString() {
         $attributes = '';
 
         if (!empty($this->maxlength)) {
@@ -49,18 +46,15 @@ class Text extends Field
         return $attributes;
     }
 
-    public function returnField()
-    {
+    public function returnField() {
         return sprintf('<input type="%1$s" id="%2$s-%3$s" name="%2$s[%3$s]" value="%4$s" class="%5$s" %6$s />', $this->fieldType, $this->formName, $this->fieldSlug, $this->fieldValue, $this->classlist, $this->buildAttributeString());
     }
 
-    public function setValue($value)
-    {
+    public function setValue($value, $origin = 'MANUAL') {
         $this->fieldValue = htmlspecialchars(trim($value), ENT_COMPAT, 'UTF-8', false);
     }
 
-    public function validate()
-    {
+    public function validate() {
         $value = Tools::stripper($this->fieldValue);
 
         if (empty($value) && $this->required) {

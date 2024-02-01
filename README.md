@@ -12,6 +12,10 @@ https://hazzeldorn.github.io/HazzelForms/
 - [ ] File-Upload status callbacks
 
 ### Changelog
+===== V1.3.2 | 2024-02-01 ===== <br/>
+* Bugfix: Selected options in option fields were not perserved correctly when form was not valid<br/>
+* Docs updated<br/>
+
 ===== V1.3.2 | 2023-10-11 ===== <br/>
 * Bugfix: HTML syntax errors fixed<br/>
 
