@@ -4,13 +4,11 @@ namespace HazzelForms\Field\Captcha;
 
 use HazzelForms\Field\Field as Field;
 
-class HoneyPot extends Captcha
-{
+class HoneyPot extends Captcha {
     protected $inlineCSS;
     protected $fieldType = 'honeypot';
 
-    public function __construct($formName, $fieldName, $args = [])
-    {
+    public function __construct($formName, $fieldName, $args = []) {
         parent::__construct($formName, $fieldName, $args);
         $this->inlineCSS = $args['inline-css'] ?? true;
 
@@ -19,8 +17,7 @@ class HoneyPot extends Captcha
         $this->label     = false;
     }
 
-    public function returnField()
-    {
+    public function returnField() {
         $fieldHtml = '';
 
         if ($this->inlineCSS) {
@@ -38,13 +35,11 @@ class HoneyPot extends Captcha
     }
 
 
-    public function setValue($value)
-    {
+    public function setValue($value, $origin = 'MANUAL') {
         $this->fieldValue = htmlspecialchars(trim($value));
     }
 
-    public function validate()
-    {
+    public function validate() {
         if (!empty($this->fieldValue)) {
             // honeypot field must be empty to be valid
             $this->error = 'invalid';

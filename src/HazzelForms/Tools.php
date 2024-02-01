@@ -2,16 +2,14 @@
 
 namespace HazzelForms;
 
-class Tools
-{
+class Tools {
     /**
      * Strip out all empty characters from a string
      *
      * @param  string $val
      * @return string
      */
-    public static function stripper($val)
-    {
+    public static function stripper($val) {
         foreach ([' ', '&nbsp;', '\n', '\t', '\r'] as $strip) {
             $val = str_replace($strip, '', (string) $val);
         }
@@ -26,8 +24,7 @@ class Tools
      *
      * @return string
      */
-    public static function slugify($text, $replacement = '_')
-    {
+    public static function slugify($text, $replacement = '_') {
         return strtolower(trim(preg_replace('/\s/', $replacement, $text), '_'));
     }
 
@@ -37,8 +34,15 @@ class Tools
      * @param  string $var (mixed)
      * @return boolean
      */
-    public static function containsInt($var)
-    {
+    public static function containsInt($var) {
         return filter_var($var, FILTER_VALIDATE_INT) !== false;
+    }
+
+
+    /**
+     * Check if an array has numeric indexes or key-value pairs (associative)
+     */
+    public static function isArrayAssociative($array) {
+        return count(array_filter(array_keys($array), 'is_string')) > 0;
     }
 }

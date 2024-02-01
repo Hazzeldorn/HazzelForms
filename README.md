@@ -13,6 +13,11 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
+===== V1.3.2 | 2024-02-01 ===== <br/>
+
+- Bugfix: Selected options in option fields were not perserved correctly when form was not valid<br/>
+- Docs updated<br/>
+
 ===== V1.3.3 | 2023-12-22 ===== <br/>
 
 - Function added to get field types and values after form was validated<br/>
