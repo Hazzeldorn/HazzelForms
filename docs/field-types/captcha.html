@@ -52,10 +52,16 @@ to let HazzelForms do the work.</p>
 
 								<h2>Google ReCaptcha V3</h2>
 
-								<p>
-									You can include the score based ReCaptcha V3 exactly the same way as V2.
-									Just use <code>recaptcha-v3</code> instead of <code>recaptcha-v2</code> as field type.
-								</p>
+<pre><code class="language-php">// Add captcha field to the form object
+$form->addField('my-captcha',  'recaptcha-v3', ['sitekey'   => 'YOUR_PUBLIC_KEY',
+																								'secretkey' => 'YOUR_SECRET_KEY'
+																								'min_score' => 0.4
+																								]);
+</code></pre>
+<p>The captcha field can be added to the DOM like all the other fields by using the field name. Or use <code>$form->renderAll()</code> instead to
+to let HazzelForms do the work.</p>
+<p>With every user request, reCAPTCHA v3 returns a value between 0 and 1, indicating the probability that the request comes from a bot. If the value is close to 0, it is probably a bot; if it is close to 1, it is more likely that it is a human. The default score of <code>0.4</code> may be customized using the <code>min_score</code> argument.</p>
+<br>
 
 								<h2>Honeypot</h2>
 

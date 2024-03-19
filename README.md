@@ -13,6 +13,11 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
+===== V1.3.5 | 2024-03-19 ===== <br/>
+
+- Feature: make ReCaptcha V3 score customizable as a param<br/>
+- Docs updated<br/>
+
 ===== V1.3.4 | 2024-02-01 ===== <br/>
 
 - Bugfix: Selected options in option fields were not perserved correctly when form was not valid<br/>

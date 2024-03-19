@@ -7,6 +7,7 @@ use HazzelForms\Field\Field as Field;
 class RecaptchaV3 extends Captcha {
     protected $siteKey = '';
     protected $secretKey = '';
+    protected $minScore = 0.4;
     protected $fieldType = 'recaptcha-v3';
 
     public function __construct($formName, $fieldName, $args = []) {
@@ -14,6 +15,7 @@ class RecaptchaV3 extends Captcha {
 
         $this->siteKey   = $args['sitekey'] ?? '';
         $this->secretKey = $args['secretkey'] ?? '';
+        $this->minScore  = $args['min_score'] ?? 0.4;
         $this->label     = false;
     }
 
@@ -37,7 +39,7 @@ class RecaptchaV3 extends Captcha {
         // get captcha response from google
         $reCaptchaResponse = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $this->secretKey . "&response=" . $this->fieldValue), true);
 
-        if (empty($reCaptchaResponse) || $reCaptchaResponse['success'] != 1 || $reCaptchaResponse['score'] < 0.4) {
+        if (empty($reCaptchaResponse) || $reCaptchaResponse['success'] != 1 || $reCaptchaResponse['score'] < $this->minScore) {
             // CAPTCHA INCORRECT
             $this->error = 'invalid';
         } else {
