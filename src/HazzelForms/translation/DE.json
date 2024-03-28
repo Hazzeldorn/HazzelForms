@@ -62,7 +62,7 @@
   },
   "submit": {
     "invalid_fields": "Eines oder mehrere Felder sind fehlerhaft.",
-    "invalid_captcha": "Das Captcha wurde nicht korrekt gelöst.",
+    "invalid_captcha": "Die Spam-Prüfung ist fehlgeschlagen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns per E-Mail.",
     "upload_error": "Es gab einen Fehler beim Datei-Upload.",
     "transmission_error": "Es konnten nicht alle Felder übermittelt werden. Bitte später erneut versuchen.",
     "csrf_error": "CSRF-Token stimmt nicht überein.",

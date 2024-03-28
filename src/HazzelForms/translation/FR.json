@@ -62,7 +62,7 @@
   },
   "submit": {
     "invalid_fields": "Un ou plusieurs champs sont incorrects.",
-    "invalid_captcha": "Le captcha n'a pas été résolu correctement.",
+    "invalid_captcha": "La vérification du spam a échoué. Veuillez réessayer ou nous contacter par e-mail.",
     "upload_error": "Il y a eu une erreur lors du téléchargement du fichier.",
     "transmission_error": "Tous les champs n'ont pas pu être transmis. Veuillez réessayer plus tard.",
     "csrf_error": "Le jeton CSRF ne correspond pas.",

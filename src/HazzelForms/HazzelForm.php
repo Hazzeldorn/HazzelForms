@@ -343,29 +343,33 @@ class HazzelForm {
             $this->isSubmitted = true;
 
             foreach ($this->fields as $field) {
-                if (isset($formData[$field->getSlug()])) {
+                if (isset($formData[$field->getSlug()]) && $field instanceof Field\Captcha\Captcha == false) {
                     $field->setValue($formData[$field->getSlug()], 'REQUEST');
                     if ($field->validate() == false) {
-                        $this->error = 'invalid_fields';
+                        $this->error = $this->error ?? 'invalid_fields';
                     }
                 } elseif ($field instanceof Field\Options\Options) {
                     // it's actually possible that no data is sent to server when using option fields
                     if ($field->validate() == false) {
-                        $this->error = 'invalid_fields';
+                        $this->error = $this->error ?? 'invalid_fields';
                     }
                 } elseif ($field instanceof Field\Captcha\Captcha) {
                     // different handling for captchas
+                    if (isset($formData[$field->getSlug()])) {
+                        $field->setValue($formData[$field->getSlug()], 'REQUEST');
+                    }
+
                     if ($field->validate() == false) {
-                        $this->error = 'invalid_captcha';
+                        $this->error = $this->error ?? 'invalid_captcha';
                     }
                 } elseif ($field instanceof Field\File\File) {
                     // different handling for files
                     if ($field->validate() == false) {
-                        $this->error = 'upload_error';
+                        $this->error = $this->error ?? 'upload_error';
                     }
                 } else {
                     // form data does not contain all fields (required field might have been removed from DOM by malicious user)
-                    $this->error = 'transmission_error';
+                    $this->error = $this->error ?? 'transmission_error';
                 }
             }
             unset($field);
@@ -374,11 +378,11 @@ class HazzelForm {
             if (isset($formData['csrf_token'])) {
                 if (session_id() != '' && isset($_SESSION["hazzelforms"][$this->formName]["csrf_token"])) {
                     if ($_SESSION["hazzelforms"][$this->formName]["csrf_token"] != $formData['csrf_token']) {
-                        $this->error = 'csrf_error';
+                        $this->error = $this->error ?? 'csrf_error';
                     }
                 } else {
                     // token is sent within form but a session does not exist
-                    $this->error = 'session_error';
+                    $this->error = $this->error ?? 'session_error';
                 }
             }
 
@@ -508,8 +512,7 @@ class HazzelForm {
     /**
      * If form is valid, this returns an array with all the field names, its values and its types
      */
-    public function getFieldValuesAndTypes()
-    {
+    public function getFieldValuesAndTypes() {
         $fieldValues = [];
         if ($this->valid != false) {
             // if all fields are valid

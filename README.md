@@ -13,6 +13,10 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
+===== V1.3.6 | 2024-03-28 ===== <br/>
+
+- Bugfix: incorrect captcha did not show a proper error message<br/>
+
 ===== V1.3.5 | 2024-03-19 ===== <br/>
 
 - Feature: make ReCaptcha V3 score customizable as a param<br/>

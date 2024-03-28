@@ -62,7 +62,7 @@
   },
   "submit": {
     "invalid_fields": "One or more fields are incorrect.",
-    "invalid_captcha": "The captcha was not solved correctly.",
+    "invalid_captcha": "The spam check has failed. Please try again or contact us by e-mail.",
     "upload_error": "There was an error while uploading the file(s).",
     "transmission_error": "Not all fields could be transmitted. Please try again later.",
     "csrf_error": "CSRF token does not match.",

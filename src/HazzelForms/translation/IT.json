@@ -62,7 +62,7 @@
   },
   "submit": {
     "invalid_fields": "Uno o più campi non sono corretti.",
-    "invalid_captcha": "Il captcha non è stato risolto correttamente.",
+    "invalid_captcha": "Il controllo dello spam non è riuscito. Si prega di riprovare o di contattarci via e-mail.",
     "upload_error": "Si è verificato un errore durante il caricamento dei file.",
     "transmission_error": "Non tutti i campi possono essere trasmessi. Si prega di riprovare più tardi.",
     "csrf_error": "Il gettone CSRF non corrisponde.",
