@@ -343,24 +343,20 @@ class HazzelForm {
             $this->isSubmitted = true;
 
             foreach ($this->fields as $field) {
-                if (isset($formData[$field->getSlug()]) && $field instanceof Field\Captcha\Captcha == false) {
+                if (isset($formData[$field->getSlug()])) {
                     $field->setValue($formData[$field->getSlug()], 'REQUEST');
-                    if ($field->validate() == false) {
+
+                    // skip captcha fields since they are validated later
+                    if ($field instanceof Field\Captcha\Captcha) {
+                        continue;
+                    } else if ($field->validate() == false) {
+                        // validate all the other fields
                         $this->error = $this->error ?? 'invalid_fields';
                     }
                 } elseif ($field instanceof Field\Options\Options) {
                     // it's actually possible that no data is sent to server when using option fields
                     if ($field->validate() == false) {
                         $this->error = $this->error ?? 'invalid_fields';
-                    }
-                } elseif ($field instanceof Field\Captcha\Captcha) {
-                    // different handling for captchas
-                    if (isset($formData[$field->getSlug()])) {
-                        $field->setValue($formData[$field->getSlug()], 'REQUEST');
-                    }
-
-                    if ($field->validate() == false) {
-                        $this->error = $this->error ?? 'invalid_captcha';
                     }
                 } elseif ($field instanceof Field\File\File) {
                     // different handling for files
@@ -386,6 +382,23 @@ class HazzelForm {
                 }
             }
 
+            // validate captcha if everything else is ok
+            // this is done after all other fields have been validated to prevent unnecessary / duplicated requests to captcha provider
+            if (empty($this->error)) {
+                foreach ($this->fields as $field) {
+                    if ($field instanceof Field\Captcha\Captcha) {
+                        if (isset($formData[$field->getSlug()])) {
+                            $field->setValue($formData[$field->getSlug()], 'REQUEST');
+                        }
+
+                        if ($field->validate() == false) {
+                            $this->error = $this->error ?? 'invalid_captcha';
+                        }
+                    }
+                }
+            }
+
+            // if no error has been set, the form is valid
             if (empty($this->error)) {
                 $this->valid = true;
             }

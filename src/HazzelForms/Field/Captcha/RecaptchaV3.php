@@ -24,9 +24,19 @@ class RecaptchaV3 extends Captcha {
             . sprintf(
                 '<input type="hidden" name="%1$s[%2$s]" id="%1$s-%2$s" value="" />
                 <script>
-                grecaptcha.ready(function() {
-                    grecaptcha.execute(\'' . $this->siteKey . '\').then(function(token) {
-                      document.getElementById(\'%1$s-%2$s\').value = token;
+                document.addEventListener("DOMContentLoaded", () => {
+                    const tokenField = document.getElementById("%1$s-%2$s");
+                    const formElem = tokenField.closest("form");
+                    const submitButton = formElem.querySelector("button[type=submit]") || formElem.querySelector("input[type=submit]");
+
+                    grecaptcha.ready(() => {
+                        submitButton.addEventListener("click", (event) => {
+                            event.preventDefault();
+                            grecaptcha.execute("' . $this->siteKey . '").then((token) => {
+                                tokenField.value = token;
+                                formElem.requestSubmit(submitButton);
+                            });
+                        });
                     });
                 });
                 </script>',
