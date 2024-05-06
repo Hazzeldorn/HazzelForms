@@ -13,6 +13,10 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
+===== V1.3.8 | 2024-05-06 ===== <br/>
+
+- Clean-Up: obsolete var_dumps removed<br/>
+
 ===== V1.3.7 | 2024-03-28 ===== <br/>
 
 - Bugfix: incorrect captcha did not show a proper error message<br/>
