@@ -60,8 +60,6 @@ class Checkbox extends Options {
         foreach ($values as $chosenOption) {
             $this->fieldValue .= empty($this->fieldValue) ? '' : ', ';
 
-            var_dump($this->fieldValue);
-
             if (Tools::isArrayAssociative($this->options)) {
                 // associative array -> use keys
                 if (array_key_exists($chosenOption, $this->options)) {
@@ -77,7 +75,5 @@ class Checkbox extends Options {
             }
         }
         unset($chosenOption);
-
-        var_dump($this->fieldValue);
     }
 }
