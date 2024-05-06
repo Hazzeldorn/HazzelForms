@@ -59,7 +59,7 @@
 	  $form->sendMail(
 		'john.doe@example.com',  // to
 		'noreply@example.com',   // from
-		'noreply@example.com',   // reply-to     (optional, defaults to from)
+		'',   									 // reply-to     (optional, defaults to from — ⚠️ spam filters are getting more and more strict, so it is recommended to leave the reply-to address empty)
 		'Contact Form',          // sender name  (optional, defaults to "HazzelForms")
 		'New inquiry',           // subject      (optional, defaults to "New HazzelForms Message")
 		'basic'                  // template     (optional, defaults to "basic")
@@ -107,7 +107,7 @@ $template->inject([
 $form->sendMail(
 	'jane.doe@example.com',
 	'noreply@example.com',
-	'noreply@example.com',
+	'',  					// ⚠️ spam filters are getting more and more strict, so it is recommended to leave the reply-to address empty
 	'Contact Form',
 	'New inquiry',
 	$template,   // pass your template loader instance to HazzelForms (instead of the template name)
