@@ -126,6 +126,9 @@ class HazzelForm {
             case 'recaptcha-v3':
                 $this->fields->$fieldName = new Field\Captcha\RecaptchaV3($fieldName, $this->formName, $args);
                 break;
+            case 'math-captcha':
+                $this->fields->$fieldName = new Field\Captcha\MathCaptcha($fieldName, $this->formName, $args);
+                break;
             case 'honeypot':
                 $this->fields->$fieldName = new Field\Captcha\HoneyPot($fieldName, $this->formName, $args);
                 break;

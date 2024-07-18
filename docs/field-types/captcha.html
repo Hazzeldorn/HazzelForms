@@ -63,6 +63,37 @@ to let HazzelForms do the work.</p>
 <p>With every user request, reCAPTCHA v3 returns a value between 0 and 1, indicating the probability that the request comes from a bot. If the value is close to 0, it is probably a bot; if it is close to 1, it is more likely that it is a human. The default score of <code>0.4</code> may be customized using the <code>min_score</code> argument.</p>
 <br>
 
+<h2>Math Captcha</h2>
+<p>Let users solve a simple math puzzle to verify if they are human.<br>
+	You can choose between a text or an image captcha. The image captcha is recommended because only more sophisticated bots have the ability to read text from images.
+</p>
+<pre><code class="language-php">$form->addField('my-captcha',  'math-captcha', [
+	'label'     => "What is &lt;challenge&gt;?",  // &lt;challenge&gt; will be replaced with the actual math question
+	'secret'    => 'YOUR_SECRET_KEY', 		  // secret salt for captcha (generate a random string)
+	'min'       => 1,												// optionally override the minimum number for the math puzzle
+	'max'       => 100,											// optionally override the maximum number for the math puzzle
+  'use_image' => true,										// use an image instead of text (recommended)
+	'font_path' => '...',										// -- optionally change the font (when using an image)
+	'font_size'	=> 24,											// -- optionally override font size (when using an image)
+	'color' 	  => [255, 0, 0],							// -- optionally override the text color using [R, G, B] (when using an image)
+]);
+</code></pre>
+
+<p>If you use the image based puzzle, you might want to add some CSS to shrink the image and align it with the label text.</p>
+<pre><code class="language-css">.form-wrap .img-puzzle {
+	position: relative;
+	display: inline-block;
+	height: 0.8em;
+	transform: translateY(0.1em); /* vertical alignment */
+}
+
+.form-wrap .img-puzzle img {
+	height: 100%;
+}
+</code></pre>
+<br><br>
+
+
 								<h2>Honeypot</h2>
 
 								<p>
