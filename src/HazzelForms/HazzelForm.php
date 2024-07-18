@@ -437,16 +437,16 @@ class HazzelForm {
      * @throws Exception
      */
     public function sendMail($to, $from, $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'basic') {
-        if (empty($replyTo)) {
-            $replyTo = $from;
-        }
 
         if ($this->mailer != null) {
             // use PHPMailer instance and override default settings
-            $this->mailer->isHTML(true);
-            $this->mailer->addAddress($to);
             $this->mailer->setFrom($from, $senderName);
-            $this->mailer->addReplyTo($replyTo);
+            $this->mailer->addAddress($to);
+            if(!empty($replyTo)){
+                $this->mailer->addReplyTo($replyTo);
+            }
+
+            $this->mailer->isHTML(true);
             $this->mailer->CharSet = 'UTF-8';
             $this->mailer->Subject = $subject;
             $this->mailer->AltBody = $subject;

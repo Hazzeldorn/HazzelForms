@@ -8,9 +8,6 @@ use HazzelForms\Field\Captcha\Captcha as Captcha;
 class LegacyMailer
 {
     protected $to;
-    protected $from;
-    protected $replyTo;
-    protected $senderName;
     protected $subject;
     protected $headers = [];
     protected $message = '';
@@ -23,9 +20,6 @@ class LegacyMailer
     public function __construct($to, $from, $replyTo, $senderName, $subject, $template, $lang)
     {
         $this->to = $to;
-        $this->from = $from;
-        $this->replyTo = $replyTo;
-        $this->senderName = $senderName;
         $this->subject = $subject;
         $this->lang = $lang;
 
@@ -38,7 +32,9 @@ class LegacyMailer
 
         // define headers
         $this->headers[] = "From: $senderName" . " <" . $from . ">";
-        $this->headers[] = "Reply-To: " . $replyTo;
+        if(!empty($replyTo)){
+            $this->headers[] = "Reply-To: " . $replyTo;
+        }
         $this->headers[] = "MIME-Version: 1.0";
         $this->headers[] = "Content-Type: multipart/mixed; boundary=\"{$this->mimeBoundary}\"";
         $this->returnPath = "-f" . $from;
