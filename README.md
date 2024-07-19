@@ -6,11 +6,6 @@ Please visit the documentation if you want to use HazzelForms:<br/>
 https://hazzeldorn.github.io/HazzelForms/
 <br/><br/><br/><br/>
 
-### Upcoming
-
-- [ ] Prevent multiple submissions
-- [ ] File-Upload status callbacks
-
 ### Changelog
 
 ===== V1.3.9 | 2024-07-19 ===== <br/>
