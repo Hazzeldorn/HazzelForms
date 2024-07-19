@@ -5,10 +5,12 @@ namespace HazzelForms\Field\Options;
 use HazzelForms\Tools as Tools;
 use HazzelForms\Field\Field as Field;
 
-class Dropdown extends Options {
+class Dropdown extends Options
+{
     protected $first;
 
-    public function __construct($fieldName, $formName, $args = []) {
+    public function __construct($fieldName, $formName, $args = [])
+    {
         parent::__construct($fieldName, $formName, $args);
 
         $this->first = $args['first'] ?? '';
@@ -16,7 +18,8 @@ class Dropdown extends Options {
         $this->fieldType = 'dropdown';
     }
 
-    protected function buildAttributeString() {
+    protected function buildAttributeString()
+    {
         $attributes = '';
 
         if ($this->disabled == true) {
@@ -29,7 +32,8 @@ class Dropdown extends Options {
         return $attributes;
     }
 
-    protected function buildOptionAttributeString($optionKey, $optionVal) {
+    protected function buildOptionAttributeString($optionKey, $optionVal)
+    {
         $attributes = '';
 
         if (
@@ -48,7 +52,8 @@ class Dropdown extends Options {
     }
 
 
-    public function returnField() {
+    public function returnField()
+    {
         $fieldHtml = sprintf('<select name="%1$s[%2$s]" class="%3$s" %4$s>', $this->formName, $this->fieldSlug, $this->classlist, $this->buildAttributeString());
 
         if (!empty($this->first)) {

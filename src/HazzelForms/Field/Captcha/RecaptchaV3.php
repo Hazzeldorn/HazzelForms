@@ -4,13 +4,15 @@ namespace HazzelForms\Field\Captcha;
 
 use HazzelForms\Field\Field as Field;
 
-class RecaptchaV3 extends Captcha {
+class RecaptchaV3 extends Captcha
+{
     protected $siteKey = '';
     protected $secretKey = '';
     protected $minScore = 0.4;
     protected $fieldType = 'recaptcha-v3';
 
-    public function __construct($formName, $fieldName, $args = []) {
+    public function __construct($formName, $fieldName, $args = [])
+    {
         parent::__construct($formName, $fieldName, $args);
 
         $this->siteKey   = $args['sitekey'] ?? '';
@@ -19,7 +21,8 @@ class RecaptchaV3 extends Captcha {
         $this->label     = false;
     }
 
-    public function returnField() {
+    public function returnField()
+    {
         return '<script src="https://www.google.com/recaptcha/api.js?render=' . $this->siteKey . '"></script>'
             . sprintf(
                 '<input type="hidden" name="%1$s[%2$s]" id="%1$s-%2$s" value="" />
@@ -45,7 +48,8 @@ class RecaptchaV3 extends Captcha {
             );
     }
 
-    public function validate() {
+    public function validate()
+    {
         // get captcha response from google
         $reCaptchaResponse = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $this->secretKey . "&response=" . $this->fieldValue), true);
 
@@ -61,7 +65,8 @@ class RecaptchaV3 extends Captcha {
         return $this->isValid();
     }
 
-    public function setValue($value, $origin = 'MANUAL') {
+    public function setValue($value, $origin = 'MANUAL')
+    {
         $this->fieldValue = $value;
     }
 }

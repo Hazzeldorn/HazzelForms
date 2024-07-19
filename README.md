@@ -13,6 +13,11 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
+===== V1.3.9 | 2024-07-19 ===== <br/>
+
+- Feat: math captcha added<br/>
+- marginal bugfixes
+
 ===== V1.3.8 | 2024-05-06 ===== <br/>
 
 - Clean-Up: obsolete var_dumps removed<br/>

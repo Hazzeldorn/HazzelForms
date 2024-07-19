@@ -13,7 +13,8 @@ use HazzelForms\LegacyMailer as LegacyMailer;
 use HazzelForms\Language as Language;
 use PHPMailer\PHPMailer\PHPMailer;
 
-class HazzelForm {
+class HazzelForm
+{
     protected $action;
     protected $method;
     protected $novalidate;
@@ -31,7 +32,8 @@ class HazzelForm {
 
     protected static $formNr = 0;
 
-    public function __construct($args = []) {
+    public function __construct($args = [])
+    {
         // assign variables
         $this->action = $args['action'] ?? $_SERVER['REQUEST_URI'];
         $this->method = $args['method'] ?? 'post';
@@ -72,7 +74,8 @@ class HazzelForm {
      * @param string $type
      * @param array  $args
      */
-    public function addField($fieldName, $type = 'text', $args = []) {
+    public function addField($fieldName, $type = 'text', $args = [])
+    {
 
         switch ($type) {
             case 'text':
@@ -140,7 +143,8 @@ class HazzelForm {
     }
 
 
-    public function renderAll() {
+    public function renderAll()
+    {
         $this->openForm();
 
         if (!$this->stealthmode) {
@@ -170,7 +174,8 @@ class HazzelForm {
      *
      * @param $fieldName
      */
-    public function renderField($fieldName) {
+    public function renderField($fieldName)
+    {
         if (!$this->fieldExists($fieldName)) {
             // API NOTICE
             die("<b>renderField('{$fieldName}')</b> not possible. Field <b>{$fieldName}</b> does not exist.");
@@ -190,7 +195,8 @@ class HazzelForm {
      *
      * @param $fieldName
      */
-    public function renderLabel($fieldName) {
+    public function renderLabel($fieldName)
+    {
         if (!$this->fieldExists($fieldName)) {
             // API NOTICE
             die("<b>renderLabel('{$fieldName}')</b> not possible. Field <b>{$fieldName}</b> does not exist.");
@@ -203,7 +209,8 @@ class HazzelForm {
      *
      * @param $fieldName
      */
-    public function renderInput($fieldName) {
+    public function renderInput($fieldName)
+    {
         if (!$this->fieldExists($fieldName)) {
             // API NOTICE
             die("<b>renderInput('{$fieldName}')</b> not possible. Field <b>{$fieldName}</b> does not exist.");
@@ -216,7 +223,8 @@ class HazzelForm {
      *
      * @param $fieldName
      */
-    public function renderError($fieldName) {
+    public function renderError($fieldName)
+    {
         if (!$this->fieldExists($fieldName)) {
             // API NOTICE
             die("<b>renderError('{$fieldName}')</b> not possible. Field <b>{$fieldName}</b> does not exist.");
@@ -229,7 +237,8 @@ class HazzelForm {
      *
      * @param $caption
      */
-    public function renderSubmit($caption = "SEND") {
+    public function renderSubmit($caption = "SEND")
+    {
         echo '<div class="field-wrap submit-wrap">';
         echo sprintf('<input type="submit" value="%1$s" name="%2$s[submit]">', $caption, $this->formName);
         echo '</div>';
@@ -240,7 +249,8 @@ class HazzelForm {
      *
      * @param string $fieldName
      */
-    public function renderSubmitErrors() {
+    public function renderSubmitErrors()
+    {
         if (!empty($this->error)) {
             echo sprintf('<p class="error-msg">%1$s</p>', $this->lang->getMessage('submit', $this->error));
         }
@@ -248,7 +258,8 @@ class HazzelForm {
 
 
     // render hidden fields
-    public function renderHidden() {
+    public function renderHidden()
+    {
         foreach ($this->fields as $fieldName => $fieldObject) {
             if ($fieldObject instanceof Field\Text\Hidden) {
                 $this->renderInput($fieldName);
@@ -261,7 +272,8 @@ class HazzelForm {
      *
      * @param $fieldName
      */
-    public function openField($fieldName) {
+    public function openField($fieldName)
+    {
         if (!$this->fieldExists($fieldName)) {
             // API NOTICE
             die("<b>fieldExists('{$fieldName}')</b> not possible. Field <b>{$fieldName}</b> does not exist.");
@@ -275,7 +287,8 @@ class HazzelForm {
      *
      * @param $fieldName
      */
-    public function closeField($fieldName) {
+    public function closeField($fieldName)
+    {
         if (!$this->fieldExists($fieldName)) {
             // API NOTICE
             die("<b>closeField('{$fieldName}')</b> not possible. Field <b>{$fieldName}</b> does not exist.");
@@ -287,7 +300,8 @@ class HazzelForm {
     /**
      * Prints the HTML string for opening a form with the correct enctype, action and method
      */
-    public function openForm() {
+    public function openForm()
+    {
         $classList = '';
         $attributes = '';
 
@@ -315,7 +329,8 @@ class HazzelForm {
     /**
      * Prints form closing tag
      */
-    public function closeForm() {
+    public function closeForm()
+    {
         $this->renderHidden();
         echo "</form>";
     }
@@ -323,14 +338,16 @@ class HazzelForm {
     /**
      * Prints the HTML string for opening the grid system
      */
-    public function openGrid() {
+    public function openGrid()
+    {
         echo '<div class="' . $this->gridClass . '">';
     }
 
     /**
      * Prints grid system closing tag
      */
-    public function closeGrid() {
+    public function closeGrid()
+    {
         echo '</div>';
     }
 
@@ -338,7 +355,8 @@ class HazzelForm {
     /**
      * Validate all the fields
      */
-    public function validate() {
+    public function validate()
+    {
         $request  = strtoupper($this->method) == 'POST' ? $_POST : $_GET;
 
         if (isset($request[$this->formName])) {
@@ -352,7 +370,7 @@ class HazzelForm {
                     // skip captcha fields since they are validated later
                     if ($field instanceof Field\Captcha\Captcha) {
                         continue;
-                    } else if ($field->validate() == false) {
+                    } elseif ($field->validate() == false) {
                         // validate all the other fields
                         $this->error = $this->error ?? 'invalid_fields';
                     }
@@ -414,7 +432,8 @@ class HazzelForm {
     /**
      * Creates a new CSRF token if a session exists
      */
-    private function setToken() {
+    private function setToken()
+    {
         if (session_id() != '' && isset($_SESSION)) {
             // if any session is active
             if (!isset($_SESSION["hazzelforms"][$this->formName]["csrf_token"])) {
@@ -439,13 +458,14 @@ class HazzelForm {
      *
      * @throws Exception
      */
-    public function sendMail($to, $from, $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'basic') {
+    public function sendMail($to, $from, $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'basic')
+    {
 
         if ($this->mailer != null) {
             // use PHPMailer instance and override default settings
             $this->mailer->setFrom($from, $senderName);
             $this->mailer->addAddress($to);
-            if(!empty($replyTo)){
+            if (!empty($replyTo)) {
                 $this->mailer->addReplyTo($replyTo);
             }
 
@@ -491,7 +511,8 @@ class HazzelForm {
      * Set Mailer instance
      * @param PHPMailer $mailer  PHP mailer instance
      */
-    public function setMailer($mailer) {
+    public function setMailer($mailer)
+    {
         $this->mailer = $mailer;
     }
 
@@ -499,7 +520,8 @@ class HazzelForm {
     /**
      * Resets all field values
      */
-    public function clear() {
+    public function clear()
+    {
         foreach ($this->getFields() as $field) {
             $field->clear();
         }
@@ -511,7 +533,8 @@ class HazzelForm {
     /**
      * If form is valid, this returns an array with all the field names and its values
      */
-    public function getFieldValues() {
+    public function getFieldValues()
+    {
         $fieldValues = [];
         if ($this->valid != false) {
             // if all fields are valid
@@ -528,7 +551,8 @@ class HazzelForm {
     /**
      * If form is valid, this returns an array with all the field names, its values and its types
      */
-    public function getFieldValuesAndTypes() {
+    public function getFieldValuesAndTypes()
+    {
         $fieldValues = [];
         if ($this->valid != false) {
             // if all fields are valid
@@ -545,7 +569,8 @@ class HazzelForm {
     /**
      * Checks if a field exists
      */
-    public function fieldExists($fieldName) {
+    public function fieldExists($fieldName)
+    {
         if (!isset($this->fields->$fieldName)) {
             return false;
         } else {
@@ -556,27 +581,33 @@ class HazzelForm {
     /**
      * Getters and Setters
      */
-    public function getFormName() {
+    public function getFormName()
+    {
         return $this->formName;
     }
 
-    public function getFields() {
+    public function getFields()
+    {
         return $this->fields;
     }
 
-    public function getField($fieldName) {
+    public function getField($fieldName)
+    {
         return $this->fields->$fieldName;
     }
 
-    public function isValid() {
+    public function isValid()
+    {
         return $this->valid;
     }
 
-    public function hasError() {
+    public function hasError()
+    {
         return !empty($this->error);
     }
 
-    public function setLanguage($lang) {
+    public function setLanguage($lang)
+    {
         $this->lang = new Language($lang);
     }
 }

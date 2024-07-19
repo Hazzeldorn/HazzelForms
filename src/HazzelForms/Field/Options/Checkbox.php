@@ -5,14 +5,17 @@ namespace HazzelForms\Field\Options;
 use HazzelForms\Tools as Tools;
 use HazzelForms\Field\Field as Field;
 
-class Checkbox extends Options {
-    public function __construct($fieldName, $formName, $args = []) {
+class Checkbox extends Options
+{
+    public function __construct($fieldName, $formName, $args = [])
+    {
         parent::__construct($fieldName, $formName, $args);
 
         $this->fieldType = 'checkbox';
     }
 
-    protected function buildOptionAttributeString($optionKey, $optionVal) {
+    protected function buildOptionAttributeString($optionKey, $optionVal)
+    {
         $attributes = '';
         $selectedOptions = explode(', ', $this->fieldValue);
 
@@ -35,7 +38,8 @@ class Checkbox extends Options {
         return $attributes;
     }
 
-    public function returnField() {
+    public function returnField()
+    {
         $fieldHtml  = '';
 
         foreach ($this->options as $optionKey => $optionVal) {
@@ -50,7 +54,8 @@ class Checkbox extends Options {
     }
 
     // set choice
-    public function setValue($values, $origin = 'MANUAL') {
+    public function setValue($values, $origin = 'MANUAL')
+    {
 
         // if value is not an array, make it one
         if (!is_array($values)) {
@@ -69,7 +74,7 @@ class Checkbox extends Options {
                 // non-associative array -> use values
                 if ($origin == 'MANUAL' && in_array($chosenOption, $this->options)) {
                     $this->fieldValue .= $chosenOption;
-                } else if (array_key_exists($chosenOption, $this->options)) {
+                } elseif (array_key_exists($chosenOption, $this->options)) {
                     $this->fieldValue .= $this->options[$chosenOption];
                 }
             }

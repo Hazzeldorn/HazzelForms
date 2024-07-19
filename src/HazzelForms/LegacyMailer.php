@@ -32,7 +32,7 @@ class LegacyMailer
 
         // define headers
         $this->headers[] = "From: $senderName" . " <" . $from . ">";
-        if(!empty($replyTo)){
+        if (!empty($replyTo)) {
             $this->headers[] = "Reply-To: " . $replyTo;
         }
         $this->headers[] = "MIME-Version: 1.0";

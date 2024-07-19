@@ -5,13 +5,15 @@ namespace HazzelForms\Field\Options;
 use HazzelForms\Tools as Tools;
 use HazzelForms\Field\Field as Field;
 
-class Options extends Field {
+class Options extends Field
+{
     protected $disabled;
     protected $options = [];
     protected $default;
     protected $fieldType = '';
 
-    public function __construct($fieldName, $formName, $args = []) {
+    public function __construct($fieldName, $formName, $args = [])
+    {
         parent::__construct($fieldName, $formName, $args);
 
         $this->options = $args['options'] ?? [];
@@ -20,13 +22,15 @@ class Options extends Field {
     }
 
     // build label
-    public function returnLabel() {
+    public function returnLabel()
+    {
         if ($this->label != false) {
             return sprintf('<label><span class="label">%1$s</span></label>', $this->label);
         }
     }
 
-    public function returnField() {
+    public function returnField()
+    {
         $fieldHtml  = '';
 
         foreach ($this->options as $optionKey => $optionVal) {
@@ -55,7 +59,8 @@ class Options extends Field {
     }
 
     // Build error message
-    public function returnError($lang) {
+    public function returnError($lang)
+    {
         if (!empty($this->error)) {
             return sprintf(
                 '<span class="error-msg">%1$s</span>',
@@ -65,7 +70,8 @@ class Options extends Field {
     }
 
     // set choice
-    public function setValue($value, $origin = 'MANUAL') {
+    public function setValue($value, $origin = 'MANUAL')
+    {
         if (Tools::isArrayAssociative($this->options)) {
             // associative array -> use keys
             if (array_key_exists($value, $this->options)) {
@@ -75,13 +81,14 @@ class Options extends Field {
             // non-associative array -> use values
             if ($origin == 'MANUAL' && in_array($value, $this->options)) {
                 $this->fieldValue = $value;
-            } else if (array_key_exists($value, $this->options)) {
+            } elseif (array_key_exists($value, $this->options)) {
                 $this->fieldValue = $this->options[$value];
             }
         }
     }
 
-    public function validate() {
+    public function validate()
+    {
 
         if (empty($this->fieldValue) && $this->required) {
             $this->error = 'empty';
