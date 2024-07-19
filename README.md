@@ -8,8 +8,9 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
-===== V1.3.9 | 2024-07-19 ===== <br/>
+===== V1.3.10 | 2024-07-19 ===== <br/>
 
+- Feat: ajax usage simplified<br/>
 - Feat: math captcha added<br/>
 - marginal bugfixes
 
