@@ -59,13 +59,10 @@ class Options extends Field
     }
 
     // Build error message
-    public function returnError($lang)
+    public function getErrorMessage($lang) 
     {
         if (!empty($this->error)) {
-            return sprintf(
-                '<span class="error-msg">%1$s</span>',
-                (count($this->options) == 1) ? $lang->getMessage('option_fields_single', $this->error) : $lang->getMessage('option_fields', $this->error)
-            );
+            return (count($this->options) == 1) ? $lang->getMessage('option_fields_single', $this->error) : $lang->getMessage('option_fields', $this->error);
         }
     }
 

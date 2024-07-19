@@ -9,7 +9,7 @@ class Tel extends Text
         parent::__construct($fieldName, $formName, $args);
 
         $this->maxlength = $args['maxlength'] ?? 20;
-        $this->regex     = $args['maxlength'] ?? '/^[+]{0,1}[- \(\)\/0-9]*$/';
+        $this->regex     = $args['regex'] ?? '/^[+]{0,1}[- \(\)\/0-9]*$/';
         $this->fieldType = 'tel';
     }
 }

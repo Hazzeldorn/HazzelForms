@@ -21,6 +21,7 @@ class HazzelForm
     protected $autocomplete;
     protected $formName;
     protected $stealthmode;
+    protected $usesAjax;
     protected $gridClass;
     protected $submitCaption;
     protected $lang;
@@ -40,6 +41,7 @@ class HazzelForm
         $this->novalidate = $args['novalidate'] ?? false;
         $this->autocomplete = $args['autocomplete'] ?? true;
         $this->stealthmode = $args['stealthmode'] ?? false;
+        $this->usesAjax = $args['uses_ajax'] ?? false;
         $this->gridClass = $args['gridclass'] ?? 'grid-wrap';
         $this->submitCaption = $args['submitcaption'] ?? 'SEND';
         $this->fields = new \stdClass();
@@ -185,7 +187,11 @@ class HazzelForm
         $this->renderLabel($fieldName);
         $this->renderInput($fieldName);
         if (!$this->stealthmode) {
-            $this->renderError($fieldName);
+            if ($this->usesAjax) {
+                $this->renderErrorPlaceholder($fieldName);
+            } else {
+                $this->renderError($fieldName);
+            }
         }
         $this->closeField($fieldName);
     }
@@ -232,6 +238,21 @@ class HazzelForm
         echo $this->fields->$fieldName->returnError($this->lang);
     }
 
+
+    /**
+     * print message
+     *
+     * @param $fieldName
+     */
+    public function renderErrorPlaceholder($fieldName)
+    {
+        if (!$this->fieldExists($fieldName)) {
+            // API NOTICE
+            die("<b>renderErrorPlaceholder('{$fieldName}')</b> not possible. Field <b>{$fieldName}</b> does not exist.");
+        }
+        echo $this->fields->$fieldName->returnErrorPlaceholder();
+    }
+
     /**
      * create and print the submit button and hidden fields
      *
@@ -245,14 +266,22 @@ class HazzelForm
     }
 
     /**
-     * print message
-     *
-     * @param string $fieldName
+     * print error message
      */
     public function renderSubmitErrors()
     {
         if (!empty($this->error)) {
-            echo sprintf('<p class="error-msg">%1$s</p>', $this->lang->getMessage('submit', $this->error));
+            echo sprintf('<p class="error-msg">%1$s</p>', $this->getSubmitErrors());
+        }
+    }
+
+    /**
+     * get submit error
+     */
+    public function getSubmitErrors()
+    {
+        if (!empty($this->error)) {
+            return $this->lang->getMessage('submit', $this->error);
         }
     }
 
@@ -466,7 +495,7 @@ class HazzelForm
             $this->mailer->setFrom($from, $senderName);
             $this->mailer->addAddress($to);
             if (!empty($replyTo)) {
-                $this->mailer->addReplyTo($replyTo);
+            $this->mailer->addReplyTo($replyTo);
             }
 
             $this->mailer->isHTML(true);
@@ -565,6 +594,29 @@ class HazzelForm
             return false;
         }
     }
+
+
+    /**
+     * If form is not valid, this returns an array with all the field names and its errors
+     */
+    public function getFieldErrors()
+    {
+        $fieldErrors = [];
+
+        foreach ($this->getFields() as $field) {
+            if ($field->hasError()) {
+                $fieldErrors[] = [
+                    'field_type'     => $field->getType(),
+                    'placeholder_id' => 'error--' . $this->formName . '-' . $field->getSlug(),
+                    'error_message'  => $field->getErrorMessage($this->lang),
+                ];
+            }
+        }
+        unset($field);
+
+        return $fieldErrors;
+    }
+
 
     /**
      * Checks if a field exists

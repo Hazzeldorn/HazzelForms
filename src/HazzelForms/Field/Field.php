@@ -36,12 +36,33 @@ class Field
         }
     }
 
-    // Build error message
+    // Build error message as html
     public function returnError($lang)
     {
         if (!empty($this->error)) {
-            return sprintf('<span class="error-msg">%1$s</span>', $lang->getMessage($this->fieldType, $this->error));
+            return sprintf('<span class="error-msg">%1$s</span>', $this->getErrorMessage($lang));
         }
+    }
+
+    // Build error placeholder
+    public function returnErrorPlaceholder()
+    {
+        return sprintf('<span class="error-msg" id="error--%1$s-%2$s"></span>', $this->formName, $this->fieldSlug);
+    }
+
+
+    // Get error message
+    public function getErrorMessage($lang)
+    {
+        if (!empty($this->error)) {
+            return $lang->getMessage($this->fieldType, $this->error);
+        }
+    }
+
+    // check error field
+    public function hasError() 
+    {
+        return !empty($this->error);
     }
 
     // clear field value
