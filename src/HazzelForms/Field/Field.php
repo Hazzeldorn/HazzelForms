@@ -60,7 +60,7 @@ class Field
     }
 
     // check error field
-    public function hasError() 
+    public function hasError()
     {
         return !empty($this->error);
     }

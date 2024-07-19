@@ -493,7 +493,7 @@ class HazzelForm
             $this->mailer->setFrom($from, $senderName);
             $this->mailer->addAddress($to);
             if (!empty($replyTo)) {
-            $this->mailer->addReplyTo($replyTo);
+                $this->mailer->addReplyTo($replyTo);
             }
 
             $this->mailer->isHTML(true);
