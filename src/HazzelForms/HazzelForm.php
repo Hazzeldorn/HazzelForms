@@ -270,9 +270,7 @@ class HazzelForm
      */
     public function renderSubmitErrors()
     {
-        if (!empty($this->error)) {
-            echo sprintf('<p class="error-msg">%1$s</p>', $this->getSubmitErrors());
-        }
+        echo sprintf('<p class="error-msg submit-error">%1$s</p>', $this->getSubmitErrors());
     }
 
     /**
@@ -656,6 +654,11 @@ class HazzelForm
     public function hasError()
     {
         return !empty($this->error);
+    }
+
+    public function usesAjax()
+    {
+        return !empty($this->usesAjax);
     }
 
     public function setLanguage($lang)
