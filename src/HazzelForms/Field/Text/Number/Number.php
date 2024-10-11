@@ -47,7 +47,7 @@ class Number extends Text
         $value = $this->fieldValue;
 
         if (parent::validate()) {
-            if (!empty($this->fieldValue) && !filter_var($this->fieldValue, FILTER_VALIDATE_FLOAT) && get_class($this) == 'HazzelForms\Number') {
+            if (!empty($this->fieldValue) && !filter_var($this->fieldValue, FILTER_VALIDATE_FLOAT) && get_class($this) == 'HazzelForms\Field\Text\Number\Number') {
                 $this->error = 'invalid';
             }
             if (!empty($this->min) && !empty($this->fieldValue)) {

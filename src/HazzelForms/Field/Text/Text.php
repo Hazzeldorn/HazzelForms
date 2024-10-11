@@ -63,7 +63,7 @@ class Text extends Field
     {
         $value = Tools::stripper($this->fieldValue);
 
-        if (empty($value) && $this->required) {
+        if ((empty($value) && $this->required && !(get_class($this) === 'HazzelForms\Field\Text\Number\Number' && (string) $value === "0"))) {
             $this->error = 'empty';
         } elseif (!empty($value)) {
             // if field is not empty then check value
