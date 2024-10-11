@@ -25,7 +25,7 @@
 
     <?php foreach ($fields as $field) :
         ?>
-      <tr><td><strong><?php echo $field->getName(); ?></strong></td><td><?php echo nl2br($field->getValue()); ?></td></tr>
+      <tr><td style="vertical-align: top"><strong><?php echo $field->getName(); ?></strong></td><td style="vertical-align: top"><?php echo nl2br($field->getValue()); ?></td></tr>
         <?php
     endforeach;
     unset($field);
