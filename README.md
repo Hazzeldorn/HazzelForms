@@ -8,6 +8,11 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
+===== V1.3.11 | 2024-10-11 ===== <br/>
+
+- Bugfix: the number zero was treated as a missing value during the validation step<br/>
+- Style: vertical align of email template contents changed to top<br/>
+
 ===== V1.3.10 | 2024-07-19 ===== <br/>
 
 - Feat: ajax usage simplified<br/>
