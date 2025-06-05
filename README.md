@@ -8,6 +8,10 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
+===== V1.3.13 | 2025-06-05 ===== <br/>
+
+- Feat: add a simple spam check targeted on eric jones spam<br/>
+
 ===== V1.3.12 | 2024-10-11 ===== <br/>
 
 - Bugfix: the number zero was treated as a missing value during the validation step<br/>
