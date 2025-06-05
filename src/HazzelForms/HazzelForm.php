@@ -384,7 +384,7 @@ class HazzelForm
      */
     public function validate()
     {
-        $request  = strtoupper($this->method) == 'POST' ? $_POST : $_GET;
+        $request = strtoupper($this->method) == 'POST' ? $_POST : $_GET;
 
         if (isset($request[$this->formName])) {
             $formData = $request[$this->formName];
@@ -501,6 +501,11 @@ class HazzelForm
             $this->mailer->Subject = $subject;
             $this->mailer->AltBody = $subject;
 
+            $isSpam = $this->checkSpam();
+            if ($isSpam) {
+                return;
+            }
+
             // prepare mail content
             [$fields, $attachements] = LegacyMailer::filterFieldsAndAttachements($this->getFields());
 
@@ -515,7 +520,7 @@ class HazzelForm
             if (!empty($attachements)) {
                 foreach ($attachements as $fileData) {
                     $this->mailer->addAttachment($fileData['dir'], $fileData['name']);
-                };
+                }
             }
 
             // exit($this->mailer->Body);
@@ -531,6 +536,37 @@ class HazzelForm
             $mail->prepareContent($this->getFields());
             $mail->send();
         }
+    }
+
+    /**
+     * Checks if the form contains spam words
+     * @return bool    
+     */
+    protected function checkSpam()
+    {
+        $searchWords = [
+            'ericjonesmyemail',
+            'trustedleadgeneration',
+            'doing for visibility seems to be working well',
+            'after performing a quick search',
+            'with our sms text with lead feature',
+        ];
+
+        $isSpam = false;
+        $fields = $this->getFields();
+
+        // check fields for spam words
+        foreach ($fields as $field) {
+            $value = strtolower($field->getValue());
+            foreach ($searchWords as $word) {
+                if (str_contains($value, $word)) {
+                    $isSpam = true;
+                    break 2;
+                }
+            }
+        }
+
+        return $isSpam;
     }
 
 
@@ -604,9 +640,9 @@ class HazzelForm
         foreach ($this->getFields() as $field) {
             if ($field->hasError()) {
                 $fieldErrors[] = [
-                    'field_type'     => $field->getType(),
+                    'field_type' => $field->getType(),
                     'placeholder_id' => 'error--' . $this->formName . '-' . $field->getSlug(),
-                    'error_message'  => $field->getErrorMessage($this->lang),
+                    'error_message' => $field->getErrorMessage($this->lang),
                 ];
             }
         }
