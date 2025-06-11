@@ -6,6 +6,8 @@ class TemplateLoader
 {
     private $templatePath;
 
+    protected $variables;
+
     public function __construct($templatePath)
     {
         $this->templatePath = $templatePath;
