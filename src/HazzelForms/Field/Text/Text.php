@@ -65,7 +65,7 @@ class Text extends Field
 
         if ((empty($value) && $this->required && !(get_class($this) === 'HazzelForms\Field\Text\Number\Number' && (string) $value === "0"))) {
             $this->error = 'empty';
-        } elseif (!empty($value)) {
+        } elseif (!empty($value) || (get_class($this) === 'HazzelForms\Field\Text\Number\Number' && (string) $value === "0")) {
             // if field is not empty then check value
             if (!empty($this->maxlength)) {
                 // check maxlength (never trust browsers...)
