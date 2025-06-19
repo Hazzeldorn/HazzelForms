@@ -24,6 +24,8 @@ class HazzelForm
     protected $usesAjax;
     protected $gridClass;
     protected $submitCaption;
+
+    protected $spamWords;
     protected $lang;
     protected $fields;
     protected $error;
@@ -43,6 +45,7 @@ class HazzelForm
         $this->stealthmode = $args['stealthmode'] ?? false;
         $this->usesAjax = $args['uses_ajax'] ?? false;
         $this->gridClass = $args['gridclass'] ?? 'grid-wrap';
+        $this->spamWords = $args['spam_words'] ?? null;
         $this->submitCaption = $args['submitcaption'] ?? 'SEND';
         $this->fields = new \stdClass();
 
@@ -487,6 +490,10 @@ class HazzelForm
      */
     public function sendMail($to, $from, $replyTo = '', $senderName = 'HazzelForms', $subject = 'New HazzelForms Message', $template = 'basic')
     {
+        if ($this->checkSpam()) {
+            // obvious spam detected, silently return without sending mail
+            return;
+        }
 
         if ($this->mailer != null) {
             // use PHPMailer instance and override default settings
@@ -541,6 +548,38 @@ class HazzelForm
     public function setMailer($mailer)
     {
         $this->mailer = $mailer;
+    }
+
+
+
+    /**
+     * Checks if the form contains spam words
+     * @return bool
+     */
+    protected function checkSpam()
+    {
+        $spamWords = $this->spamWords ?? [
+            'ericjonesmyemail',
+            'trustedleadgeneration',
+            'doing for visibility seems to be working well',
+            'with our sms text with lead feature',
+        ];
+
+        $isSpam = false;
+
+        foreach ($this->getFields() as $field) {
+            if ($field instanceof Field\Text\Text) {
+                $value = $field->getValue();
+                foreach ($spamWords as $word) {
+                    if (strpos(strtolower($value), strtolower($word)) !== false) {
+                        $isSpam = true;
+                        break 2;
+                    }
+                }
+            }
+        }
+
+        return $isSpam;
     }
 
 

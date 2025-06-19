@@ -33,7 +33,7 @@
 									</header>
 
 									<h2>Requirements</h2>
-									<p>If your webserver supports PHP7, simply <a href="https://github.com/Hazzeldorn/HazzelForms/archive/master.zip">download</a> the HazzelForm folder,
+									<p>Simply <a href="https://github.com/Hazzeldorn/HazzelForms/archive/master.zip">download</a> the HazzelForm folder,
 										 extract the zip file and include it anywhere in your web project.</p>
 
 									<h3>Minimalist configuration</h3>
@@ -151,6 +151,12 @@ $form = new HazzelForms\HazzelForm(array(
 													<td>string</td>
 													<td>'grid-wrap'</td>
 													<td>This parameter allows you to customize the class of the <code>div</code> which HazzelForms wraps around the form.</td>
+												</tr>
+													<tr>
+													<td>spam_words</td>
+													<td>array</td>
+													<td><i>some typical spam words</i></td>
+													<td>To reduce spam emails, you can provide a list of well known spam words. HazzelForms will then just die silently instead of sending emails. However, we recommend a more advanced solution like ReCaptcha to prevent spam.</td>
 												</tr>
 											</tbody>
 										</table>
