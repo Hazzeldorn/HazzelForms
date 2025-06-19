@@ -8,6 +8,11 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ### Changelog
 
+===== V1.3.13 | 2025-06-19 ===== <br/>
+
+- Feat: Simple static spam protection added
+- CS: missing property added to TemplateLoader.php, since dynamic props are considered deprecated in PHP >= 8.2
+
 ===== V1.3.12 | 2024-10-11 ===== <br/>
 
 - Bugfix: the number zero was treated as a missing value during the validation step<br/>
@@ -63,7 +68,7 @@ https://hazzeldorn.github.io/HazzelForms/
 
 ===== V1.2.13 | 2021-06-23 ===== <br/>
 
-- Bugfix: <code>$form->getFieldValues</code> function was broken for uploaded files
+- Bugfix: <code>\$form->getFieldValues</code> function was broken for uploaded files
 
 ===== V1.2.12 | 2021-04-04 ===== <br/>
 
